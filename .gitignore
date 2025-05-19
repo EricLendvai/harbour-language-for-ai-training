@@ -1,0 +1,31 @@
+# Harbour compiler and build artifacts
+*.obj
+*.lib
+*.exe
+*.dll
+*.bak
+*.pdb
+*.log
+
+# Backup and temp files
+*~
+*.tmp
+*.old
+*.orig
+
+# IDE files (Code::Blocks, Visual Studio, VSCode)
+*.depend
+*.layout
+*.cbp
+*.sdf
+*.vcxproj*
+*.ncb
+*.suo
+
+# macOS and Linux editor/system files
+.DS_Store
+*.swp
+
+# Node / tooling (if ever used for docs)
+node_modules/
+dist/
