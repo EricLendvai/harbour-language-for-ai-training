@@ -2,6 +2,10 @@
 
 Machine-readable **Harbour function definitions** in YAML for AI-assisted code generation and documentation.
 
+## Revision Date
+
+2025-10-12-001
+
 ## What’s in this repo
 
 - **Dataset**
