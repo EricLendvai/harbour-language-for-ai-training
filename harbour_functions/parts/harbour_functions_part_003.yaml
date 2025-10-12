@@ -11,7 +11,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\perfuncs.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_SetObject']
+    see_also: ['hb_setobject']
   - name: HB_EOL
     slug: hb_eol
     syntax: 'hb_eol() => <cEndOfLineMarker>'
@@ -117,7 +117,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\fscopy.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VFCOPYFILE']
+    see_also: ['hb_vfcopyfile']
   - name: HB_FCREATE
     slug: hb_fcreate
     categories: ['Low Level File Functions']
@@ -252,7 +252,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FIELDGET', 'FIELDPUT', 'HB_FIELDPUT']
+    see_also: ['fieldget', 'fieldput', 'hb_fieldput']
   - name: HB_FIELDLEN
     slug: hb_fieldlen
     categories: ['Field Functions']
@@ -289,7 +289,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FIELDGET', 'FIELDPUT', 'HB_FIELDGET']
+    see_also: ['fieldget', 'fieldput', 'hb_fieldget']
   - name: HB_FIELDTYPE
     slug: hb_fieldtype
     categories: ['Field Functions']
@@ -323,7 +323,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\dirscan.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VFERASE']
+    see_also: ['hb_vferase']
   - name: HB_FILEEXISTS
     slug: hb_fileexists
     categories: ['File Functions']
@@ -339,7 +339,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VFEXISTS']
+    see_also: ['hb_vfexists']
   - name: HB_FILEMATCH
     slug: hb_filematch
     categories: ['File Functions']
@@ -389,7 +389,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\philes.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FUNLOCK']
+    see_also: ['hb_funlock']
   - name: HB_FNAMEDIR
     slug: hb_fnamedir
     categories: ['Disks, Drives and Folders', 'File Functions']
@@ -425,7 +425,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FILEEXISTS']
+    see_also: ['hb_fileexists']
   - name: HB_FNAMEEXT
     slug: hb_fnameext
     categories: ['File Functions']
@@ -505,7 +505,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\fnsplit.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FNAMESPLIT']
+    see_also: ['hb_fnamesplit']
   - name: HB_FNAMENAME
     slug: hb_fnamename
     categories: ['File Functions']
@@ -574,7 +574,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\fnsplit.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FNAMEMERGE']
+    see_also: ['hb_fnamemerge']
   - name: HB_FORNEXT
     slug: hb_fornext
     categories: ['Program Flow Controls']
@@ -768,7 +768,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\fstemp.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FTEMPCREATE']
+    see_also: ['hb_ftempcreate']
   - name: HB_FUNLOCK
     slug: hb_funlock
     categories: ['Low Level File Functions']
@@ -792,7 +792,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\philes.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FLOCK']
+    see_also: ['hb_flock']
   - name: HB_GCALL
     slug: hb_gcall
     categories: ['Background Processing']
@@ -809,7 +809,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\garbage.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_GCSTEP']
+    see_also: ['hb_gcstep']
   - name: HB_GCSTEP
     slug: hb_gcstep
     categories: ['Background Processing']
@@ -818,7 +818,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\garbage.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_GCALL']
+    see_also: ['hb_gcall']
   - name: HB_GETENV
     slug: hb_getenv
     categories: ['Executable Environment']
@@ -1107,7 +1107,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\hashfunc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_HAUTOADD']
+    see_also: ['hb_hautoadd']
   - name: HB_HBINARY
     slug: hb_hbinary
     categories: ['Hash Array Functions']
@@ -1304,7 +1304,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\hashfunc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['AEVAL']
+    see_also: ['aeval']
   - name: HB_HEXTONUM
     slug: hb_hextonum
     categories: ['Conversion Functions']
@@ -1335,7 +1335,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbhex.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_STRTOHEX']
+    see_also: ['hb_strtohex']
   - name: HB_HFILL
     slug: hb_hfill
     categories: ['Hash Array Functions']
@@ -1373,7 +1373,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\hashfunc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_HGETDEF']
+    see_also: ['hb_hgetdef']
   - name: HB_HGETDEF
     slug: hb_hgetdef
     categories: ['Hash Array Functions']
@@ -2004,7 +2004,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbini.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_iniReadStr']
+    see_also: ['hb_inireadstr']
   - name: hb_iniReadStr
     slug: hb_inireadstr
     categories: ['INI Files']
@@ -2047,7 +2047,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbini.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_iniRead']
+    see_also: ['hb_iniread']
   - name: hb_iniWrite
     slug: hb_iniwrite
     categories: ['INI Files']
@@ -2516,7 +2516,7 @@ functions:
     source_code_file: 'src\rtl\inkey.c'
     platforms: ['Windows','Linux','Mac']
     generate_user_interface: true
-    see_also: ['ASC']
+    see_also: ['asc']
   - name: HB_KEYEXT
     slug: hb_keyext
     categories: ['Keyboard functions']
@@ -2545,7 +2545,7 @@ functions:
     source_code_file: 'src\rtl\inkey.c'
     platforms: ['Windows','Linux','Mac']
     generate_user_interface: true
-    see_also: ['HB_KEYPUT']
+    see_also: ['hb_keyput']
   - name: HB_KEYLAST
     slug: hb_keylast
     categories: ['Keyboard functions']
@@ -2563,7 +2563,7 @@ functions:
     source_code_file: 'src\rtl\inkey.c'
     platforms: ['Windows','Linux','Mac']
     generate_user_interface: true
-    see_also: ['LASTKEY']
+    see_also: ['lastkey']
   - name: HB_KEYMOD
     slug: hb_keymod
     categories: ['Keyboard functions']

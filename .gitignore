@@ -25,7 +25,3 @@
 # macOS and Linux editor/system files
 .DS_Store
 *.swp
-
-# Node / tooling (if ever used for docs)
-node_modules/
-dist/

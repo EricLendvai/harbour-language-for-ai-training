@@ -63,6 +63,7 @@ Each item in `functions` describes one Harbour function.
 - **`return_type`** (string): Harbour return type (`Array`, `Numeric`, `String`, `Logical`, `Date`, `Hash`, `Any`, …).
 
 ### Common optional fields
+- **`description`** (string): Markdown description (preserve formatting).
 - **`parameters`** (array of objects):
   - `name` (string)
   - `type` (string)
@@ -71,18 +72,13 @@ Each item in `functions` describes one Harbour function.
   - `description` (string)
   - `passed_by` (string; e.g., `value`, `reference`, `macro`, `block`)
 - **`return_name`** (string): Name used in docs for the return value.
-- **`return_description`** (string): Text describing the return value semantics.
+- **`return_description`** (string): Markdown describing the return value semantics.
 - **`library`** (string or null): Library/module if applicable; omit or set null if N/A.
 - **`source_code_file`** (string): Source file path related to the function.
 - **`platforms`** (array of string): Target OS list, e.g., `['Windows', 'Linux', 'Mac']`.
-- **`generate_user_interface`** (boolean or string): flag/directive indicating UI scaffolding potential.
+- **`generate_user_interface`** (boolean or string): flag/directive indicating UI scaffolding potential. false if missing.
 - **`examples`** (array of strings): Harbour code examples (preserve formatting).
 - **`see_also`** (array of string): Related function slugs (must correspond to existing `slug`s).
-- **`description_md`** (string): Markdown description (preserve formatting).
-
-### Removed / not used
-- `summary` — **removed**
-- `returns` — **removed** (replaced by `return_*` fields)
 
 ---
 

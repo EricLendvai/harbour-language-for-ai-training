@@ -31,7 +31,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FIELDPUT', 'HB_FIELDGET', 'HB_FIELDPUT']
+    see_also: ['fieldput', 'hb_fieldget', 'hb_fieldput']
   - name: FIELDNAME
     slug: fieldname
     categories: ['Table Functions']
@@ -78,7 +78,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FIELDGET', 'HB_FIELDGET', 'HB_FIELDPUT']
+    see_also: ['fieldget', 'hb_fieldget', 'hb_fieldput']
   - name: FIELDWBLOCK
     slug: fieldwblock
     categories: ['Codeblock Functions', 'Table Functions']
@@ -136,7 +136,7 @@ functions:
     library: 'hbct'
     source_code_file: 'contrib\hbct\ctmath2.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['CEILING', 'INT']
+    see_also: ['ceiling', 'int']
   - name: FOPEN
     slug: fopen
     categories: ['File Functions']
@@ -228,7 +228,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\philes.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VFRENAME']
+    see_also: ['hb_vfrename']
   - name: FSEEK
     slug: fseek
     categories: ['File Functions']
@@ -394,7 +394,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\arrayshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_ADEL']
+    see_also: ['hb_adel']
   - name: hb_Alert
     slug: hb_alert
     categories: ['Dialog Screens', 'Warnings and Errors']
@@ -611,7 +611,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\at.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_UAT']
+    see_also: ['hb_uat']
   - name: HB_ATI
     slug: hb_ati
     categories: ['String ANSI/Codepage Functions']
@@ -680,7 +680,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbtoken.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_TOKENCOUNT', 'HB_TOKENGET', 'HB_TOKENPTR']
+    see_also: ['hb_tokencount', 'hb_tokenget', 'hb_tokenptr']
   - name: HB_BASE64DECODE
     slug: hb_base64decode
     categories: ['Encoding', 'String ANSI/Codepage Functions', 'String Byte Functions', 'Strings Unicode']
@@ -999,7 +999,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbbffnc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHENCRYPT_CFB', 'HB_BLOWFISHKEY']
+    see_also: ['hb_blowfishdecrypt_cfb', 'hb_blowfishencrypt', 'hb_blowfishencrypt_cfb', 'hb_blowfishkey']
   - name: HB_BLOWFISHDECRYPT_CFB
     slug: hb_blowfishdecrypt_cfb
     categories: ['Encryption']
@@ -1024,7 +1024,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbbffnc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHENCRYPT_CFB', 'HB_BLOWFISHKEY']
+    see_also: ['hb_blowfishdecrypt', 'hb_blowfishencrypt', 'hb_blowfishencrypt_cfb', 'hb_blowfishkey']
   - name: HB_BLOWFISHENCRYPT
     slug: hb_blowfishencrypt
     categories: ['Encryption']
@@ -1052,7 +1052,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbbffnc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT_CFB', 'HB_BLOWFISHKEY']
+    see_also: ['hb_blowfishdecrypt', 'hb_blowfishdecrypt_cfb', 'hb_blowfishencrypt_cfb', 'hb_blowfishkey']
   - name: HB_BLOWFISHENCRYPT_CFB
     slug: hb_blowfishencrypt_cfb
     categories: ['Encryption']
@@ -1077,7 +1077,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbbffnc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHKEY']
+    see_also: ['hb_blowfishdecrypt', 'hb_blowfishdecrypt_cfb', 'hb_blowfishencrypt', 'hb_blowfishkey']
   - name: HB_BLOWFISHKEY
     slug: hb_blowfishkey
     categories: ['Encryption']
@@ -1093,7 +1093,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbbffnc.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHENCRYPT_CFB']
+    see_also: ['hb_blowfishdecrypt', 'hb_blowfishdecrypt_cfb', 'hb_blowfishencrypt', 'hb_blowfishencrypt_cfb']
   - name: HB_BPADC
     slug: hb_bpadc
     categories: ['String Byte Functions']
@@ -1118,7 +1118,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\padx.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_UPADC', 'PADC']
+    see_also: ['hb_upadc', 'padc']
   - name: HB_BPADL
     slug: hb_bpadl
     categories: ['String Byte Functions']
@@ -1143,7 +1143,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\padx.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_UPADL', 'PADL']
+    see_also: ['hb_upadl', 'padl']
   - name: HB_BPADR
     slug: hb_bpadr
     categories: ['String Byte Functions']
@@ -1168,7 +1168,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\padx.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['PADR']
+    see_also: ['padr']
   - name: HB_BPEEK
     slug: hb_bpeek
     categories: ['String Byte Functions']
@@ -1241,7 +1241,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_RAT']
+    see_also: ['hb_rat']
   - name: HB_BRIGHT
     slug: hb_bright
     categories: ['String Byte Functions']
@@ -1261,7 +1261,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['RIGHT']
+    see_also: ['right']
   - name: HB_BSTUFF
     slug: hb_bstuff
     categories: ['String Byte Functions']
@@ -1295,7 +1295,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['STUFF']
+    see_also: ['stuff']
   - name: HB_BSUBSTR
     slug: hb_bsubstr
     categories: ['String Byte Functions']
@@ -1321,7 +1321,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['SUBSTR']
+    see_also: ['substr']
   - name: HB_BUILDDATE
     slug: hb_builddate
     categories: ['Date and Time Functions']
@@ -1424,7 +1424,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\datec.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['CDOW']
+    see_also: ['cdow']
   - name: HB_CDPCHARMAX
     slug: hb_cdpcharmax
     categories: ['Codepage Functions']
@@ -1790,7 +1790,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\valtoexp.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_ValToExp', 'HB_VALTOSTR']
+    see_also: ['hb_valtoexp', 'hb_valtostr']
   - name: HB_CTOD
     slug: hb_ctod
     categories: ['Conversion Functions', 'Date and Time Functions']
@@ -2011,7 +2011,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbdetach.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DBREQUEST']
+    see_also: ['hb_dbrequest']
   - name: HB_DBDROP
     slug: hb_dbdrop
     categories: ['Index Function', 'Table Functions']
@@ -2134,7 +2134,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbdetach.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DBDETACH']
+    see_also: ['hb_dbdetach']
   - name: HB_DEFAULT
     slug: hb_default
     categories: ['Null and Nil', 'Variables']
@@ -2195,7 +2195,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\itemseri.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_SERIALIZE']
+    see_also: ['hb_serialize']
   - name: HB_DIRBASE
     slug: hb_dirbase
     categories: ['Disks, Drives and Folders', 'Executable Environment']
@@ -2286,7 +2286,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\direct.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DIRECTORY', 'hb_DirScan']
+    see_also: ['directory', 'hb_dirscan']
   - name: HB_DIREXISTS
     slug: hb_direxists
     categories: ['Disks, Drives and Folders']
@@ -2355,7 +2355,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\dirscan.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DIRECTORY']
+    see_also: ['hb_directory']
   - name: hb_DirSepAdd
     slug: hb_dirsepadd
     categories: ['Disks, Drives and Folders']
@@ -2371,7 +2371,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbfilehi.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_DirSepDel']
+    see_also: ['hb_dirsepdel']
   - name: hb_DirSepDel
     slug: hb_dirsepdel
     categories: ['Disks, Drives and Folders']
@@ -2387,7 +2387,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbfilehi.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_DirSepAdd']
+    see_also: ['hb_dirsepadd']
   - name: hb_DirSepToOS
     slug: hb_dirseptoos
     categories: ['Disks, Drives and Folders', 'Operating System OS']
@@ -2431,7 +2431,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbfilehi.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_DirBuild']
+    see_also: ['hb_dirbuild']
   - name: HB_DISKSPACE
     slug: hb_diskspace
     categories: ['Disks, Drives and Folders']
@@ -2464,7 +2464,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\disksphb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VFDIRSPACE']
+    see_also: ['hb_vfdirspace']
   - name: HB_DISPBOX
     slug: hb_dispbox
     categories: ['Classic UI']
@@ -2553,7 +2553,7 @@ functions:
     source_code_file: 'src\rtl\console.c'
     platforms: ['Windows','Linux','Mac']
     generate_user_interface: true
-    see_also: ['HB_DISPOUTAT']
+    see_also: ['hb_dispoutat']
   - name: HB_DTOC
     slug: hb_dtoc
     categories: ['Conversion Functions', 'Date and Time Functions']
@@ -2576,7 +2576,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\dateshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DTOC']
+    see_also: ['dtoc']
   - name: HB_DTOT
     slug: hb_dtot
     categories: ['Conversion Functions', 'Date and Time Functions']

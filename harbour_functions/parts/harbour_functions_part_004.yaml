@@ -70,7 +70,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\left.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_LEFTEQI']
+    see_also: ['hb_lefteqi']
   - name: HB_LEFTEQI
     slug: hb_lefteqi
     categories: ['String ANSI/Codepage Functions']
@@ -90,7 +90,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\left.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_LEFTEQ']
+    see_also: ['hb_lefteq']
   - name: HB_MACROBLOCK
     slug: hb_macroblock
     categories: ['Codeblock Functions']
@@ -124,7 +124,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbmd5.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_MD5FILE']
+    see_also: ['hb_md5file']
   - name: HB_MD5DECRYPT
     slug: hb_md5decrypt
     categories: ['Encryption']
@@ -183,7 +183,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbmd5.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_MD5']
+    see_also: ['hb_md5']
   - name: HB_MEMOREAD
     slug: hb_memoread
     categories: ['File Functions']
@@ -201,7 +201,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\memofile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['MEMOREAD']
+    see_also: ['memoread']
   - name: HB_MEMOWRIT
     slug: hb_memowrit
     categories: ['File Functions']
@@ -223,7 +223,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\memofile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['MEMOWRIT']
+    see_also: ['memowrit']
   - name: HB_MINUTE
     slug: hb_minute
     categories: ['Date and Time Functions']
@@ -512,7 +512,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\memvarhb.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['hb_mvSave']
+    see_also: ['hb_mvsave']
   - name: HB_NTOC
     slug: hb_ntoc
     categories: ['Conversion Functions']
@@ -1054,7 +1054,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbprocfn.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_RUN']
+    see_also: ['hb_run']
   - name: HB_PROCESSVALUE
     slug: hb_processvalue
     categories: ['Process Functions']
@@ -1374,7 +1374,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbrunfun.c'
     platforms: ['Windows']
-    see_also: ['HB_PROCESSRUN']
+    see_also: ['hb_processrun']
   - name: HB_SCRMAXCOL
     slug: hb_scrmaxcol
     categories: ['Classic UI']
@@ -1525,7 +1525,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\itemseri.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DESERIALIZE']
+    see_also: ['hb_deserialize']
   - name: HB_SETDISPCP
     slug: hb_setdispcp
     categories: ['Codepage Functions', 'Graphic Terminal low-level']

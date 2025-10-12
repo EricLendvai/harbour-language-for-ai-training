@@ -45,7 +45,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['RECCOUNT']
+    see_also: ['reccount']
   - name: LEFT
     slug: left
     categories: ['String ANSI/Codepage Functions', 'String Byte Functions']
@@ -84,7 +84,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\len.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_BLEN']
+    see_also: ['hb_blen']
   - name: LENNUM
     slug: lennum
     categories: ['Numeric Functions']
@@ -185,7 +185,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\minmax.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['MIN']
+    see_also: ['min']
   - name: MAXCOL
     slug: maxcol
     categories: ['Classic UI']
@@ -387,7 +387,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\memofile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_MEMOREAD']
+    see_also: ['hb_memoread']
   - name: MEMORY
     slug: memory
     categories: ['Executable Environment']
@@ -446,7 +446,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\memofile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_MEMOWRIT']
+    see_also: ['hb_memowrit']
   - name: MEMVARBLOCK
     slug: memvarblock
     categories: ['Codeblock Functions', 'Variables']
@@ -480,7 +480,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\minmax.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['MAX']
+    see_also: ['max']
   - name: MLCOUNT
     slug: mlcount
     categories: ['Memo Functions', 'String Byte Functions']
@@ -1291,7 +1291,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\rddord.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DBSETRELATION']
+    see_also: ['dbsetrelation']
   - name: ORDSKIPRAW
     slug: ordskipraw
     categories: ['Index Function', 'Table Functions']
@@ -1895,7 +1895,7 @@ functions:
     library: 'hbct'
     source_code_file: 'contrib\hbct\cttime.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['TimeToSec']
+    see_also: ['timetosec']
   - name: SELECT
     slug: select
     categories: ['Work Areas']
@@ -2111,7 +2111,7 @@ functions:
     library: 'hbct'
     source_code_file: 'contrib\hbct\ctmath2.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['CEILING', 'FLOOR', 'INT']
+    see_also: ['ceiling', 'floor', 'int']
   - name: SOUNDEX
     slug: soundex
     categories: ['Conversion Functions', 'String Byte Functions']
@@ -2356,7 +2356,7 @@ functions:
     library: 'hbct'
     source_code_file: 'contrib\hbct\cttime.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['SecToTime']
+    see_also: ['sectotime']
   - name: TIMEVALID
     slug: timevalid
     categories: ['Date and Time Functions']
@@ -2424,7 +2424,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\type.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['VALTYPE']
+    see_also: ['valtype']
   - name: U2BIN
     slug: u2bin
     categories: ['Binary Functions', 'Conversion Functions']
@@ -2494,7 +2494,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\val.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VAL']
+    see_also: ['hb_val']
   - name: VALTYPE
     slug: valtype
     categories: ['Function Environment', 'Variables']
@@ -2539,7 +2539,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\version.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_VERSION']
+    see_also: ['hb_version']
   - name: W2BIN
     slug: w2bin
     categories: ['Binary Functions']
@@ -2605,7 +2605,7 @@ functions:
     library: 'hbct'
     source_code_file: 'contrib\hbct\dattime2.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_WEEK', 'WOY']
+    see_also: ['hb_week', 'woy']
   - name: WOPEN
     slug: wopen
     categories: ['Classic UI']
@@ -2673,7 +2673,7 @@ functions:
     library: 'hbmisc'
     source_code_file: 'contrib\hbmisc\dates.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_WEEK', 'WEEK']
+    see_also: ['hb_week', 'week']
   - name: WSELECT
     slug: wselect
     categories: ['Classic UI']

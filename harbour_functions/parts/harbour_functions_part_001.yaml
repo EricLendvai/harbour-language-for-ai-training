@@ -265,7 +265,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\classes.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_SETCLSHANDLE']
+    see_also: ['hb_setclshandle']
   - name: __VMCOUNTTHREADS
     slug: __vmcountthreads
     categories: ['Multithreading']
@@ -397,7 +397,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\arrayshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['ACOPY']
+    see_also: ['acopy']
   - name: ACOPY
     slug: acopy
     categories: ['Arrays Functions']
@@ -426,7 +426,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\arrayshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['ACLONE']
+    see_also: ['aclone']
   - name: ADAYS
     slug: adays
     categories: ['Arrays Functions', 'Date and Time Functions', 'Language Functions']
@@ -472,7 +472,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\arrayshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_ADEL']
+    see_also: ['hb_adel']
   - name: ADir
     slug: adir
     categories: ['Deprecated']
@@ -510,7 +510,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\adir.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DIRECTORY', 'HB_DIRECTORY']
+    see_also: ['directory', 'hb_directory']
   - name: AEVAL
     slug: aeval
     categories: ['Arrays Functions', 'Codeblock Functions']
@@ -570,7 +570,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DBSTRUCT']
+    see_also: ['dbstruct']
   - name: AFILL
     slug: afill
     categories: ['Arrays Functions']
@@ -623,7 +623,7 @@ functions:
       local aArray := {1,2,3,4,5}
       AIns(aArray,1)
       aArray[1] := 100
-    see_also: ['HB_AINS']
+    see_also: ['hb_ains']
   - name: Alert
     slug: alert
     categories: ['Classic UI']
@@ -770,7 +770,7 @@ functions:
     library: 'hbvm'
     source_code_file: 'src\vm\arrayshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_ASCAN']
+    see_also: ['hb_ascan']
   - name: ASIZE
     slug: asize
     categories: ['Arrays Functions']
@@ -1035,7 +1035,7 @@ functions:
     library: 'hbct'
     source_code_file: 'contrib\hbct\ctmath2.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FLOOR']
+    see_also: ['floor']
   - name: CHR
     slug: chr
     categories: ['String Byte Functions']
@@ -1391,7 +1391,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\rddord.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['ORDCREATE']
+    see_also: ['ordcreate']
   - name: DBDELETE
     slug: dbdelete
     categories: ['Table Functions']
@@ -1506,7 +1506,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['ALIAS']
+    see_also: ['alias']
   - name: DBFIELDINFO
     slug: dbfieldinfo
     categories: ['Table Functions']
@@ -1697,7 +1697,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd53.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DBINFO']
+    see_also: ['dbinfo']
   - name: dbReindex
     slug: dbreindex
     categories: ['Index Function']
@@ -1734,7 +1734,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DBRLOCKLIST']
+    see_also: ['dbrlocklist']
   - name: DBRLOCKLIST
     slug: dbrlocklist
     categories: ['Table Functions', 'Work Areas']
@@ -1771,7 +1771,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\dbcmd.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DBUNLOCK']
+    see_also: ['dbunlock']
   - name: DBSEEK
     slug: dbseek
     categories: ['Table Functions']
@@ -2076,7 +2076,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\dirdrive.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_CWD']
+    see_also: ['hb_cwd']
   - name: DIRECTORY
     slug: directory
     categories: ['Disks, Drives and Folders']
@@ -2099,7 +2099,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\direct.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DIRECTORY']
+    see_also: ['hb_directory']
   - name: DISKCHANGE
     slug: diskchange
     categories: ['Disks, Drives and Folders']
@@ -2492,7 +2492,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\math.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['LOG']
+    see_also: ['log']
   - name: FACT
     slug: fact
     categories: ['Math Functions']
@@ -2524,7 +2524,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\philes.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FCREATE', 'FOPEN']
+    see_also: ['fcreate', 'fopen']
   - name: FCOUNT
     slug: fcount
     categories: ['Table Functions']

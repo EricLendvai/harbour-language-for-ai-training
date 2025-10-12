@@ -210,7 +210,7 @@ functions:
       cDigits := hb_StrReplace( cText, cNoDigit )
       // convert chosen letters to upper case
       ? hb_StrReplace( "hello world, "hlwd", "HLWD" )
-    see_also: ['STRTRAN']
+    see_also: ['strtran']
   - name: HB_STRSHRINK
     slug: hb_strshrink
     categories: ['String ANSI/Codepage Functions']
@@ -268,7 +268,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbhex.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_HEXTOSTR']
+    see_also: ['hb_hextostr']
   - name: HB_STRTOTS
     slug: hb_strtots
     categories: ['Conversion Functions', 'Date and Time Functions', 'String ANSI/Codepage Functions']
@@ -284,7 +284,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\dateshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_TSTOSTR']
+    see_also: ['hb_tstostr']
   - name: HB_STRTOUTF8
     slug: hb_strtoutf8
     categories: ['Conversion Functions', 'String ANSI/Codepage Functions', 'String UTF8 Function']
@@ -536,7 +536,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbtoken.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_ATOKENS']
+    see_also: ['hb_atokens']
   - name: HB_TOKENGET
     slug: hb_tokenget
     categories: ['String Byte Functions', 'Token Functions']
@@ -570,7 +570,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbtoken.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_ATOKENS']
+    see_also: ['hb_atokens']
   - name: HB_TOKENPTR
     slug: hb_tokenptr
     categories: ['String Byte Functions', 'Token Functions']
@@ -601,7 +601,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\hbtoken.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_ATOKENS']
+    see_also: ['hb_atokens']
   - name: HB_TRANSLATE
     slug: hb_translate
     categories: ['Codepage Functions', 'String ANSI/Codepage Functions']
@@ -631,7 +631,7 @@ functions:
       REQUEST hb_codepage_elwin, hb_codepage_utf8ex
       cUTF8String := hb_Translate( "τα πάντα ρεί", "ELWIN", "UTF8" )
       // converts given string from codepage `cp-1253` to `UTF-8`
-    see_also: ['HB_CDPLIST']
+    see_also: ['hb_cdplist']
   - name: HB_TSTOSTR
     slug: hb_tstostr
     categories: ['Conversion Functions', 'Date and Time Functions']
@@ -837,7 +837,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_AT']
+    see_also: ['hb_at']
   - name: HB_UCHAR
     slug: hb_uchar
     categories: ['Strings Unicode']
@@ -866,7 +866,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_UTF8ASC']
+    see_also: ['hb_utf8asc']
   - name: HB_ULEFT
     slug: hb_uleft
     categories: ['Strings Unicode']
@@ -884,7 +884,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\chruni.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['LEFT']
+    see_also: ['left']
   - name: HB_ULEN
     slug: hb_ulen
     categories: ['Strings Unicode']
@@ -920,7 +920,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\padx.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['PADC']
+    see_also: ['padc']
   - name: HB_UPADL
     slug: hb_upadl
     categories: ['Strings Unicode']
@@ -1111,7 +1111,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\cdpapihb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_UCODE']
+    see_also: ['hb_ucode']
   - name: HB_UTF8AT
     slug: hb_utf8at
     categories: ['String UTF8 Function']
@@ -1358,7 +1358,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\val.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['VAL']
+    see_also: ['val']
   - name: hb_ValToExp
     slug: hb_valtoexp
     categories: ['Conversion Functions']
@@ -1538,7 +1538,7 @@ functions:
       dbCreate( "mem:test", { { "F1", "N", 9, 0 } }, , .T., "memarea" )
       hb_vfCopyFile( "mem:test.dbf", "test1.dbf" )
       hb_vfCopyFile( "mem:test.ntx", "test1.ntx" )
-    see_also: ['HB_FCOPY']
+    see_also: ['hb_fcopy']
   - name: HB_VFDIRECTORY
     slug: hb_vfdirectory
     categories: ['Disks, Drives and Folders', 'File Functions']
@@ -1558,7 +1558,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['DIRECTORY']
+    see_also: ['directory']
   - name: HB_VFDIREXISTS
     slug: hb_vfdirexists
     categories: ['Disks, Drives and Folders']
@@ -1592,7 +1592,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DIRCREATE']
+    see_also: ['hb_dircreate']
   - name: HB_VFDIRREMOVE
     slug: hb_vfdirremove
     categories: ['Disks, Drives and Folders']
@@ -1631,7 +1631,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_DISKSPACE']
+    see_also: ['hb_diskspace']
   - name: HB_VFEOF
     slug: hb_vfeof
     categories: ['Low Level File Functions']
@@ -1667,7 +1667,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FERASE', 'FERROR', 'hb_FileDelete']
+    see_also: ['ferase', 'ferror', 'hb_filedelete']
   - name: HB_VFEXISTS
     slug: hb_vfexists
     categories: ['File Functions']
@@ -1695,7 +1695,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['HB_FILEEXISTS']
+    see_also: ['hb_fileexists']
   - name: HB_VFFLUSH
     slug: hb_vfflush
     categories: ['Low Level File Functions']
@@ -1897,7 +1897,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FERROR']
+    see_also: ['ferror']
   - name: HB_VFOPEN
     slug: hb_vfopen
     categories: ['Low Level File Functions']
@@ -2014,7 +2014,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\vfile.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['FRENAME']
+    see_also: ['frename']
   - name: HB_VFSEEK
     slug: hb_vfseek
     categories: ['Low Level File Functions']
@@ -2270,7 +2270,7 @@ functions:
     library: 'hbrtl'
     source_code_file: 'src\rtl\dateshb.c'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['WEEK', 'WOY']
+    see_also: ['week', 'woy']
   - name: HB_WILDMATCH
     slug: hb_wildmatch
     categories: ['String ANSI/Codepage Functions', 'String Byte Functions']
@@ -2385,7 +2385,7 @@ functions:
     library: 'hbrdd'
     source_code_file: 'src\rdd\rddord.prg'
     platforms: ['Windows','Linux','Mac']
-    see_also: ['ORDKEY']
+    see_also: ['ordkey']
   - name: INDEXORD
     slug: indexord
     categories: ['Index Function']
