@@ -10,7 +10,7 @@ Machine-readable **Harbour function definitions** in YAML for AI-assisted code g
 
 - **Dataset**
   - Manifest: [`harbour_functions/index.yaml`](./harbour_functions/index.yaml)
-  - Parts: [`harbour_functions/parts/`](./harbour_functions/parts/)
+  - Function Definitions: [`harbour_functions/harbour_functions_part_001.yaml`](./harbour_functions/harbour_functions_part_001.yaml)
 - **Schema spec**  
   See [`SPEC_harbour_functions.md`](./SPEC_harbour_functions.md)
 - **License**  
@@ -28,10 +28,8 @@ Machine-readable **Harbour function definitions** in YAML for AI-assisted code g
 ```
 harbour_functions/
   index.yaml            # Option A manifest: parts + slug → file map
-  parts/
-    harbour_functions_part_001.yaml
-    harbour_functions_part_002.yaml
-    ...
+  harbour_functions_part_001.yaml
+  A zip file of this folder.
 SPEC_harbour_functions.md
 LICENSE
 ```

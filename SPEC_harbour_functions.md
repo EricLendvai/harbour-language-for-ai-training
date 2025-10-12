@@ -10,10 +10,7 @@ Data is split into size-balanced YAML parts with a lean manifest.
 ```
 harbour_functions/
   index.yaml            # Manifest (Option A): parts list + slug → part map
-  parts/
-    harbour_functions_part_001.yaml
-    harbour_functions_part_002.yaml
-    ...
+  harbour_functions_part_001.yaml     # The actual definitions of all functions.
 ```
 
 ### `harbour_functions/index.yaml` (Option A manifest)
