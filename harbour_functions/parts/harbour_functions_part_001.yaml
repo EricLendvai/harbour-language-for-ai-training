@@ -1,0 +1,2583 @@
+dataset_version: 1
+part: 1
+total_parts: 7
+count_functions: 143
+functions:
+  - name: __DBAPP
+    slug: __dbapp
+    categories: ['Table Functions']
+    syntax: '__dbApp(<cNameName>,[<aFields>],[<bFor>],[<bWhile>],[<nNext>],[<nRecord>],[<lRest>],[<cRDD>],[<nConnection>],[<cCodePage>],[<xDelimiter>]) => <lSuccess>'
+    description: |-
+      This function is the "functionalized" counterpart of **`APPEND FROM`** command.
+      In fact, the **`APPEND FROM`** command is transcribed as a call to this function via a **`#command`** found into [`/include/std.ch`](https://github.com/harbour/core/blob/edbafd4e1dad68784566dbbd48c9068ba772bf63/include/std.ch#L427)
+      header file, which file is automatically included/preprocessed by the compiler on every compilation. It has the advantage that it can be used in expressions, where the command cannot.
+    parameters: 
+      - name: cNameName
+        type: String
+        passed_by: value
+      - name: aFields
+        type: Array
+        required: false
+        passed_by: value
+      - name: bFor
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: bWhile
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: nNext
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nRecord
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: lRest
+        type: Logic
+        required: false
+        passed_by: value
+      - name: cRDD
+        type: String
+        required: false
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+      - name: cCodePage
+        type: String
+        required: false
+        passed_by: value
+      - name: xDelimiter
+        type: Any
+        required: false
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DBCOPY
+    slug: __dbcopy
+    categories: ['Table Functions']
+    syntax: '__dbCopy(<cNameName>,[<aFields>],[<bFor>],[<bWhile>],[<nNext>],[<nRecord>],[<lRest>],[<cRDD>],[<nConnection>],[<cCodePage>],[<xDelimiter>]) => <lSuccess>'
+    description: |-
+      This function is the "functionalized" counterpart of **`COPY TO`** command.
+      In fact, the **`COPY TO`** command is transcribed as a call to this function via a **`#command`** found into [`/include/std.ch`](https://github.com/harbour/core/blob/edbafd4e1dad68784566dbbd48c9068ba772bf63/include/std.ch#L395)
+      header file, which file is automatically included/preprocessed by the compiler on every compilation. It has the advantage that it can be used in expressions, where the command cannot.
+    parameters: 
+      - name: cNameName
+        type: String
+        passed_by: value
+      - name: aFields
+        type: Array
+        required: false
+        passed_by: value
+      - name: bFor
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: bWhile
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: nNext
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nRecord
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: lRest
+        type: Logic
+        required: false
+        passed_by: value
+      - name: cRDD
+        type: String
+        required: false
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+      - name: cCodePage
+        type: String
+        required: false
+        passed_by: value
+      - name: xDelimiter
+        type: Any
+        required: false
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DBPACK
+    slug: __dbpack
+    categories: ['Table Functions']
+    syntax: '__dbPack([<bBlock>],[<nEvery>]) => NIL'
+    description: 'Packs (i.e. physically removes records marked for deletion) a `.dbf` opened in current work area. `<bBlock>` is a code Block to execute after either every record or every `<nEvery>` group of records have already been processed. (Note: Actual function doing the zapping is the `__DBPack()` to which is internally "translated" the `hb_dbPack()`)'
+    parameters: 
+      - name: bBlock
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: nEvery
+        type: Numeric
+        required: false
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DBZAP
+    slug: __dbzap
+    categories: ['Table Functions']
+    syntax: '__dbZap() => NIL'
+    description: 'Unconditional (!) and permanent zapping (i.e., physically clearing all data) of a `.dbf` file, which is open in current work area. The deletion process includes not only the opened dbf file but any related memo and opened indexes files. (Note: Actual function doing the zapping is the `__DBZap()` to which is internally "translated" the `hb_dbZap()`) '
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DEFPATH
+    slug: __defpath
+    categories: ['Executable Environment']
+    syntax: '__DefPath() => <cDefaultPath>'
+    description: 'Returns the current default path, if it has been set, or empty string otherwise.'
+    return_type: String
+    return_name: cDefaultPath
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\defpath.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DYNSCOUNT
+    slug: __dynscount
+    categories: ['Dynamic Symbol Table']
+    syntax: '__dynsCount() => <nSymbols>'
+    description: 'How many symbols have been already allocated/stored in dynamic symbol table?'
+    return_type: Numeric
+    return_name: nSymbols
+    library: 'hbvm'
+    source_code_file: 'src\vm\dynsym.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DYNSGETINDEX
+    slug: __dynsgetindex
+    categories: ['Dynamic Symbol Table']
+    syntax: '__dynsGetIndex(<cName>) => <nIndex>'
+    description: 'Returns the ordinal index number of the given `<cName>` into dynamic symbol table.'
+    parameters: 
+      - name: cName
+        type: String
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nIndex
+    library: 'hbvm'
+    source_code_file: 'src\vm\dynsym.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __DYNSGETNAME
+    slug: __dynsgetname
+    categories: ['Dynamic Symbol Table']
+    syntax: '__dynsGetName(<nIndex>) => <cName>'
+    description: 'Returns the name of symbol found in ''<nIndex>'' position of symbol table.'
+    parameters: 
+      - name: nIndex
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cName
+    library: 'hbvm'
+    source_code_file: 'src\vm\dynsym.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __MVDBGINFO
+    slug: __mvdbginfo
+    categories: ['Variables']
+    syntax: '__mvDbgInfo(<nScope>,[<nPosition>],[<@cVarName>]) => <xResult>'
+    description: 'This is a function was originally created for the debugger, but it can be called even when not compiling in debug mode. This function can be used to list all know public and private variable. Static and local variable have no name once the program is compiled, not in symbol table.'
+    parameters: 
+      - name: nScope
+        type: Numeric
+        passed_by: value
+        description: |-
+          Variable Type, private or public. See hbmemvar.ch
+          HB_MV_PUBLIC = 1 = PUBLIC variable
+          HB_MV_PRIVATE_GLOBAL = 2 = PRIVATE created outside of current function/procedure
+          HB_MV_PRIVATE_LOCAL = 4 = PRIVATE created in current function/procedure
+          HB_MV_PRIVATE = 6 = PRIVATE variable
+      - name: nPosition
+        type: Numeric
+        required: false
+        passed_by: value
+        description: |-
+          if cVarName is not specified, for private variable, nPosition will be the program stack level.
+          If cVarName is specified, nPosition is the an index value from 1 to max number of variable of the requested nScope.
+      - name: cVarName
+        type: Numeric
+        required: false
+        passed_by: reference
+        description: 'Will receive the name of the variable of nScope in position nPosition'
+    return_type: Numeric
+    return_name: xResult
+    return_description: |-
+      If only nScope is passed, the function will return the number for variables that are available of that particular type.
+      If nPosition is also passed, the function will also return the number of available variables to report but if private type variable are specified in nScope, nPosition will mean the calling stack level of the application.
+      If all three parameters are specified, the function will return the value of the variable. In case of arrays and hash arrays, probably only a reference.
+    library: 'hbvm'
+    source_code_file: 'src\vm\memvars.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __NATISNEGATIVE
+    slug: __natisnegative
+    categories: ['Numeric Functions']
+    syntax: '__NATISNEGATIVE(<cChar>) => <lBoolean>'
+    description: 'Returns TRUE if leftmost char of `<cString>` is a negative answer literal (e.g. ''N'' as in No.)'
+    parameters: 
+      - name: cChar
+        type: String
+        passed_by: value
+    return_type: Logic
+    return_name: lBoolean
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\natmsg.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __OBJSETCLASSHANDLE
+    slug: __objsetclasshandle
+    categories: ['Classes and Objects']
+    syntax: '__ObjSetClassHandle(<oObject>,<nClassHandle>) => <nPrevClassHandle>'
+    description: |-
+      Real dirty function, though very useful under certain circumstances: It allows to change the class handle of an object into another class handle, so the object behaves like a different Class of object. Based on objects.lib SetClsHandle().
+      Renamed from the hb_SetClsHandle() function, which is now marked at Legacy Level 5.
+    parameters: 
+      - name: oObject
+        type: Object
+        required: true
+        passed_by: value
+      - name: nClassHandle
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nPrevClassHandle
+    library: 'hbvm'
+    source_code_file: 'src\vm\classes.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_SETCLSHANDLE']
+  - name: __VMCOUNTTHREADS
+    slug: __vmcountthreads
+    categories: ['Multithreading']
+    syntax: '__vmCountThreads([<@nStacks>],[<@nThreads>]) => <nThreads>'
+    description: 'Returns the number of active threads.'
+    parameters: 
+      - name: nStacks
+        type: Numeric
+        required: false
+        passed_by: reference
+      - name: nThreads
+        type: Numeric
+        required: false
+        passed_by: reference
+    return_type: Numeric
+    return_name: nThreads
+    library: 'hbvm'
+    source_code_file: 'src\vm\hvm.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: __Wait
+    slug: __wait
+    categories: ['Input Functions']
+    syntax: '__Wait(<xPrompt>) => <cKeyPressed>'
+    description: 'Undocumented function similar to WAIT command.'
+    parameters: 
+      - name: xPrompt
+        type: Any
+        passed_by: value
+    return_type: String
+    return_name: cKeyPressed
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\wait.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: AADD
+    slug: aadd
+    categories: ['Arrays Functions']
+    syntax: 'AAdd(<aArray>,<xValue>) => <xValue>'
+    description: |-
+      This function attempts to **add** an element to the end of `<aArray>` and optionally assigns the value `<xValue>` to this new element.
+      If the addition succeeds, the length of the array increases by one and the function **returns** either the value `<xValue>`, _if one specified_, or `NIL`.
+      Note that the presence of the 2nd argument (or at least the comma next to the 1st one, in which case `NIL` is implied as `xValue`) is mandatory, even if a specific xValue is not meant to be simultaneously added, otherwise RTE occurs; in such a case, the effect is identical to _`ASize(aArray, Len(aArray)+1)`_.
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: xValue
+        type: Any
+        passed_by: value
+    return_type: Any
+    return_name: xValue
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ABS
+    slug: abs
+    categories: ['Math Functions', 'Numeric Functions']
+    syntax: 'Abs(<nExp>) => <nPositive>'
+    description: 'Returns the absolute value of the passed argument. The result is always greater than or equal to `0` (zero).'
+    parameters: 
+      - name: nExp
+        type: Numeric
+        passed_by: value
+    return_type: Numeric
+    return_name: nPositive
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\abs.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: AChoice
+    slug: achoice
+    categories: ['Classic UI']
+    syntax: 'AChoice(<nTop>,<nLeft>,<nBottom>,<nRight>,<acMenuItems>,<xSelect>,<xUserFunction>,<nPos>,<nHiLiteRow>) => <nItemSelected>'
+    description: |-
+      Displays a [Pop-up](https://en.wikipedia.org/wiki/Context_menu)-like menu with selectable menu items, waiting for a selection by user. Returns the index number of the selected item, which is the ordinal position of the item into the <acMenuItems> array; if the selection aborted, (when for example, the Esc key pressed) the value returned is `0` (zero).
+      
+      - `<acMenuItems>` is an array of character strings to display as the menu items.
+      - **`<xSelect>`** is used to determine whether one or more menu items will be selectable or not! It can be either:
+       - a parallel array of logical or character values, one element for each item in `<acMenuItems>`. If the element is a character string, it is evaluated as a *macro expression* which should evaluate to a logical data type.
+       - or a single logical value, in which case all menu items will be either available when `.T.` or unavailable when `.F.`; default  is `.T.` (i.e., all items be available).
+       - or codeblocks, function pointers or character expression, being supplied both 'as is' or 'as an array'. When passed as a single value and the next parameter `<xUserFunction>` is empty, it's being used as `<xUserFunction>` (surrogate), while all the items become selectable. *This is a new Harbour extension!*
+      - `<xUserFunction>` is the name of a user-defined function or a function Symbol or a Code-block that executes when an unrecognizable key is pressed. Must be noted that the behavior of Achoice() is significantly affected by the presence or not of this argument. Refer to [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#achoice) for more...
+      - `<nPos>` is the position in the `<acMenuItems>` array of the item that will be highlighted when the menu is initially displayed.
+      - `<nHiLiteRow>` is the [zero-based](https://en.wikipedia.org/wiki/Zero-based_numbering) number of the window row on which the initial menu item will appear.
+    parameters: 
+      - name: nTop
+        type: Numeric
+        passed_by: value
+      - name: nLeft
+        type: Numeric
+        passed_by: value
+      - name: nBottom
+        type: Numeric
+        passed_by: value
+      - name: nRight
+        type: Numeric
+        passed_by: value
+      - name: acMenuItems
+        type: Array
+        passed_by: value
+      - name: xSelect
+        type: Any
+        passed_by: value
+      - name: xUserFunction
+        type: Any
+        passed_by: value
+      - name: nPos
+        type: Numeric
+        passed_by: value
+      - name: nHiLiteRow
+        type: Numeric
+        passed_by: value
+    return_type: Numeric
+    return_name: nItemSelected
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\achoice.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: ACLONE
+    slug: aclone
+    categories: ['Arrays Functions']
+    syntax: 'AClone(<aSource>) => <aDuplicate>'
+    description: 'Duplicates an array (Deep Copy). Works with multidimensional arrays.'
+    parameters: 
+      - name: aSource
+        type: Array
+        passed_by: value
+    return_type: Array
+    return_name: aDuplicate
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['ACOPY']
+  - name: ACOPY
+    slug: acopy
+    categories: ['Arrays Functions']
+    syntax: 'ACopy(<aSource>,<aTarget>,[<nStart>],[<nCount>],[<nTagetPos>]) => <aTarget>'
+    description: 'Copy elements from a source array into a target array. Operates only on one-dimensional arrays.'
+    parameters: 
+      - name: aSource
+        type: Array
+        passed_by: value
+      - name: aTarget
+        type: Array
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nTagetPos
+        type: Numeric
+        required: false
+        passed_by: value
+    return_name: aTarget
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['ACLONE']
+  - name: ADAYS
+    slug: adays
+    categories: ['Arrays Functions', 'Date and Time Functions', 'Language Functions']
+    syntax: 'ADays() => <aDays>'
+    description: 'Returns an array with all the days names in the selected current language.'
+    return_type: Array
+    return_name: aDays
+    library: 'hbmisc'
+    source_code_file: 'contrib\hbmisc\dates.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ADDMONTH
+    slug: addmonth
+    categories: ['Date and Time Functions']
+    syntax: 'AddMonth([<dDate>],<nMonths>) => <dShiftedDate>'
+    description: 'Specifies the number of months from the date. If `nMonths` is positive, AddMonth( ) returns a date that is `nMonths`months after the date. If `nMonths` is negative, AddMonth( ) returns a date that is `nMonths` months before the date. For example, -1 means -31 days.'
+    parameters: 
+      - name: dDate
+        type: Date
+        required: false
+        passed_by: value
+      - name: nMonths
+        type: Numeric
+        passed_by: value
+    return_type: Date
+    return_name: dShiftedDate
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ADEL
+    slug: adel
+    categories: ['Arrays Functions']
+    syntax: 'ADel(<aArray>,<nPosition>) => <aArray>'
+    description: 'Deletes the element at position `<nPosition>` from the array `<aArray>`. All subsequent elements are shifted up by one position so that the last element contains the value `NIL`. See hb_Adel() for extra functionality.'
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: nPosition
+        type: Numeric
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_ADEL']
+  - name: ADir
+    slug: adir
+    categories: ['Deprecated']
+    syntax: 'ADir([<cFileSpec>],[<aFilenames>],[<aSizes>],[<aDates>],[<aTimes>],[<aAttributes>]) => <nFiles>'
+    description: |-
+      **Deprecated** compatibility function! use `Directory()` or `hb_Directory()` instead.
+      No assigned any documentation Category since deprecated.
+    parameters: 
+      - name: cFileSpec
+        type: String
+        required: false
+        passed_by: value
+      - name: aFilenames
+        type: Array
+        required: false
+        passed_by: value
+      - name: aSizes
+        type: Array
+        required: false
+        passed_by: value
+      - name: aDates
+        type: Array
+        required: false
+        passed_by: value
+      - name: aTimes
+        type: Array
+        required: false
+        passed_by: value
+      - name: aAttributes
+        type: Array
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nFiles
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\adir.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DIRECTORY', 'HB_DIRECTORY']
+  - name: AEVAL
+    slug: aeval
+    categories: ['Arrays Functions', 'Codeblock Functions']
+    syntax: 'AEval(<aArray>,<bBlock>,[<nStart>],[<nCount>]) => <aArray>'
+    description: |-
+      Evaluates the `<bBlock>` for each element into `<aArray>`, starting from `<nStart>` and  continues until `<nCount>` elements or all array elements have been evaluated (i.e. processed).
+      The code-block receives two argument values:
+      1) the current element being evaluated (value may be of whatever type)
+      2) the numeric position (index) of that element into the array.
+      Please note that in case the `<nCount>` exceeding the array elements the function does **not** issue any kind of *'out of range'* error (practically, it means that the number of evaluations may not necessarily be equal to `<nCount>`). This behavior stands also for other array functions.
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: bBlock
+        type: CodeBlock
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: false
+        default: 'Len(aArray)'
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: '`AEval( aArray, {|e,n| Qout(n, e)} )`  '
+  - name: AFIELDS
+    slug: afields
+    categories: ['Deprecated']
+    syntax: 'AFields(<@aFieldsnames>,<@aTypes>,<@aWidths>,<@aDecimals>,<@aFlags>) => <nFields>'
+    description: '**Deprecated** compatibility function! use ''DbSTruct()'' which retrieves all structural information in a multi-dimensional array.'
+    parameters: 
+      - name: aFieldsnames
+        type: Array
+        passed_by: reference
+      - name: aTypes
+        type: Array
+        passed_by: reference
+      - name: aWidths
+        type: Array
+        passed_by: reference
+      - name: aDecimals
+        type: Array
+        passed_by: reference
+      - name: aFlags
+        type: Array
+        passed_by: reference
+    return_type: Numeric
+    return_name: nFields
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DBSTRUCT']
+  - name: AFILL
+    slug: afill
+    categories: ['Arrays Functions']
+    syntax: 'AFill(<aArray>,<xValue>,[<nStart>],[<nCount>]) => <aArray>'
+    description: 'Assigns the value of `<xValue>` to the `<nCount>` elements, beginning at position `<nStart>`. Multi-dimensional arrays cannot be filled using ''AFill()''. Since Arrays (and Objects) are always passed by reference, the return value is the same as the first parameter.'
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: xValue
+        type: Any
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: false
+        default: 'Len(aArray )'
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: AINS
+    slug: ains
+    categories: ['Arrays Functions']
+    syntax: 'AIns(<aArray>,[<nPosition>]) => <aArray>'
+    description: |-
+      Inserts a new element at `<nPosition>` into the array `<aArray>`. All subsequent elements are shifted down by one position so that the last element is lost.
+      The number of elements remain unchanged. See hb_AIns() which allows auto-sizing of array.
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: nPosition
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: |-
+      local aArray := {1,2,3,4,5}
+      AIns(aArray,1)
+      aArray[1] := 100
+    see_also: ['HB_AINS']
+  - name: Alert
+    slug: alert
+    categories: ['Classic UI']
+    syntax: 'Alert(<cMessage>,<aOptions>,<cColorNorm>) => <nChoice>'
+    description: |-
+      Displays a simple modal dialog box with a message and one or more options the user can select.
+      `<cMessage>` is the message text displayed. If it contains one or more semicolons `;` the text after each semicolon is displayed at the next (new) line.
+      `<aOptions>` defines a list of up to 4 possible options.
+      The function returns a numeric value indicating which option was chosen. If the `Esc` key was pressed, returns `0` (zero).
+    parameters: 
+      - name: cMessage
+        type: String
+        passed_by: value
+      - name: aOptions
+        type: Array
+        passed_by: value
+      - name: cColorNorm
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nChoice
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\alert.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: ALIAS
+    slug: alias
+    categories: ['Work Areas']
+    syntax: 'Alias([<nWorkarea>]) => <cAlias|"">'
+    description: |-
+      Returns the alias of the `<nWorkArea>` or the alias of the current work area if `<nWorkArea>` is not provided.
+      If no database file is opened in current or given work area, it returns `null` string (zero length string).
+      NOTE: if no explicit alias specified during opening, the default alias of the opened dbf, is the filename **without** path and extension.
+    parameters: 
+      - name: nWorkarea
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cAlias|""
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ALLTRIM
+    slug: alltrim
+    categories: ['String ANSI/Codepage Functions', 'String Byte Functions']
+    syntax: 'AllTrim(<cString>) => <cTrimString>'
+    description: |-
+      Removes all the leading and trailing *spaces* from the `<cString>`.
+      Note: The `carriage return`, `line feed` and `tab`  characters (i.e.  `Chr(13), Chr(10), Chr(9)` respectively)
+      are treated as space characters and are removed. However, other non-printable character (i.e. those below ASCII `Chr(32)`) are not affected and this fact may be important, particularly with `Chr(0)`, which might cause "unexpected" behavior when the *supposedly trimmed* string is passed to functions like `Empty()`.
+    parameters: 
+      - name: cString
+        type: String
+        passed_by: value
+    return_type: String
+    return_name: cTrimString
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\trim.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: AMONTHS
+    slug: amonths
+    categories: ['Date and Time Functions', 'Language Functions']
+    syntax: 'AMonths() => <aMonths>'
+    description: 'Returns an array with all the months names in the selected current language.'
+    return_type: Array
+    return_name: aMonths
+    library: 'hbmisc'
+    source_code_file: 'contrib\hbmisc\dates.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: AMPM
+    slug: ampm
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'AMPM([<cTime>]) => <cTime>'
+    description: |-
+      Returns the `[<cTime>]` time string in 12-hour format `HH:MM pm/am` or `HH:MM:SS pm/am`, depending if the SS (seconds) was also provided.  The hour (`HH`) part is displayed as  a `<=` `12` value and an added suffix which is either ` am` if `[<cTime>]` is an 'ante meridiem' (before midday) hour or ` pm` if it is 'post meridiem' (after midday).
+      If `[<cTime>]` is not given the function returns `12 am`.
+    parameters: 
+      - name: cTime
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cTime
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\ampm.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ARRAY
+    slug: array
+    categories: ['Arrays Functions']
+    syntax: 'Array(<nDim1>,[...]) => <aArray>'
+    description: |-
+      Returns an array dimensioned according to the passed parameters.
+      All elements of the array contain the value `NIL`.
+    parameters: 
+      - name: nDim1
+        type: Numeric
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ASC
+    slug: asc
+    categories: ['String ANSI/Codepage Functions', 'String Byte Functions']
+    syntax: 'Asc(<cExp>) => <nCode>'
+    description: 'Returns the `ASCII` value of the leftmost character of any character expression.'
+    parameters: 
+      - name: cExp
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nCode
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chrasc.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ASCAN
+    slug: ascan
+    categories: ['Arrays Functions']
+    syntax: 'AScan(<aArray>,<xSearch>,[<nStart>],[<nCount>]) => <nStoppedAt>'
+    description: |-
+      Search into `<aArray>` for `<xSearch>` value starting from `<nStart>` up to `<nCount>`.
+      Returns the position of element that matches the searched value or `0` if no match is found.
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: xSearch
+        type: Any
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: false
+        default: 'All elements'
+        passed_by: value
+    return_type: Numeric
+    return_name: nStoppedAt
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_ASCAN']
+  - name: ASIZE
+    slug: asize
+    categories: ['Arrays Functions']
+    syntax: 'ASize(<aArray>,<nLength>) => <aArray>'
+    description: |-
+      Dynamically increases or decreases the size of `<aArray>` to `<nLength>` elements.
+      When the array is enlarged, new elements are added to the end of `<aArray>` and are initialized with `NIL`.
+      When the number of elements is decreased, elements are removed from the end of `<aArray>` and their values are lost.
+      Returns reference to sized array.
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: nLength
+        type: Numeric
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ASORT
+    slug: asort
+    categories: ['Arrays Functions']
+    syntax: 'ASort(<aArray>,[<nStart>],[<nCount>],[<bSort>]) => <aArray>'
+    description: |-
+      Sorts an array entirely or partially. Usage of the code block `<bSort>` is mandatory when the array is multidimensional, otherwise sorting won't be possible.
+      The code-block, during the sorting process, receives two elements as block parameters and shall return `.T.` when they're in order. Example: `ASort( aArray, {|x,y| x>y} )`
+      
+      * Sorting is **case sensitive** for character elements.
+      * Logical value `.F.` is considered smaller than `.T.`
+      * Order of precedence of different data types:
+        * *objects, arrays, code-blocks, strings, booleans, timestamps, dates, numbers, hash arrays*
+        * usage of code-block for sorting arrays with elements of different data type, shall produce RTE without proper handling of block-parameters (i.e., without conversion to same type).
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: bSort
+        type: CodeBlock
+        required: false
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\asort.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: AT
+    slug: at
+    categories: ['String ANSI/Codepage Functions', 'String Byte Functions']
+    syntax: 'At(<cSearchFor>,<cIntoString>) => <nPosition>'
+    description: |-
+      Returns the position in `<cIntoString>` where `<cSearchFor>` is found or `0` (zero) when `<cSearchFor>` is not found.
+      NOTE: Search is *case sensitive!*
+    parameters: 
+      - name: cSearchFor
+        type: String
+        passed_by: value
+      - name: cIntoString
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nPosition
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\at.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ATAIL
+    slug: atail
+    categories: ['Arrays Functions']
+    syntax: 'ATail(<aArray>) => <xValue>'
+    description: 'Returns the value stored in the last element of `<aArray>`.'
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: value
+    return_type: Any
+    return_name: xValue
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BIN2I
+    slug: bin2i
+    categories: ['Binary Functions', 'Conversion Functions']
+    syntax: 'Bin2I(<cSignedInt>) => <nNumber>'
+    description: |-
+      Converts a two byte binary number (Valtype()=="C") to a numeric value (Valtype()=="N").
+      The parameter `<cSignedInt>` is usually the return value of function I2Bin().
+    parameters: 
+      - name: cSignedInt
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nNumber
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\binnum.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BIN2L
+    slug: bin2l
+    categories: ['Binary Functions', 'Conversion Functions']
+    syntax: 'Bin2L(<c32bitSignedLongInteger>) => <nNumber>'
+    description: |-
+      Converts a four byte binary number (Valtype()=="C") to a numeric value (Valtype()=="N").
+      The parameter `<c32bitSignedLongInteger>` is usually the return value of function L2Bin().
+    parameters: 
+      - name: c32bitSignedLongInteger
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nNumber
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\binnum.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BIN2U
+    slug: bin2u
+    categories: ['Binary Functions', 'Conversion Functions']
+    syntax: 'Bin2U(<c32bitUnsignedLongInteger>) => <nNumber>'
+    description: |-
+      Converts a four byte binary number (Valtype()=="C") to a numeric value (Valtype()=="N").
+      The parameter `<c32bitUnsignedLongInteger>` is usually the return value of function U2Bin().
+    parameters: 
+      - name: c32bitUnsignedLongInteger
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nNumber
+    library: 'hbxpp'
+    source_code_file: 'contrib\hbxpp\binnumx.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BIN2W
+    slug: bin2w
+    categories: ['Binary Functions', 'Conversion Functions']
+    syntax: 'Bin2W(<cUnsignedInt>) => <nNumber>'
+    description: |-
+      Converts a two byte binary number (Valtype()=="C") to a numeric value (Valtype()=="N").
+      The parameter `<cUnsignedInt>` is usually the return value of function W2Bin().
+    parameters: 
+      - name: cUnsignedInt
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nNumber
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\binnum.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BOF
+    slug: bof
+    categories: ['Table Functions']
+    syntax: 'Bof() => <lBoundary>'
+    description: |-
+      Returns (.T.) after an attempt to SKIP backward beyond the first logical record in a database file; otherwise, it returns (.F.).
+      If there is no database open returns (.F.). If the current database file is empty returns true (.T.).
+    return_type: Logic
+    return_name: lBoundary
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BOM
+    slug: bom
+    categories: ['Date and Time Functions']
+    syntax: 'BoM(<dDate>) => <dDateBeginOfMonth>'
+    description: 'Returns begin date Of Month, (e.g: 01/MM/YY)'
+    parameters: 
+      - name: dDate
+        type: Date
+        passed_by: value
+    return_type: Date
+    return_name: dDateBeginOfMonth
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\datetime.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BOY
+    slug: boy
+    categories: ['Date and Time Functions']
+    syntax: 'BoY(<dDate>) => <dDateBeginOfYear>'
+    description: 'Returns the first date of a given year date.'
+    parameters: 
+      - name: dDate
+        type: Date
+        passed_by: value
+    return_type: Date
+    return_name: dDateBeginOfYear
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\datetime.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: BREAK
+    slug: break
+    categories: ['Program Flow Controls']
+    syntax: 'Break(<cExpr>) => NIL'
+    description: |-
+      Branch out of a BEGIN SEQUENCE...END construct.
+      `<exp>` is the value passed to the RECOVER clause, if any, and is NOT optional. if there is no break value must explicitly specified NIL.
+    parameters: 
+      - name: cExpr
+        type: Any
+        passed_by: value
+    library: 'hbvm'
+    source_code_file: 'src\vm\break.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: Browse
+    slug: browse
+    categories: ['Classic UI']
+    syntax: 'Browse([<nTop>],[<nLeft>],[<nBottom>],[<nRight>]) => <lSuccess>'
+    description: 'Compatibility function, use `DBEDIT()` or `TBROWSE()` instead.'
+    parameters: 
+      - name: nTop
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nLeft
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nBottom
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nRight
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\browse.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: CDOW
+    slug: cdow
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'CDoW(<dDate>) => <cDayName>'
+    description: 'Returns the name of a week day from a date. If `<dDate>` is an empty date, the function returns a null string ("").'
+    parameters: 
+      - name: dDate
+        type: Datetime
+        passed_by: value
+    return_type: String
+    return_name: cDayName
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\datec.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: CEILING
+    slug: ceiling
+    categories: ['Math Functions', 'Numeric Functions']
+    syntax: 'Ceiling(<nExp>) => <nInteger>'
+    description: 'Returns the next highest integer that is greater than or equal to `<nExp>`.'
+    parameters: 
+      - name: nExp
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nInteger
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\ctmath2.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['FLOOR']
+  - name: CHR
+    slug: chr
+    categories: ['String Byte Functions']
+    syntax: 'Chr(<nAsciiCode>) => <cChar>'
+    description: 'Returns a single character that has the numeric ASCII code `<nAsciiCode>`.'
+    parameters: 
+      - name: nAsciiCode
+        type: Numeric
+        passed_by: value
+    return_type: String
+    return_name: cChar
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chrasc.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: CMONTH
+    slug: cmonth
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'CMonth(<dDate>) => <cMonth>'
+    description: 'Returns the name of a month from a date. If `<dDate>` is an empty date, the function returns a null string ("").'
+    parameters: 
+      - name: dDate
+        type: Date
+        passed_by: value
+    return_type: String
+    return_name: cMonth
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\datec.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: COL
+    slug: col
+    categories: ['Classic UI']
+    syntax: 'Col() => <nCol>'
+    description: 'Returns an integer numeric value in the range 0 to Maxcol(), representing the current column position of the cursor.'
+    return_type: Numeric
+    return_name: nCol
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\setpos.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: COLORSELECT
+    slug: colorselect
+    categories: ['Classic UI']
+    syntax: 'ColorSelect(<nColorIndex>) => NIL'
+    description: |-
+      Selects the given `<nIndexColor>` color pair (foreground/background) from the current *`list of color attributes,`* as it's been set by a `SETCOLOR("...")` or by default.  Result is that any subsequent screen-output created by a  `?` or `SAY` commands will be displayed with the selected color pair.
+      Constants for `<nColorIndex>` are defined into [Color.ch](https://raw.githubusercontent.com/harbour/core/master/include/color.ch) as follow:
+      
+      |Constant      |Value|
+      |:-------------|:----:|
+      |CLR_STANDARD  |   0  |
+      |CLR_ENHANCED  |   1  |
+      |CLR_BORDER    |   2  |
+      |CLR_BACKGROUND|   3  |
+      |CLR_UNSELECTED|   4  |
+      
+      The `ColorSelect()` function is similar (yet more powerful) to the functions `Enhanced(), Standard(), Unselected()` included in the `HBCT` library. Notable difference is that the later ones return a `null string` while this one returns `NIL.`
+    parameters: 
+      - name: nColorIndex
+        type: Numeric
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\setcolor.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: CTOD
+    slug: ctod
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'CtoD(<cDateString>) => <dDate>'
+    description: |-
+      Converts a character string into a Date value.  If `<cDateString>` is not a valid date string or is empty, an empty date is returned.
+      <u>NOTE:</u> The result is affected by the current SET DATE/SET DATE FORMAT and SET EPOCH settings, which may lead to unexpected/incorrect results. For conversions between DATE to CHARACTER and vice-versa, use DtoS()/StoD() that are independent of those settings.
+    parameters: 
+      - name: cDateString
+        type: String
+        passed_by: value
+    return_type: Date
+    return_name: dDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: CTODOW
+    slug: ctodow
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'CToDoW(<cName>) => <nOrdinal>'
+    description: 'Converts name of day of the week to its ordinal number.'
+    parameters: 
+      - name: cName
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nOrdinal
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: CTOMONTH
+    slug: ctomonth
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'CToMonth(<cName>) => <nOrdinal>'
+    description: 'Converts name of month to its ordinal number.'
+    parameters: 
+      - name: cName
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nOrdinal
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: CURDIR
+    slug: curdir
+    categories: ['Disks, Drives and Folders', 'Executable Environment']
+    syntax: 'CurDir(<cDrive>) => <cDirectory>'
+    description: 'Returns the name of the current directory of a drive. If the drive `<cDrive>` does not exist or the root directory is current, CurDir() returns a null string ("").'
+    parameters: 
+      - name: cDrive
+        type: String
+        passed_by: value
+    return_type: String
+    return_name: cDirectory
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DATE
+    slug: date
+    categories: ['Date and Time Functions']
+    syntax: 'Date() => <dCurDate>'
+    description: 'Returns the current system date as reported by the system clock.'
+    return_type: Date
+    return_name: dCurDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DAY
+    slug: day
+    categories: ['Date and Time Functions']
+    syntax: 'Day(<dDate>) => <nDay>'
+    description: 'Returns the numeric day of the month of `<dDate>`. When `<dDate>` is an empty date, the function returns zero.'
+    parameters: 
+      - name: dDate
+        type: Date
+        passed_by: value
+    return_type: Numeric
+    return_name: nDay
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DAYS
+    slug: days
+    categories: ['Date and Time Functions']
+    syntax: 'Days(<nSecs>) => <nDay>'
+    description: 'Converts `<nSecs>` seconds to the equivalent number of days.'
+    parameters: 
+      - name: nSecs
+        type: Numeric
+        passed_by: value
+    return_type: Numeric
+    return_name: nDay
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\samples.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DAYSINMONTH
+    slug: daysinmonth
+    categories: ['Date and Time Functions']
+    syntax: 'DaysInMonth(<nMonth>,<lLeapYear>) => <nDaysInMonth>'
+    description: 'Returns the number of days in month.'
+    parameters: 
+      - name: nMonth
+        type: Numeric
+        passed_by: value
+      - name: lLeapYear
+        type: Logic
+        passed_by: value
+    return_type: Numeric
+    return_name: nDaysInMonth
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DAYSTOMONTH
+    slug: daystomonth
+    categories: ['Date and Time Functions']
+    syntax: 'DaysToMonth(<nMonth>,<lLeapYear>) => <nDaysToMonth>'
+    description: 'Return total number of days from first of Jan to beginning of `<nMonth>`. (`xhb` library, been put here for reminder).'
+    parameters: 
+      - name: nMonth
+        type: Numeric
+        passed_by: value
+      - name: lLeapYear
+        type: Logic
+        passed_by: value
+    return_type: Numeric
+    return_name: nDaysToMonth
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBAPPEND
+    slug: dbappend
+    categories: ['Table Functions']
+    syntax: 'dbAppend(<lUnLockAll>) => <lSuccess>'
+    description: |-
+      Adds a new empty record to the end of the database in the current or aliased work area. By default
+      `[<lUnLockAll>]` is .T. which means that all pending locks are released.
+    parameters: 
+      - name: lUnLockAll
+        type: Logic
+        default: '.t.'
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCLEARFILTER
+    slug: dbclearfilter
+    categories: ['Table Functions', 'Work Areas']
+    syntax: 'dbClearFilter() => NIL'
+    description: 'Clears any active filter condition for the current or aliased work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: dbClearIndex
+    slug: dbclearindex
+    categories: ['Index Function', 'Table Functions']
+    syntax: 'dbClearIndex() => NIL'
+    description: 'Closes all indexes open in the current work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\rddord.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCLEARRELATION
+    slug: dbclearrelation
+    categories: ['Work Areas']
+    syntax: 'dbClearRelation() => NIL'
+    description: 'Clears all active relations in the current work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCLOSEALL
+    slug: dbcloseall
+    categories: ['Index Function', 'Table Functions', 'Work Areas']
+    syntax: 'dbCloseAll() => NIL'
+    description: 'Cose all open databases, associated indexes and format files and moves the work area pointer to the first position.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCLOSEAREA
+    slug: dbclosearea
+    categories: ['Work Areas']
+    syntax: 'dbCloseArea() => NIL'
+    description: 'Closes an open database (if any) in the selected or aliased work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCOMMIT
+    slug: dbcommit
+    categories: ['Index Function', 'Table Functions']
+    syntax: 'dbCommit() => NIL'
+    description: |-
+      Physically updates (i.e. writes any changes to disk) a database and all related index buffers for the current or aliased work area only.
+      NOTE: using this function as soon as possible after updating a database file, ensures that any changes made would be immediately visible to other processes. It's recommended to be invoked before UNLOCK-ing record/file.
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCOMMITALL
+    slug: dbcommitall
+    categories: ['Index Function', 'Table Functions']
+    syntax: 'dbCommitAll() => NIL'
+    description: 'Flushes the memory buffer and performs a hard-disk write for all work areas. IOW, it''s same as dbCommit() but affects ALL work areas.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBCREATE
+    slug: dbcreate
+    categories: ['Table Functions']
+    syntax: 'dbCreate(<cFileName>,<aStruct>,[<cRDD>],[<lKeepOpen>],[<cAlias>],[<cDelimArg>],[<cCodePage>],[<nConnection>]) => <lSuccess>'
+    description: |-
+      Create a database file (a dbf) from a database structure array.
+      `<cFileName>` is the name of the database file to be created. If an extension is not specified, `.dbf` is assumed.
+      `<aStruct>` is an array that contains the structure of database as a series of sub-arrays, one per field. Each sub-array contains the definition of each field's attributes and has the following structure:
+      
+      |Position| Metasymbol| Dbstruct.ch|
+      |:------:|:----------|:-----------|
+      | 1      | cName     | DBS_NAME   |
+      | 2      | cType     | DBS_TYPE   |
+      | 3      | nLength   | DBS_LEN    |
+      | 4      | nDecimals | DBS_DEC    |
+      
+       `<cRDD>` specifies the replaceable database driver (RDD) to use, specified as a character expression. If not specified `DBFNTX` is used.
+      4-th argument `<lKeepOpen>` is Boolean flag indicating if file should stay open (any Boolean value will enable this behavior). 5-th is alias and if not given then the work area will stay open but **without** any alias, not even the filename of created database (this is a notably different behavior than what happens when `USE` command or `dbUseaArea()` function are invoked, where if no alias provided, by default, the name of database file is used as alias).
+      **Note 1:** the dbCreate() function does **not** check for duplicate field names. It could perfectly create fields with the same name, without any warning, with all unpredictable consequences of such an action. Developer alone has the responsibility to not use the same field name twice.
+      **Note 2:** If `<cRDD>` is different than default `DBFNTX`, it must have been explicitly requested and linked (using a *REQUEST* statement in source code), before can it be used.
+      **Note 3:** Setting lKeepOpen to .f. is sometimes not respected. Instead specify .t., and an alias, than use dbCloseArea().
+    parameters: 
+      - name: cFileName
+        type: String
+        passed_by: value
+      - name: aStruct
+        type: Array
+        passed_by: value
+      - name: cRDD
+        type: String
+        required: false
+        passed_by: value
+      - name: lKeepOpen
+        type: Logic
+        required: false
+        passed_by: value
+      - name: cAlias
+        type: String
+        required: false
+        passed_by: value
+        description: 'if not given then WA is open without alias. THIS IS A BUG.'
+      - name: cDelimArg
+        type: String
+        required: false
+        passed_by: value
+        description: 'Optional DELIMITED value used by some RDDs like DELIM'
+      - name: cCodePage
+        type: String
+        required: false
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: dbCreateIndex
+    slug: dbcreateindex
+    categories: ['Deprecated', 'Index Function']
+    syntax: 'dbCreateIndex(<cIndexName>,<cKeyExpr>,<bKeyExpr>,[<lUnique>],[<cOrderName>]) => NIL'
+    description: 'Legacy function that directly does call of **ordCreate()** function.'
+    parameters: 
+      - name: cIndexName
+        type: String
+        passed_by: value
+      - name: cKeyExpr
+        type: String
+        passed_by: value
+      - name: bKeyExpr
+        type: CodeBlock
+        passed_by: value
+      - name: lUnique
+        type: Logic
+        required: false
+        passed_by: value
+      - name: cOrderName
+        type: String
+        required: false
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\rddord.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['ORDCREATE']
+  - name: DBDELETE
+    slug: dbdelete
+    categories: ['Table Functions']
+    syntax: 'dbDelete() => NIL'
+    description: 'Mark a record for deletion in a database. In network enabled applications record lock is required before invoke dbDelete().'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: dbEdit
+    slug: dbedit
+    categories: ['Classic UI']
+    syntax: 'dbEdit([<nTop>],[<nLeft>],[<nBottom>],[<nRight>],[<acColumns>],[<xUserFunc>],[<xColumnSayPictures>],[<xColumnHeaders>],[<xHeadingSeparators>],[<xColumnSeparators>],[<xFootingSeparators>],[<xColumnFootings>]) => NIL'
+    description: |-
+      Returns `.T.` or `.F.` if no dbf is open or invalid column specified.
+      Detailed documentation of this function can be found at [this link of **Harbour Reference Guide.**](https://harbour.github.io/doc/clc53.html#dbedit)
+    parameters: 
+      - name: nTop
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nLeft
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nBottom
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nRight
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: acColumns
+        type: Array
+        required: false
+        passed_by: value
+      - name: xUserFunc
+        type: Any
+        required: false
+        passed_by: value
+      - name: xColumnSayPictures
+        type: Any
+        required: false
+        passed_by: value
+      - name: xColumnHeaders
+        type: Any
+        required: false
+        passed_by: value
+      - name: xHeadingSeparators
+        type: Any
+        required: false
+        passed_by: value
+      - name: xColumnSeparators
+        type: Any
+        required: false
+        passed_by: value
+      - name: xFootingSeparators
+        type: Any
+        required: false
+        passed_by: value
+      - name: xColumnFootings
+        type: Any
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dbedit.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DBEVAL
+    slug: dbeval
+    categories: ['Work Areas']
+    syntax: 'dbEval(<bBlock>,[<bForCondition>],[<bWhileCondition>],[<nNextRecords>],[<nRecord>],[<lRest>]) => NIL'
+    description: |-
+      Evaluates `<bBlock>` for all records in the current work area. A matching scope can be defined with `<bFor>/<bWhile>` blocks.
+      This could be represented as SCAN on all records.
+    parameters: 
+      - name: bBlock
+        type: CodeBlock
+        passed_by: value
+      - name: bForCondition
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: bWhileCondition
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: nNextRecords
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nRecord
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: lRest
+        type: Logic
+        required: false
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBF
+    slug: dbf
+    categories: ['Table Functions', 'Work Areas']
+    syntax: 'Dbf() => <cAlias>'
+    description: |-
+      Returns the alias name of the currently selected work area.
+      Compatibility function superseded by the Alias()
+    return_type: String
+    return_name: cAlias
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['ALIAS']
+  - name: DBFIELDINFO
+    slug: dbfieldinfo
+    categories: ['Table Functions']
+    syntax: 'dbFieldInfo(<nInfoType>,<nFieldPos>,[<expNewSetting>]) => <xFieldInfo>'
+    description: |-
+      Returns a field information from the replaceable database driver (RDD).
+      Refer to [**dbinfo.ch**](https://raw.githubusercontent.com/harbour/core/master/include/dbinfo.ch) and [**dbstruct.ch**](https://raw.githubusercontent.com/harbour/core/master/include/dbstruct.ch) header files for available `<nInfoTypes>`.
+    parameters: 
+      - name: nInfoType
+        type: Numeric
+        passed_by: value
+      - name: nFieldPos
+        type: Numeric
+        passed_by: value
+      - name: expNewSetting
+        type: Any
+        required: false
+        passed_by: value
+    return_name: xFieldInfo
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd53.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBFILEGET
+    slug: dbfileget
+    categories: ['Memo Functions', 'Table Functions']
+    syntax: 'dbFileGet(<nFieldPos|cFieldName>,<cTargetFile>,<nMode>) => <lSuccess>'
+    description: |-
+      Insert the contents of a field (best for memo field types) into a file.
+      `<nFieldPos>` is the position of the field in the database file, `<cTargetFile>` is the name of the file where the field data will be written, including an optional drive, directory and extension. If `<cTargetFile>` does not exist, it is created. If it exists and can be opened in exclusive mode the file is written to without warning or error. (check NetErr()).
+      `<nMode>` can be: 1=APPEND or 0=OVERWRITE (default).
+    parameters: 
+      - name: nFieldPos|cFieldName
+        type: Any
+        passed_by: value
+      - name: cTargetFile
+        type: String
+        passed_by: value
+      - name: nMode
+        type: Numeric
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd53.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBFILEPUT
+    slug: dbfileput
+    categories: ['Memo Functions', 'Table Functions']
+    syntax: 'dbFilePut(<nFieldPos|cFieldName>,<cSourceFile>,[<nMode>]) => <lSuccess>'
+    description: 'Insert the contents of a file into a field (best for memo field types). `<nFieldPos>` is the position of the field in the database file, `<cSourceFile>` is the name of the file containing the data to insert, including an optional drive, directory and extension. If the file does not exist, RTE occurs. NetErr() could checked for other errors.'
+    parameters: 
+      - name: nFieldPos|cFieldName
+        type: Any
+        passed_by: value
+      - name: cSourceFile
+        type: String
+        passed_by: value
+      - name: nMode
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'UIndocumented'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd53.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBFILTER
+    slug: dbfilter
+    categories: ['Work Areas']
+    syntax: 'dbFilter() => <cFilter>'
+    description: 'Returns a character string containing the filter expression of a work area, or a null string ("") when no filter is set.'
+    return_type: String
+    return_name: cFilter
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBFSIZE
+    slug: dbfsize
+    categories: ['Table Functions']
+    syntax: 'DbfSize() => <nSize>'
+    description: 'Returns the size of a dbf file opened in current wrkarea or 0 if no dbf is opened.'
+    return_type: Numeric
+    return_name: nSize
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dbftools.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBGOBOTTOM
+    slug: dbgobottom
+    categories: ['Work Areas']
+    syntax: 'dbGoBottom() => NIL'
+    description: 'Moves to the last logical record in the current work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBGOTO
+    slug: dbgoto
+    categories: ['Work Areas']
+    syntax: 'dbGoTo(<xIdentity>) => NIL'
+    description: 'Position record pointer to a specific identity which for Xbase `.dbf`s is record number. In other data formats, `<xIdentity>` is the unique primary key value.'
+    parameters: 
+      - name: xIdentity
+        type: Any
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBGOTOP
+    slug: dbgotop
+    categories: ['Work Areas']
+    syntax: 'dbGoTop() => NIL'
+    description: 'Move to the first logical record.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBINFO
+    slug: dbinfo
+    categories: ['Table Functions']
+    syntax: 'dbInfo(<nInfoType>,<xExpNewSetting>) => <xCurrentSetting>'
+    description: |-
+      Return and optionally change information about a database file opened in a work area.
+      The `<nInfoType>` argument determines the type of information, as specified by constants defined in the [**dbinfo.ch**](https://raw.githubusercontent.com/harbour/core/master/include/dbinfo.ch) header file. Worth to note that not all those constants (and the supplied by them info) are supported on all RDDs.
+    parameters: 
+      - name: nInfoType
+        type: Numeric
+        passed_by: value
+      - name: xExpNewSetting
+        type: Any
+        passed_by: value
+    return_type: Any
+    return_name: xCurrentSetting
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd53.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBORDERINFO
+    slug: dborderinfo
+    categories: ['Index Function', 'Table Functions', 'Work Areas']
+    syntax: 'dbOrderInfo(<nInfoType>,[<cIndexFile>],[<cOrder|nPosition>],[<xExpNewSetting>]) => <xCurrentSetting>'
+    description: 'Return and optionally change information about orders and index files. Refer to ''dbinfo.ch'' header file for more.'
+    parameters: 
+      - name: nInfoType
+        type: Numeric
+        passed_by: value
+      - name: cIndexFile
+        type: String
+        required: false
+        passed_by: value
+      - name: cOrder|nPosition
+        type: Any
+        required: false
+        passed_by: value
+      - name: xExpNewSetting
+        type: Any
+        required: false
+        passed_by: value
+    return_type: Any
+    return_name: xCurrentSetting
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd53.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBRECALL
+    slug: dbrecall
+    categories: ['Table Functions']
+    syntax: 'dbRecall() => NIL'
+    description: 'Removes the deletion flag from a record marked as deleted. Requires record lock if shared (network) is enabled.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBRECORDINFO
+    slug: dbrecordinfo
+    categories: ['Table Functions']
+    syntax: 'dbRecordInfo(<nInfoType>,[<nRecord>],[<xExpNewSetting>]) => <xCurrentSetting>'
+    description: 'Return and optionally change information about a record. See ''dbInfo()'' and ''dbinfo.ch'' for more.'
+    parameters: 
+      - name: nInfoType
+        type: Numeric
+        passed_by: value
+      - name: nRecord
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: xExpNewSetting
+        type: Any
+        required: false
+        passed_by: value
+    return_type: Any
+    return_name: xCurrentSetting
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd53.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DBINFO']
+  - name: dbReindex
+    slug: dbreindex
+    categories: ['Index Function']
+    syntax: 'dbReindex() => NIL'
+    description: 'Rebuilds all open indexes in the current work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\rddord.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBRELATION
+    slug: dbrelation
+    categories: ['Work Areas']
+    syntax: 'dbRelation(<nRelation>) => <cLinkExpression>'
+    description: 'Returns a character string containing the relation expression specified with `<nRelation>`, or a null string ("") when no relation exists for `<nRelation>`.'
+    parameters: 
+      - name: nRelation
+        type: Numeric
+        passed_by: value
+    return_type: String
+    return_name: cLinkExpression
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBRLOCK
+    slug: dbrlock
+    categories: ['Table Functions']
+    syntax: 'dbRLock(<xRecno>) => <lSuccess>'
+    description: 'If `<xRecno>` is not given, all active record locks are removed and the current record is locked. When `<xRecno>` is given, the function places a lock on this record and adds it to the list of active record locks. This list can be retrieved with function ''DbRLockList()''.'
+    parameters: 
+      - name: xRecno
+        type: Any
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DBRLOCKLIST']
+  - name: DBRLOCKLIST
+    slug: dbrlocklist
+    categories: ['Table Functions', 'Work Areas']
+    syntax: 'dbRLockList() => <aRecordLocks>'
+    description: 'Returns a list of locked records in the database work area.'
+    return_type: Array
+    return_name: aRecordLocks
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBRSELECT
+    slug: dbrselect
+    categories: ['Work Areas']
+    syntax: 'dbRSelect(<nRelation>) => <nWorkArea>'
+    description: 'Returns the work area number of the relation specified with `<nRelation>` or zero if no relation is defined.'
+    parameters: 
+      - name: nRelation
+        type: Numeric
+        passed_by: value
+    return_type: Numeric
+    return_name: nWorkArea
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBRUNLOCK
+    slug: dbrunlock
+    categories: ['Work Areas']
+    syntax: 'dbRUnlock(<xRecno>) => NIL'
+    description: 'Releases record lock for `<nRecno>`. If no `<nRecno>` is passed function, all active record locks are released. (same as ''DbUnlock()'').'
+    parameters: 
+      - name: xRecno
+        type: Any
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DBUNLOCK']
+  - name: DBSEEK
+    slug: dbseek
+    categories: ['Table Functions']
+    syntax: 'dbSeek(<expKey>,[<lSoftSeek>],[<lFindLast>]) => <lFound>'
+    description: |-
+      Move to the record having the specified key value.
+      
+      - `<expKey>` is a value of any type that will be searched and specifies the key value (index key) associated with the desired record. If such a record is found, it becomes the current record and the function returns `.T.` (true); _in any other case_ it returns `.F.` (false).
+           Searching is performed on logical records which are considered in indexed order. If a **filter** is set, only records which meet the filter condition are considered. If the work area has more than one active index, the operation uses the controlling order as set by `dbSetOrder()` or the `SET ORDER` command.
+      
+      - `<lSoftSeek>` is an optional logical value which specifies whether a "soft seek" is to be performed or not, and directly affects where the record pointer shall positioned, **in case the searched `<expKey>` value is not found.**
+        - for a normal not soft seek (i.e. when `lSoftSeek==.F.`), the record pointer is positioned to `LastRec() + 1` and the `Eof()` returns `.T.` (true).
+        - for a soft seek (i.e. when `lSoftSeek==.T.`), the record pointer is positioned **to the first record whose key value is greater than the specified key value**.  If no such a record exists, the record pointer is positioned to `LastRec() + 1` and the `Eof()` returns `.T.` (true), (in other words, result is same as normal (not soft) seek).
+      If `<lSoftSeek>` is omitted, the **current** global `_SET_SOFTSEEK` setting is used.
+      - `<lFindLast>` is an optional logical value that can specified as `.T.` (true) to seek the last occurrence of
+           the specified key value.  The default is `.F.` (false), which means to seek the first occurrence. Note: This parameter may not supported in all RDDs.
+    parameters: 
+      - name: expKey
+        type: Any
+        passed_by: value
+      - name: lSoftSeek
+        type: Logic
+        required: false
+        passed_by: value
+      - name: lFindLast
+        type: Logic
+        required: false
+        default: '.f.'
+        passed_by: value
+    return_type: Logic
+    return_name: lFound
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBSELECTAREA
+    slug: dbselectarea
+    categories: ['Work Areas']
+    syntax: 'dbSelectArea(<nArea|cAlias>) => NIL'
+    description: 'Selects `<nArea>` or `<cAlias>` and set it as current work area.'
+    parameters: 
+      - name: nArea|cAlias
+        type: Symbol
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBSETDRIVER
+    slug: dbsetdriver
+    categories: ['RDD Removable Data Driver']
+    syntax: 'dbSetDriver([<cRddName>]) => <cPreviousRDD>'
+    description: 'Retrieves and/or selects the default replaceable database driver.'
+    parameters: 
+      - name: cRddName
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cPreviousRDD
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBSETFILTER
+    slug: dbsetfilter
+    categories: ['Work Areas']
+    syntax: 'dbSetFilter([<bCondition>],[<cCondition>]) => NIL'
+    description: 'Sets a filter condition in form of the code block <bCondition>. If `<bCondition>` is NIL (empty), it clears any active filter.'
+    parameters: 
+      - name: bCondition
+        type: CodeBlock
+        required: false
+        passed_by: value
+      - name: cCondition
+        type: String
+        required: false
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: dbSetIndex
+    slug: dbsetindex
+    categories: ['Index Function']
+    syntax: 'dbSetIndex(<cIndexName>) => NIL'
+    description: 'Opens an index file, it does not change the controlling index, unless it is the first index to open.'
+    parameters: 
+      - name: cIndexName
+        type: String
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\rddord.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBSETRELATION
+    slug: dbsetrelation
+    categories: ['Work Areas']
+    syntax: 'dbSetRelation(<nArea|cAlias>,<bRelation>,<cRelation>,<lScoped>) => NIL'
+    description: 'Relates a parent work area with the child work area `<nArea>` or `<cAlias>`. Existing relations remain active.'
+    parameters: 
+      - name: nArea|cAlias
+        type: Any
+        passed_by: value
+      - name: bRelation
+        type: CodeBlock
+        passed_by: value
+      - name: cRelation
+        type: String
+        passed_by: value
+      - name: lScoped
+        type: Logic
+        passed_by: value
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBSKIP
+    slug: dbskip
+    categories: ['Work Areas']
+    syntax: 'dbSkip(<nRecords>) => NIL'
+    parameters: 
+      - name: nRecords
+        type: Numeric
+        default: '1'
+        passed_by: value
+    return_description: 'Positive values for `<nRecords>` move the record pointer forwards (towards the end of file), negative values move it backwards. The default value is 1.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBSTRUCT
+    slug: dbstruct
+    categories: ['Table Functions']
+    syntax: 'dbStruct() => <aStruct>'
+    description: 'Returns a two-dimensional array of four columns, filled with structural information of each field in the current database as follow: `{cFieldName, cType, nLength, nDecimals}`. See also ''DBSTRUCT.CH''.'
+    return_type: Any
+    return_name: aStruct
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBTABLEEXT
+    slug: dbtableext
+    categories: ['RDD Removable Data Driver', 'Table Functions']
+    syntax: 'dbTableExt() => <cFileExtension>'
+    description: 'Returns the default database file extension of the current RDD, f.e. `.dbf`.'
+    return_name: cFileExtension
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBUNLOCK
+    slug: dbunlock
+    categories: ['Table Functions']
+    syntax: 'dbUnlock() => NIL'
+    description: 'Releases all file and record locks, in the current work area.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBUNLOCKALL
+    slug: dbunlockall
+    categories: ['Table Functions']
+    syntax: 'dbUnlockAll() => NIL'
+    description: 'Releases all file and record locks, in all opened work areas.'
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DBUSEAREA
+    slug: dbusearea
+    categories: ['Table Functions', 'Work Areas']
+    syntax: 'dbUseArea([<lNewArea>],[<cRddName>],[<cDatabase>],[<cAlias>],[<lShared>],[<lReadOnly>],[<cCodePage>],[<nConnection>]) => <lSuccess>'
+    description: |-
+      Attempts to open a database file and returns true (`.T.`) on success, otherwise false (`.F.`).
+      This function is same, in functionality, as the standard **`USE`** command, yet more flexible.
+      If `<lNewArea>` specified true (`.T.`) the file is opened in a new work area otherwise if is false (.F.) or omitted,
+      the current area is used, which means any dbf that already is opened in the area will close.
+      `<cRddName>` is optional name of the database driver which will be used.  If omitted, the current default driver is used.
+      `<cDatabase>` is the name of the database (`.dbf`) file to be opened.
+      `<xcAlias>` is optional character value that defines the alias to be associated with the work area. If omitted, the filename **without** path and extension is used.
+      `<lShared>` is optional logical value that specifies whether the file will be shareable to other users or not. If omitted, the current global _SET_EXCLUSIVE setting is used.
+      `<lReadonly>` is the optional logical value that specifies whether the work area and the dbf file is writable or not. If omitted, it defaults to false (`.F.`), i.e., the file can be updated.
+      `<cCodePage>` is the Harbour CP to be used by the work area.
+      `<nConnection>` Connection handler for RDDs which support it
+    parameters: 
+      - name: lNewArea
+        type: Logic
+        required: false
+        passed_by: value
+      - name: cRddName
+        type: String
+        required: false
+        passed_by: value
+      - name: cDatabase
+        type: String
+        required: false
+        passed_by: value
+      - name: cAlias
+        type: String
+        required: false
+        passed_by: value
+      - name: lShared
+        type: Logic
+        required: false
+        passed_by: value
+      - name: lReadOnly
+        type: Logic
+        required: false
+        passed_by: value
+      - name: cCodePage
+        type: String
+        required: false
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DELETED
+    slug: deleted
+    categories: ['Table Functions']
+    syntax: 'Deleted() => <lDeleted>'
+    description: 'Returns .T. or .F. if the current record is marked for deletion or not.'
+    return_type: Logic
+    return_name: lDeleted
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DELETEFILE
+    slug: deletefile
+    categories: ['File Functions']
+    syntax: 'DeleteFile(<cFileName>) => <nErrorCode>'
+    description: 'Returns zero on success or a numeric error code on failure.'
+    parameters: 
+      - name: cFileName
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nErrorCode
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\files.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DESCEND
+    slug: descend
+    categories: ['Conversion Functions']
+    syntax: 'Descend(<exp>) => <ValueInverted>'
+    description: |-
+      Returns an inverted expression of the same data type as the `<exp>`, except for dates which return a numeric value. A Descend() of `CHR(0)` always returns `CHR(0)`.
+      In a string, each byte is recoded as chr(256-asc(Byte)); numberics are *-1; dates become a descending number; logical is flipped.
+    parameters: 
+      - name: exp
+        type: Any
+        passed_by: value
+        description: 'Can be String, Date, Numeric, Logical'
+    return_type: Any
+    return_name: ValueInverted
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\descend.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DEVOUT
+    slug: devout
+    categories: ['Classic UI', 'Printer Functions']
+    syntax: 'DevOut(<exp>,[<cColorString>]) => NIL'
+    description: 'writes a single value to the current device (screen or printer), but is not affected by SET ALTERNATE'
+    parameters: 
+      - name: exp
+        type: Any
+        passed_by: value
+      - name: cColorString
+        type: String
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\console.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DEVPOS
+    slug: devpos
+    categories: ['Classic UI']
+    syntax: 'DevPos(<nRow>,<nCol>) => NIL'
+    description: 'Sets the screen and/or printer position'
+    parameters: 
+      - name: nRow
+        type: Numeric
+        passed_by: value
+      - name: nCol
+        type: Numeric
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\console.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DIRCHANGE
+    slug: dirchange
+    categories: ['Deprecated', 'DOS Clipper Function']
+    syntax: 'DirChange(<cDir>) => <nResult>'
+    description: |-
+      Change the current DOS directory. `<cDir>` is the name of the directory to change to, including the drive. Returns `0` if successful or `-1` if there is an argument error or the `DOS error` code otherwise.
+      Used HB_CWD() instead.
+    parameters: 
+      - name: cDir
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirdrive.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_CWD']
+  - name: DIRECTORY
+    slug: directory
+    categories: ['Disks, Drives and Folders']
+    syntax: 'Directory(<cDirSpec>,[<cAttributes>]) => <aDirectory>'
+    description: |-
+      Returns an array of subarrays with filenames matching to `<cDirSpec>` filter.
+      Each subarray has the structure: `{cF_NAME, nF_SIZE, dF_DATE, cF_TIME, cF_ATTR}`.
+      Wildcards are allowed in `<cDirSpec>`, e.g: `"*.txt"` or `"*.tx?"`.
+      If `<cDirSpec>` is omitted, the default value is `"*.*"` (all files).
+    parameters: 
+      - name: cDirSpec
+        type: String
+        passed_by: value
+      - name: cAttributes
+        type: String
+        required: false
+        passed_by: value
+    return_type: Array
+    return_name: aDirectory
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\direct.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_DIRECTORY']
+  - name: DISKCHANGE
+    slug: diskchange
+    categories: ['Disks, Drives and Folders']
+    syntax: 'DiskChange(<cNewDrive>) => <lSuccess>'
+    description: 'Returns true `.T.` if an attempt to change current drive to `<cNewDrive>` was successful, otherwise returns false `.F.`. Valid values for `<cNewDrive>`, which specifies the letter of the target disk drive to change to, are in range `A-Z` or `a-z`.'
+    parameters: 
+      - name: cNewDrive
+        type: String
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirdrive.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DISKNAME
+    slug: diskname
+    categories: ['Disks, Drives and Folders']
+    syntax: 'DiskName() => <cDrive>'
+    description: 'Returns the letter of the current drive for OS supporting Drive Letters (DOS / Windows), without a trailing colon.'
+    return_type: String
+    return_name: cDrive
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirdrive.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DISKSPACE
+    slug: diskspace
+    categories: ['Disks, Drives and Folders']
+    syntax: 'DiskSpace(<nDrive>) => <nBytes>'
+    description: |-
+      Returns the number of bytes of empty space on the given disk drive.
+      Optional parammeter `<nDrive>` is the number of the disk drive to investigate, where `1` is the drive **A:**, `2` is **B:**, `3` is **C:**, etc. If `<nDrive>` is omitted or specified as `0` (zero) then by default is used the **current** drive.
+    parameters: 
+      - name: nDrive
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nBytes
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\diskspac.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DISPBEGIN
+    slug: dispbegin
+    categories: ['Classic UI']
+    syntax: 'DispBegin() => NIL'
+    description: |-
+      Begin buffering screen output.
+      See [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#dispbegin)
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\gt.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DISPBOX
+    slug: dispbox
+    categories: ['Classic UI']
+    syntax: 'DispBox(<nTop>,<nLeft>,<nBottom>,<nRight>,[<cnBoxString>],[<cColorString>]) => NIL'
+    description: |-
+      Display a box on the screen.
+      See [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#dispbox)
+    parameters: 
+      - name: nTop
+        type: Numeric
+        passed_by: value
+      - name: nLeft
+        type: Numeric
+        passed_by: value
+      - name: nBottom
+        type: Numeric
+        passed_by: value
+      - name: nRight
+        type: Numeric
+        passed_by: value
+      - name: cnBoxString
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: cColorString
+        type: Numeric
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\box.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DISPCOUNT
+    slug: dispcount
+    categories: ['Classic UI']
+    syntax: 'DispCount() => <nDispCount>'
+    description: |-
+      Return the number of pending DispEnd() requests.
+      See [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#dispcount)
+    return_type: Numeric
+    return_name: nDispCount
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\gt.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DISPEND
+    slug: dispend
+    categories: ['Classic UI']
+    syntax: 'DispEnd() => NIL'
+    description: |-
+      Display buffered screen updates.
+      See [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#dispend)
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\gt.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DISPOUT
+    slug: dispout
+    categories: ['Classic UI']
+    syntax: 'DispOut(<exp>,[<cColorString>]) => NIL'
+    description: |-
+      Write a value to the display.
+      See [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#dispout)
+    parameters: 
+      - name: exp
+        type: Any
+        passed_by: value
+      - name: cColorString
+        type: String
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\console.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DISPOUTAT
+    slug: dispoutat
+    categories: ['Classic UI']
+    syntax: 'DispOutAt(<nRow>,<nCol>,<expression>,[<cColor>]) => NIL'
+    description: 'Writes a single value to the screen at specific position, but is not affected by `SET ALTERNATE`.'
+    parameters: 
+      - name: nRow
+        type: Numeric
+        passed_by: value
+      - name: nCol
+        type: Numeric
+        passed_by: value
+      - name: expression
+        type: Any
+        passed_by: value
+      - name: cColor
+        type: String
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\console.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: DMY
+    slug: dmy
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'DMY([<dDate>],[<lMode>]) => <cDateString>'
+    description: |-
+      Returns the date as a string in `DD Month YY` format.
+      Will be affected by "set century on".
+      Example: *24. November 2020*
+    parameters: 
+      - name: dDate
+        type: Date
+        required: false
+        default: 'Today'
+        passed_by: value
+      - name: lMode
+        type: Logic
+        required: false
+        default: '.f.'
+        passed_by: value
+        description: 'If set to .t. result will be in the format `DD. Month YY`.'
+    return_type: String
+    return_name: cDateString
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DOSERROR
+    slug: doserror
+    categories: ['DOS Clipper Function', 'Executable Environment']
+    syntax: 'DOSError([<nNewOsCode>]) => <nOsCode>'
+    description: |-
+      Return the last DOS error number.
+      See [Clipper Reference Guide](https://harbour.github.io/doc/clc53.html#doserror)
+    parameters: 
+      - name: nNewOsCode
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nOsCode
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\errapi.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DOW
+    slug: dow
+    categories: ['Date and Time Functions']
+    syntax: 'DoW(<dDate>) => <nDay>'
+    description: 'Returns the day of the week as a number between `1` and `7` or `0` if `<dDate>` is empty. The first day of the week is `1` (Sunday) and the last day is `7` (Saturday).'
+    parameters: 
+      - name: dDate
+        type: Datetime
+        passed_by: value
+    return_type: Numeric
+    return_name: nDay
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DOY
+    slug: doy
+    categories: ['Date and Time Functions']
+    syntax: 'DoY([<dDate>]) => <nDayOfYear>'
+    description: 'Returns a calendar day number that specifies which day of the year `<dDate>` represents. If dDate is NULL, the system date is used. An empty or invalid date returns `0`.'
+    parameters: 
+      - name: dDate
+        type: Date
+        required: false
+        default: 'Today'
+        passed_by: value
+    return_type: Numeric
+    return_name: nDayOfYear
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\dattime2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DTOC
+    slug: dtoc
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'DToC(<dDate>) => <cDate>'
+    description: |-
+      Converts a date value to string. returned value is formatted in the current date format (default: `mm/dd/yy`).  A null date returns a string of spaces equal in length to the current date format.
+      <u>NOTE:</u> The result is affected by the current SET DATE/SET DATE FORMAT and SET EPOCH settings, which may lead to unexpected/incorrect results. For conversions between DATE to CHARACTER and vice-versa, use DtoS()/StoD() that are independent of those settings.
+    parameters: 
+      - name: dDate
+        type: Date
+        passed_by: value
+    return_type: String
+    return_name: cDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: DTOS
+    slug: dtos
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'DToS(<dDate>) => <cDate>'
+    description: 'Returns a character string in `YYYYMMDD` format. If `<dDate>` is empty returns an eight spaces long string.'
+    parameters: 
+      - name: dDate
+        type: Date
+        passed_by: value
+    return_type: String
+    return_name: cDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ELAPTIME
+    slug: elaptime
+    categories: ['Date and Time Functions']
+    syntax: 'ElapTime(<cStartTime>,<cEndTime>) => <cDiference>'
+    description: 'Returns a time-formatted character string holding the duration of the time interval in the format `hh:mm:ss`.'
+    parameters: 
+      - name: cStartTime
+        type: String
+        passed_by: value
+      - name: cEndTime
+        type: String
+        passed_by: value
+    return_type: String
+    return_name: cDiference
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\samples.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: EMPTY
+    slug: empty
+    categories: ['Logical Functions']
+    syntax: 'Empty(<exp>) => <lEmpty>'
+    description: |-
+      Returns .T. when the passed value is empty, otherwise .F. .
+      For a string, array, hash expression would be true if the length is 0.
+    parameters: 
+      - name: exp
+        type: Any
+        passed_by: value
+    return_type: Logic
+    return_name: lEmpty
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\empty.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: EOF
+    slug: eof
+    categories: ['Table Functions']
+    syntax: 'Eof() => <lIsEndOfFile>'
+    description: |-
+      Returns .T. when the record pointer in a work area has reached the end of file, otherwise .F.
+      Note: Eof() is always .T. when a database has no records, and is always .F. when there is no work area in use.
+    return_type: Logic
+    return_name: lIsEndOfFile
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: EOM
+    slug: eom
+    categories: ['Date and Time Functions']
+    syntax: 'EoM([<dDate>]) => <dDateEndOfMonth>'
+    description: 'Returns the last day of a given month date.'
+    parameters: 
+      - name: dDate
+        type: Date
+        required: false
+        default: 'Today'
+        passed_by: value
+    return_type: Date
+    return_name: dDateEndOfMonth
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\datetime.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: EOY
+    slug: eoy
+    categories: ['Date and Time Functions']
+    syntax: 'EoY([<dDate>]) => <dDateEndOfYear>'
+    description: 'Returns the last date of a given year date.'
+    parameters: 
+      - name: dDate
+        type: Date
+        required: false
+        default: 'Today'
+        passed_by: value
+    return_type: Date
+    return_name: dDateEndOfYear
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\datetime.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ERRORBLOCK
+    slug: errorblock
+    categories: ['Warnings and Errors']
+    syntax: 'ErrorBlock([<bErrorBlock>]) => <bLastErrorBlock>'
+    description: 'Returns the current error handling code block and optionally sets a new `<bErrorHandler>` to be executed whenever a runtime error occurs. When evaluated, the `<bErrorHandler>` is passed an error object as an argument by the system.'
+    parameters: 
+      - name: bErrorBlock
+        type: Evalitem
+        required: false
+        passed_by: value
+    return_name: bLastErrorBlock
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\errapi.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: ERRORLEVEL
+    slug: errorlevel
+    categories: ['Executable Environment', 'Warnings and Errors']
+    syntax: 'ErrorLevel([<nNewReturnCode>]) => <nCurrentReturnCode>'
+    description: 'Returns and optionally sets the current exit code as a numeric value. It returns zero if no exit code has been set.'
+    parameters: 
+      - name: nNewReturnCode
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nCurrentReturnCode
+    library: 'hbvm'
+    source_code_file: 'src\vm\hvm.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: EVAL
+    slug: eval
+    categories: ['Codeblock Functions']
+    syntax: 'Eval(<bBlock>,[<BlockArg1>],[...]) => <LastBlockValue>'
+    description: |-
+      Evaluates a code block and returns the resulting value of the last expression within the block. Returned value can be of any type.
+      `<bBlock>` is the code block to be evaluated, while `<BlockArg list>` is an optional list of arguments to send to the code block before it is evaluated.
+    parameters: 
+      - name: bBlock
+        type: CodeBlock
+        passed_by: value
+      - name: BlockArg1
+        type: Any
+        required: false
+        passed_by: value
+    return_name: LastBlockValue
+    library: 'hbvm'
+    source_code_file: 'src\vm\evalhb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: EXP
+    slug: exp
+    categories: ['Math Functions']
+    syntax: 'Exp(<nExponent>) => <nAntilogarithm>'
+    description: |-
+      Returns a numeric value that is equivalent to the value of `e` raised to the specified power.
+      The maximum value of `<nExponent>` is `46` otherwise a numeric overflow occurs. It's the inverse function of 'LOG()'.
+    parameters: 
+      - name: nExponent
+        type: Numeric
+        passed_by: value
+    return_type: Numeric
+    return_name: nAntilogarithm
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\math.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['LOG']
+  - name: FACT
+    slug: fact
+    categories: ['Math Functions']
+    syntax: 'Fact(<<nExp>>) => <nFactorial>'
+    description: 'Return the factorial of `<nExp>`'
+    parameters: 
+      - name: <nExp>
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nFactorial
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\ctmath2.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FCLOSE
+    slug: fclose
+    categories: ['Low Level File Functions']
+    syntax: 'FClose(<nHandle>) => <lError>'
+    description: |-
+      Returns true (.T.) or (.F.) if an error occurred (e.g.: when an invalid handle used).
+      `<nHandle>` is the file handle obtained previously from 'FOpen() or 'FCreate()'.
+    parameters: 
+      - name: nHandle
+        type: Numeric
+        passed_by: value
+    return_type: Logic
+    return_name: lError
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['FCREATE', 'FOPEN']
+  - name: FCOUNT
+    slug: fcount
+    categories: ['Table Functions']
+    syntax: 'FCount() => <nFields>'
+    description: 'Returns the number of fields in the current work area.'
+    return_type: Numeric
+    return_name: nFields
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FCREATE
+    slug: fcreate
+    syntax: 'FCreate(<cFile>,[<nAttibute>]) => <nHandle>'
+    description: |-
+      Attempts to create a new binary file. returns the file handle number if succesful or -1 on failure and FError() is set to indicate an error code. `<cFile>` is the name of the file to create. If the file already exists, its length is truncated to zero without warning. `<nAttribute>` is one of the binary file attributes and can be: 0=Create normal read/write file (default), 1=Create read-only file, 2=Create hidden file, 4=Create system file.
+      (refer to 'Fileio.ch' for defined constants).
+    parameters: 
+      - name: cFile
+        type: String
+        passed_by: value
+      - name: nAttibute
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nHandle
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FERASE
+    slug: ferase
+    categories: ['File Functions']
+    syntax: 'FErase(<cFile>) => <nSuccess>'
+    description: |-
+      Returns 0 on success or -1 on failure. FError() can be used to determine the nature of the error.
+      `<cFile>` is the name of the file to be deleted from disk, including extension, optionally preceded by a drive and/or path specification. The function does not use either SET DEFAULT or SET PATH to locate `<cFile>`.
+      **Warning!** Files must be CLOSED before removing them with FErase().
+    parameters: 
+      - name: cFile
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FERROR
+    slug: ferror
+    categories: ['DOS Clipper Function', 'File Functions']
+    syntax: 'FError() => <nErrorCode>'
+    description: 'Returns the DOS error from the last file operation as an integer numeric value. If there is no error, returns zero.'
+    return_type: Numeric
+    return_name: nErrorCode
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']

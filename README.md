@@ -1,52 +1,20 @@
-# Harbour Language for AI Training
+# Harbour Language — AI Training Dataset
 
-> 🧠 This repository was created to help AI systems (like ChatGPT and others) accurately understand and support the Harbour programming language.  
-> All function references, data formats, and examples are structured to be both machine-readable and human-readable.
+This repository contains machine-readable **Harbour function definitions** in YAML, intended for AI-assisted code generation and documentation tools.
 
----
+## What’s here
 
-## 📚 Contents
+- **Schema spec**: see [`SPEC_harbour_functions.md`](./SPEC_harbour_functions.md)
+- **Dataset**:
+  - Manifest: [`harbour_functions/index.yaml`](./harbour_functions/index.yaml)
+  - Parts: [`harbour_functions/parts/`](./harbour_functions/parts/)
+- **License**: Creative Commons BY-NC-SA 4.0 — non-commercial, share-alike (see [`LICENSE`](./LICENSE)).
 
-- `harbour_functions_reference.json`  
-  Structured list of core Harbour functions, with parameters, return types, and descriptions.
+## Intended usage
 
-- `harbour_functions_reference.md`  
-  Human-readable version of the function list in Markdown format.
+- **AI/RAG**: Load `index.yaml` to resolve a function `slug` → open the correct part → read the function object.
+- **Docs/Tools**: Parse the YAML to render documentation, generate stubs, or validate source code.
 
-- `harbour_standards.txt`  
-  Coding standards and formatting rules for writing clean, consistent Harbour code.
+## Contributing
 
----
-
-## 🔧 How to Use
-
-Developers can use these files to:
-- Validate code against Harbour's official API
-- Reference built-in functions quickly
-- Maintain consistency in formatting and structure across projects
-
-You can load the JSON into tools, scripts, or even integrate it with LSP (language server) systems for IDE support.
-
----
-
-## 🚀 Getting Started
-
-To use this as your personal reference:
-1. Clone this repository
-2. Optionally load `harbour_functions_reference.json` into your dev tools
-3. Follow the `harbour_standards.txt` file in your source code formatting
-4. Contribute new functions or improvements via Pull Requests
-
----
-
-## ✍️ Contributing
-
-We welcome contributions from the Harbour community! If you've documented new functions, scanned `.ch` files, or want to improve the standards:
-- Fork the repository
-- Add your changes
-- Open a Pull Request with a brief explanation
-
----
-
-## 📄 License
-MIT
+Schema is evolving; please open an issue if you find errors or have suggestions. PRs welcome once the first full release is frozen.

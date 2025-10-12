@@ -1,0 +1,19 @@
+dataset_version: 1
+part: 7
+total_parts: 7
+count_functions: 1
+functions:
+  - name: YEAR
+    slug: year
+    categories: ['Date and Time Functions']
+    syntax: 'Year(<dDate>) => <nYear>'
+    description: 'Returns the year of `<dDate>` as a four-digit numeric value. An empty `dDate` returns `0`.'
+    parameters: 
+      - name: dDate
+        type: Datetime
+        passed_by: value
+    return_type: Numeric
+    return_name: nYear
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']

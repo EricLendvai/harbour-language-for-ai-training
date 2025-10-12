@@ -1,0 +1,2602 @@
+dataset_version: 1
+part: 2
+total_parts: 7
+count_functions: 126
+functions:
+  - name: FIELDBLOCK
+    slug: fieldblock
+    categories: ['Codeblock Functions', 'Table Functions']
+    syntax: 'FieldBlock(<cFieldName>) => <bFieldBlock>'
+    description: |-
+      Returns a code block that, when evaluated, sets or gets the value of the given field. If `<cFieldName>` does
+      not exist in the specified work area, it returns an empty block.
+    parameters: 
+      - name: cFieldName
+        type: String
+        passed_by: value
+    return_name: bFieldBlock
+    library: 'hbvm'
+    source_code_file: 'src\vm\macro.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FIELDGET
+    slug: fieldget
+    categories: ['Field Functions', 'Table Functions']
+    syntax: 'FieldGet(<nFieldPos>) => <xFieldValue|NIL>'
+    description: 'Returns the value of the field in the `<nFieldPos>` position or NIL for invalid <nFieldPos>.'
+    parameters: 
+      - name: nFieldPos
+        type: Numeric
+        passed_by: value
+    return_name: xFieldValue|NIL
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['FIELDPUT', 'HB_FIELDGET', 'HB_FIELDPUT']
+  - name: FIELDNAME
+    slug: fieldname
+    categories: ['Table Functions']
+    syntax: 'FieldName(<nFieldPos>) => <cFieldName>'
+    description: 'Returns the name of the field in the <nFieldPos> position as a character string, or a null string ("") for invalid `<nFieldPos>`.'
+    parameters: 
+      - name: nFieldPos
+        type: Numeric
+        passed_by: value
+    return_type: String
+    return_name: cFieldName
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FIELDPOS
+    slug: fieldpos
+    categories: ['Table Functions']
+    syntax: 'FieldPos(<cFieldName>) => <nFieldPos>'
+    description: 'Returns the ordinal position of the field `<cFieldName>` in the work area. If there is no field with this name returns `0`.'
+    parameters: 
+      - name: cFieldName
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nFieldPos
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FIELDPUT
+    slug: fieldput
+    categories: ['Field Functions', 'Table Functions']
+    syntax: 'FieldPut(<nFieldPos>,<expAssign>) => <ValueAssigned>'
+    description: 'Set the value `<expAssign>` of the field in the `<nFieldPos>` position.'
+    parameters: 
+      - name: nFieldPos
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: expAssign
+        type: Any
+        required: true
+        passed_by: value
+    return_name: ValueAssigned
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['FIELDGET', 'HB_FIELDGET', 'HB_FIELDPUT']
+  - name: FIELDWBLOCK
+    slug: fieldwblock
+    categories: ['Codeblock Functions', 'Table Functions']
+    syntax: 'FieldWBlock(<cFieldName>,<nWorkArea>) => <bFieldWBlock>'
+    description: 'Returns a code block accessing the field variable `<cFieldName>` in the `<nWorkArea>`, or `NIL` when an illegal parameter is passed. The code block accepts one parameter used to assign a value to the field.'
+    parameters: 
+      - name: cFieldName
+        type: String
+        passed_by: value
+      - name: nWorkArea
+        type: Numeric
+        passed_by: value
+    return_name: bFieldWBlock
+    library: 'hbvm'
+    source_code_file: 'src\vm\macro.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FILE
+    slug: file
+    categories: ['File Functions']
+    syntax: 'File(<cFileSpec>) => <lExist>'
+    description: 'Checks if a file exists. Supports wildcards, does NOT recognize hidden and/or system files. If the `<cFileName>` does not include a path, then it searches with this order into: the current directory, the directory set with SET DEFAULT, the directories listed in the SET PATH setting.'
+    parameters: 
+      - name: cFileSpec
+        type: String
+        passed_by: value
+    return_type: Logic
+    return_name: lExist
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\filehb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FLOCK
+    slug: flock
+    categories: ['Table Functions']
+    syntax: 'FLock() => <lSuccess>'
+    description: 'Returns .T. if the entire file in a work area successfully locked, otherwise .F.'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FLOOR
+    slug: floor
+    categories: ['Math Functions', 'Numeric Functions']
+    syntax: 'Floor(<nExp>) => <nInteger>'
+    description: |-
+      Returns the nearest integer that is less than or equal to `<nExp>`.
+      Same as the Int() function.
+    parameters: 
+      - name: nExp
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nInteger
+    library: 'hbct'
+    source_code_file: 'contrib\hbct\ctmath2.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['CEILING', 'INT']
+  - name: FOPEN
+    slug: fopen
+    categories: ['File Functions']
+    syntax: 'FOpen(<cFileName>,[<nMode>]) => <nHandle>'
+    description: 'Returns a `file handle` or `-1` when the operation fails. The cause of failure can be determined by ''FError()''.'
+    parameters: 
+      - name: cFileName
+        type: String
+        passed_by: value
+      - name: nMode
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nHandle
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FOUND
+    slug: found
+    categories: ['Table Functions']
+    syntax: 'Found() => <lSuccess>'
+    description: 'Returns .T. if the last search operation in a work area was successful. Returns .F. if nothing found or no work area is used.'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FREAD
+    slug: fread
+    categories: ['File Functions']
+    syntax: 'FRead(<nFileHandle>,<@cBuffer>,<nBytes>) => <nBytes>'
+    description: 'Reads `<nBytes>` characters from a binary file into `<cBuffer>` variable. Returns the number of bytes read. If the number is less than `<nBytes>` either the end of file is reached, or a file read error occurred.'
+    parameters: 
+      - name: nFileHandle
+        type: Numeric
+        passed_by: value
+      - name: cBuffer
+        type: String
+        passed_by: reference
+      - name: nBytes
+        type: Numeric
+        passed_by: value
+    return_type: Numeric
+    return_name: nBytes
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FREADSTR
+    slug: freadstr
+    categories: ['File Functions']
+    syntax: 'FReadStr(<nHandle>,<nBytes>) => <cString>'
+    description: |-
+      Reads characters from an open binary file beginning with the current file pointer position. Characters are read up to `<nBytes>` or until a null character `CHR(0)` is encountered.
+      All characters are read including control characters except for `CHR(0)`.  The file pointer is then moved forward `<nBytes>`.
+      If `<nBytes>` is greater than the number of bytes from the pointer position to the end of the file, the file pointer is positioned to the last byte in the file.
+    parameters: 
+      - name: nHandle
+        type: Numeric
+        passed_by: value
+      - name: nBytes
+        type: Numeric
+        passed_by: value
+    return_type: String
+    return_name: cString
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FRENAME
+    slug: frename
+    categories: ['File Functions']
+    syntax: 'FRename(<cOldFile>,<cNewFile>) => <nSuccess>'
+    description: |-
+      Changes the name of a specified file to a new name. `<cOldFile>` is renamed only if it is located in
+      the current directory or in the specified path.  Any SET DEFAULT or SET PATH are ignored.
+      If the source directory is different from the target directory, the file is moved to the target directory.
+      In the instance that either `<cNewFile>` exists or is currently open, function fails and returns `-1`.
+      Use FError() to determine the exact error.
+      **Warning!** Files must be CLOSED before renaming.  Attempting to rename an open file will produce unpredictable results. When a database file is renamed, the associated memo file (if any) must also be renamed otherwise the integrity of database(s) may be compromised.
+    parameters: 
+      - name: cOldFile
+        type: String
+        passed_by: value
+      - name: cNewFile
+        type: String
+        passed_by: value
+    return_type: Numeric
+    return_name: nSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_VFRENAME']
+  - name: FSEEK
+    slug: fseek
+    categories: ['File Functions']
+    syntax: 'FSeek(<nHandle>,<nOffset>,[<nOrigin>]) => <nPosition>'
+    description: |-
+      Moves the file pointer forward or backward in an open binary file without actually reading the contents.
+      `<nHandle>` is the file handle obtained from 'FOpen()', or 'FCreate()'.
+      `<nOffset>` is the number of bytes to move the file pointer from the position defined by `<nOrigin>`.
+      A positive number moves the pointer forward, and a negative number moves the pointer backward in the file.
+      `<nOrigin>` defines the starting location of the file pointer. The default value is zero, representing the
+      beginning of file. If `<nOrigin>` is the end of file, `<nOffset>` must be zero or negative.
+    parameters: 
+      - name: nHandle
+        type: Numeric
+        passed_by: value
+      - name: nOffset
+        type: Numeric
+        passed_by: value
+      - name: nOrigin
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nPosition
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: FWRITE
+    slug: fwrite
+    categories: ['Low Level File Functions']
+    syntax: 'FWrite(<nHandle>,<cBuffer>,[<nBytes>]) => <nBytesWritten>'
+    description: |-
+      Returns the number of bytes written and should be equal to `<nBytes>`. If it is lesser or `zero`, an error occurred.
+      `<nHandle>` is the file handle obtained from 'FOpen()' or 'FCREATE()'.
+      `<cBuffer>` is the character string to be written.
+      `<nBytes>` are the number of bytes to be written beginning at the current file pointer position. If omitted, the entire content of `<cBuffer>` is written.
+    parameters: 
+      - name: nHandle
+        type: Numeric
+        passed_by: value
+      - name: cBuffer
+        type: String
+        passed_by: value
+      - name: nBytes
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nBytesWritten
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: GETENV
+    slug: getenv
+    categories: ['Executable Environment']
+    syntax: 'GetEnv(<cEnvironmentVariable>) => <cValue>'
+    description: 'Returns the content of the `<cEnvironmentVariable>` environment variable. If not found "" will be returned.'
+    parameters: 
+      - name: cEnvironmentVariable
+        type: String
+        passed_by: value
+    return_type: String
+    return_name: cValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\gete.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HARDCR
+    slug: hardcr
+    categories: ['Conversion Functions', 'String Byte Functions']
+    syntax: 'HardCR(<cString>) => <cConvertedString>'
+    description: |-
+      Returns `<cString>` with all all soft carriage returns (`Chr(141)`) replaced with hard carriage returns (`CHR(13)`).
+      (Soft carriage returns are added by 'MemoEdit()' when lines wrap.)
+    parameters: 
+      - name: cString
+        type: String
+        passed_by: value
+    return_type: String
+    return_name: cConvertedString
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hardcr.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ACMDLINE
+    slug: hb_acmdline
+    categories: ['Executable Environment']
+    syntax: 'hb_ACmdLine() => <aArray>'
+    description: 'It returns an array with all _**command line**_ parameters. This function returns all parameters, also hidden (internals) ones, just like *hb_CmdLine()* and *hb_argV()/hb_argC()* functions, (and unlike *hb_AParams(__dbgProcLevel() - 1)*).'
+    return_type: Array
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ADEL
+    slug: hb_adel
+    categories: ['Arrays Functions']
+    syntax: 'hb_Adel(<@aArray>,[<nElement>],[<lAutoSize>]) => <aArray>'
+    description: 'Deletes *the value* of `<nElement>` of array `<aArray>`, moves all the following values to the previous position, and assigns the last element a `NIL` value. Unlike the legacy `ADel()` function, hb_ADel() provides a third `<lAutoSize>` parameter which if specified `.T.` then the last array element is discarded and _the size of array is decreased by one_, otherwise if `<lAutoSize>` is `.F.` or not passed at all, the size of array remains unchanged.'
+    parameters: 
+      - name: aArray
+        type: Array
+        passed_by: reference
+      - name: nElement
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: lAutoSize
+        type: Logic
+        required: false
+        default: '.F.'
+        passed_by: value
+    return_type: Array
+    return_name: aArray
+    return_description: 'Returns the array itself'
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ADLER32
+    slug: hb_adler32
+    categories: ['Checksum Functions']
+    syntax: 'hb_Adler32(<cValue>,[<nStart>]) => <nChkSum>'
+    description: 'Calculates and returns the checksum of `<cValue>` using the [*Adler-32*](https://en.wikipedia.org/wiki/Adler-32) checksum algorithm.'
+    parameters: 
+      - name: cValue
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nChkSum
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbadler.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_AINS
+    slug: hb_ains
+    categories: ['Arrays Functions']
+    syntax: 'hb_Ains(<@aArray>,[<nPos>],[<uValue>],[<lAutoSize>]) => <aArray>'
+    description: 'Inserts `<uValue>` in the `<nPos>` position of the array, moving all the items to the next position. If `<lAutoSize>` is .T., a new element will be added, making room for the previous last element, else the size of `<aArray>` won''t change and the last item of `<aArray>` will be lost.'
+    parameters: 
+      - name: aArray
+        type: Array
+        required: true
+        passed_by: reference
+      - name: nPos
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: uValue
+        type: Any
+        required: false
+        default: 'NIL'
+        passed_by: value
+      - name: lAutoSize
+        type: Logic
+        required: false
+        default: '.F.'
+        passed_by: value
+    return_name: aArray
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_ADEL']
+  - name: hb_Alert
+    slug: hb_alert
+    categories: ['Dialog Screens', 'Warnings and Errors']
+    syntax: 'hb_Alert(<cMessage|aMessage>,<@aOptions>,[<cColorNorm>],[<nDelay>]) => <nSelection>'
+    description: |-
+      Returns the `nSelection`, which is the ordinal position of the selected option into `aOptions[...]` array, or `0` if `Esc` key has pressed, or `1` if the `nDelay` seconds has passed without user action.
+      First argument is the displayed message and can be either a string or an 1-dim array filled with values of **any type**. This way, in the alert message can be displayed data of all valid types, recognized by Harbour (e.g. numbers, dates, et.c.).
+      The optional `cColorNorm` is a color pair for painting box, message and options.
+      The optional `nDelay` when specified actuates the \`time-out\` functionality; it defines the number of seconds waiting the user to make a choice and when this time's passing with no response the hb_Alert() **aborts!**. Please note that if the user do use the right or left arrow key to move between available options, the `nDelay` shall be reset to `0`, which, as mentioned, means "wait forever", that is, the \`time-out\` functionality is canceled.
+    parameters: 
+      - name: cMessage|aMessage
+        type: Any
+        required: true
+        passed_by: value
+      - name: aOptions
+        type: Array
+        required: true
+        passed_by: reference
+      - name: cColorNorm
+        type: String
+        required: false
+        passed_by: value
+      - name: nDelay
+        type: Numeric
+        required: false
+        default: '0'
+        passed_by: value
+        description: '0 means \`wait forever\`'
+    return_type: Numeric
+    return_name: nSelection
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\alert.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: HB_APARAMS
+    slug: hb_aparams
+    categories: ['Function Environment']
+    syntax: 'hb_AParams([<nLevel>]) => <aParamList>'
+    description: |-
+      Returns an array with the parameters passed to a function. `<nLevel>` lets you obtain the parameter list of the caller functions up in the call tree.
+      *Note: returns the current values of parameters, which might have been changed by user code, hence and they may be different than original arguments, that had been passed to the given function upon invocation.*
+    parameters: 
+      - name: nLevel
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Array
+    return_name: aParamList
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ARGC
+    slug: hb_argc
+    categories: ['Executable Environment']
+    syntax: 'hb_argC() => <nArgs>'
+    description: |-
+      Returns the number of _**command line**_ arguments passed to the application, including the internal arguments;
+      Note: the number returned doesn't include the hb_argv(0) (i.e. the name of executable).
+    return_type: Numeric
+    return_name: nArgs
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ARGCHECK
+    slug: hb_argcheck
+    categories: ['Executable Environment']
+    syntax: 'hb_argCheck(<cArg>) => <lSet>'
+    description: |-
+      Check if an **internal** switch has been set when the program started. Internal switch is a command line argument prefixed with a double slash `//`.
+      Example of starting a program in command line and setting internal switch:
+      C:\appls\>myprogram.exe //SWITCH1
+    parameters: 
+      - name: cArg
+        type: String
+        required: true
+        passed_by: value
+    return_type: Logic
+    return_name: lSet
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: |-
+      Example of starting a program in command line and setting internal switch:
+      C:\appls\>myprogram.exe //SWITCH1
+      
+      ? hb_argCheck("SWITCH1") // -> .T.
+      ? hb_argCheck("SWITCH2") // -> .F.
+  - name: HB_ARGSHIFT
+    slug: hb_argshift
+    categories: ['Executable Environment', 'Function Environment']
+    syntax: 'hb_argShift([<lShift>]) => NIL'
+    description: 'Updates the parameters list (that are retrieved/utilized by ''hb_arg\*()'' family functions) by removing the 1-st one and replacing it by others. If `<lShift>` is `.T.` then first non internal parameter is moved to hb_argv(0) (i.e. hb_progname()) and all next are shifted.'
+    parameters: 
+      - name: lShift
+        type: Logic
+        required: false
+        default: '.F.'
+        passed_by: value
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ARGSTRING
+    slug: hb_argstring
+    categories: ['Executable Environment']
+    syntax: 'hb_argString(<cArg>) => <cValue>'
+    description: 'Returns the value assigned to `<cArg>` **internal** switch. If the `<cArg>` is not set or has not assigned a value to it, the function returns a NULL string.'
+    parameters: 
+      - name: cArg
+        type: String
+        passed_by: value
+    return_type: String
+    return_name: cValue
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: |-
+      Example command line: **myprogram.exe //SWITCH1somevalue //SWITCH2**
+      
+      ? hb_argString("SWITCH1") // --> "somevalue"
+      ? hb_argString("SWITCH2") // --> "" (null string, no value assigned to SWITCH2)
+      ? hb_argString("SWITCH3") // --> "" (null string, SWITCH3 is not set)
+  - name: HB_ARGV
+    slug: hb_argv
+    categories: ['Executable Environment']
+    syntax: 'hb_argV([<nArg>]) => <cArg>'
+    description: 'Returns the `<nArg>`-th _**command line**_ argument passed to the application. Calling it with the parameter `zero` (or no parameter at all) it will return the name of the executable, as written in the command line (including full path).'
+    parameters: 
+      - name: nArg
+        type: Numeric
+        required: false
+        default: '0'
+        passed_by: value
+    return_type: String
+    return_name: cArg
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ARRAYTOPARAMS
+    slug: hb_arraytoparams
+    categories: ['Arrays Functions', 'Function Environment']
+    syntax: 'hb_ArrayToParams(<aValue>) => <aValue[ 1 ] [, aValue[ N ] ]>'
+    description: 'Converts array into list of items which can be used as function parameters, array-values or array-indexes in the same way as `...` operator.'
+    parameters: 
+      - name: aValue
+        type: Array
+        required: true
+        passed_by: value
+    return_name: aValue[ 1 ] [, aValue[ N ] ]
+    library: 'hbvm'
+    source_code_file: 'src\vm\hvm.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ASCAN
+    slug: hb_ascan
+    categories: ['Arrays Functions']
+    syntax: 'hb_AScan(<aArray>,<SearchValue>,[<nStart>],[<nCount>],[<lExact>]) => <nPosition>'
+    description: |-
+      Scans the array `<aArray>` (left to right) trying to locate the `<SearchValue>`, which can be a simple value or a code block.
+      Scanning starts either from the `1st` or `<nStart>` element of the `<aArray>` and continues up to the next `<nCount>` elements or up to the <i>last</i> element of the array, if no `<nCount>` specified. When the <i>logical</i> flag `<lExact>` is specified, <b>overrides</b> the `_SET_EXACT` setting, which means it directly <i>affects the exactness</i> of comparison.
+      The function returns the numeric position of the first located element inside the array or `0` (zero), if no matching element found.
+    parameters: 
+      - name: aArray
+        type: Array
+        required: true
+        passed_by: value
+      - name: SearchValue
+        type: Any
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: false
+        default: 'Len(aArray)'
+        passed_by: value
+      - name: lExact
+        type: Logic
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nPosition
+    library: 'hbvm'
+    source_code_file: 'src\vm\arrayshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_AT
+    slug: hb_at
+    categories: ['String ANSI/Codepage Functions']
+    syntax: 'hb_At(<cSearchFor>,<cIntoString>,[<nStart>],[<nEnd>]) => <nPosition>'
+    description: 'Returns the position in the string `<cIntoString>` where the entire (and exact) string `<cSearchFor>` first occurs, or zero if it does not. Search is **case sensitive** and starts from `<nStart>` up to `<nEnd>`.'
+    parameters: 
+      - name: cSearchFor
+        type: String
+        required: true
+        passed_by: value
+      - name: cIntoString
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nEnd
+        type: Numeric
+        required: false
+        default: 'Len(cIntoString)'
+        passed_by: value
+    return_type: Numeric
+    return_name: nPosition
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\at.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_UAT']
+  - name: HB_ATI
+    slug: hb_ati
+    categories: ['String ANSI/Codepage Functions']
+    syntax: 'hb_AtI(<cSearch>,<cString>,[<nStart>],[<nEnd>]) => <nPos>'
+    description: |-
+      Same as `hb_At()`, but, as the `I` suffix hints,  this one is **case-Insensitive**.
+      Returns the position in the string `<cIntoString>` where the entire string `<cSearchFor>` first occurs, or zero if it does not. Search is **case-Insensitive** and starts from `<nStart>` up to `<nEnd>`.
+    parameters: 
+      - name: cSearch
+        type: String
+        required: true
+        passed_by: value
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nEnd
+        type: Numeric
+        required: false
+        default: 'Len(cIntoString)'
+        passed_by: value
+    return_type: Numeric
+    return_name: nPos
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\ati.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_ATOKENS
+    slug: hb_atokens
+    categories: ['Arrays Functions', 'String ANSI/Codepage Functions', 'Token Functions']
+    syntax: 'hb_ATokens(<cString>,[<cDelimiter>|lEOL>],[<lSkipStrings>],[<lDoubleQuoteOnly>]) => <aTokens>'
+    description: |-
+      Returns an array filled with all individual [**tokens**](https://en.wikipedia.org/wiki/Lexical_analysis#Tokenization)  of given `<cString>` string, that is, all the separate sub-strings that are delimited by either `<cDelimiter>` or by `EOL` (end of line) if (instead of `<cDelimiter>`) `<lEOL>` has been passed and evaluates to `.T.`
+      If neither `<cDelimiter>` nor `<lEOL>` specified, then as delimiter is used, by default, an empty space (ASCII char 32).
+      If `<lSkipStrings>` is .T. (default=.F.), the quoted sub-strings (if any, inside cString) are not tokenized (i.e. are not searched for `<cDelimiter>`).
+      If `<lDoubleQuoteOnly>` is .T. only the double quote `"` is considered as a quote sign. This argument is meaningful only when `<lSkipStrings>=.T.`
+      
+      - Notes:
+      i.  Tokenization is case sensitive, in the (rare) case where `<cDelimiter>` is a letter-character.
+      ii. The delimiters are removed from tokens.*
+    parameters: 
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: cDelimiter>|lEOL
+        type: Any
+        required: false
+        default: 'char(32)'
+        passed_by: value
+      - name: lSkipStrings
+        type: Logic
+        required: false
+        default: '.F.'
+        passed_by: value
+      - name: lDoubleQuoteOnly
+        type: Logic
+        required: false
+        passed_by: value
+    return_type: Array
+    return_name: aTokens
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbtoken.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_TOKENCOUNT', 'HB_TOKENGET', 'HB_TOKENPTR']
+  - name: HB_BASE64DECODE
+    slug: hb_base64decode
+    categories: ['Encoding', 'String ANSI/Codepage Functions', 'String Byte Functions', 'Strings Unicode']
+    syntax: 'hb_base64Decode(<cBase64Encoded>) => <cDecoded>'
+    description: 'Decodes and returns a BASE64 encoded binary or string.'
+    parameters: 
+      - name: cBase64Encoded
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cDecoded
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\base64d.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BASE64ENCODE
+    slug: hb_base64encode
+    categories: ['Encoding', 'String ANSI/Codepage Functions', 'String Byte Functions', 'Strings Unicode']
+    syntax: 'hb_base64Encode(<cData>,[<nLineLength>]) => <cBase64Encoded>'
+    description: 'Encodes data into BASE64-encoded format.'
+    parameters: 
+      - name: cData
+        type: String
+        required: true
+        passed_by: value
+      - name: nLineLength
+        type: Numeric
+        required: false
+        default: '0'
+        passed_by: value
+        description: 'If not greater than 2 will be set to 0.'
+    return_type: String
+    return_name: cBase64Encoded
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\base64c.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BAT
+    slug: hb_bat
+    categories: ['String Byte Functions']
+    syntax: 'hb_BAt(<cSubString>,<cString>,[<nFrom>],[<nTo>]) => <nPosition>'
+    description: |-
+      Returns the position number into `<cString>` where the `<cSubString>` is found, or zero if it is not found.
+      Works like hb_At() but operates on byte/binary strings and is Code-Page independent.
+    parameters: 
+      - name: cSubString
+        type: String
+        required: true
+        passed_by: value
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: nFrom
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nTo
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nPosition
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BCHAR
+    slug: hb_bchar
+    categories: ['String Byte Functions']
+    syntax: 'hb_BChar(<nCode>) => <cText>'
+    description: 'Returns an *1 byte* string with `<nCode>` value.'
+    parameters: 
+      - name: nCode
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cText
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BCODE
+    slug: hb_bcode
+    categories: ['String Byte Functions']
+    syntax: 'hb_BCode(<cText>) => <nCode>'
+    description: 'Returns the value of the **1-st byte** in a given `<cText>` string. (code-page independent byte/binary operation)'
+    parameters: 
+      - name: cText
+        type: String
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nCode
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITAND
+    slug: hb_bitand
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitAnd(<nVal1>,<nVal2>,[<nVal3>],[...]) => <nResult>'
+    description: 'Performs a bitwise AND operation, same as `&` operator in `C language`.'
+    parameters: 
+      - name: nVal1
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal2
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal3
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'Or more parameters ....'
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITNOT
+    slug: hb_bitnot
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitNot(<nVal>) => <nResult>'
+    description: 'Returns the bitwise complement of `<nVal>` (all bits are flipped), same as `~` operator in `C` language.'
+    parameters: 
+      - name: nVal
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITOR
+    slug: hb_bitor
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitOr(<nVal1>,<nVal2>,[<nVal3>],[...]) => <nResult>'
+    description: 'Performs a bitwise OR operation, same as `|` operator in `C` language.</p>'
+    parameters: 
+      - name: nVal1
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal2
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal3
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITRESET
+    slug: hb_bitreset
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitReset(<nVal>,<nBit>) => <nResult>'
+    description: 'Returns the result of setting the bit `<nBit>` of `<nVal>` to `0`. (`<nBit>` is ZERO based).'
+    parameters: 
+      - name: nVal
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nBit
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITSET
+    slug: hb_bitset
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitSet(<nVal>,<nBit>) => <nResult>'
+    description: 'Returns the result of setting the bit `<nBit>` of `<nVal>` to `1` (`<nBit>` is ZERO based).'
+    parameters: 
+      - name: nVal
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nBit
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITSHIFT
+    slug: hb_bitshift
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitShift(<nVal>,<nBits>) => <nResult>'
+    description: |-
+      returns `<nVal>` shifted `<nBits>` bits positions, equivalent of ` << ` and ` >> ` (LSHIFT/RSHIFT) operators in <b>`C`</b>.
+      If `<nBits>` is a <b>positive</b> integer, bits are shifted to the <b>left</b> (LSHIFT), if is <b>negative</b>, bits are shifted to the <b>right</b> (RSHIFT).
+    parameters: 
+      - name: nVal
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nBits
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITTEST
+    slug: hb_bittest
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitTest(<nVal>,<nBit>) => <lResult>'
+    description: 'Returns .T. if the bit `<nBit>` in `<nVal>` is set. (`<nBit>` is ZERO based).'
+    parameters: 
+      - name: nVal
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nBit
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Logic
+    return_name: lResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BITXOR
+    slug: hb_bitxor
+    categories: ['Bitwise  Functions']
+    syntax: 'hb_BitXor(<nVal1>,<nVal2>,[<nVal3>],[...]) => <Numeric>'
+    description: 'Performs a bitwise `XOR` operation, equivalent of  `<hat>` operator in `C` language.'
+    parameters: 
+      - name: nVal1
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal2
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal3
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbit.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BLEFT
+    slug: hb_bleft
+    categories: ['String Byte Functions']
+    syntax: 'hb_BLeft(<cString>,<nCount>) => <cSubstring>'
+    description: 'Return the left-most `<nCount>` bytes of string `<cString>`. Not UTF-8 specific.'
+    parameters: 
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cSubstring
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BLEN
+    slug: hb_blen
+    categories: ['String Byte Functions']
+    syntax: 'hb_BLen(<cText>) => <nBytes>'
+    description: |-
+      Return the length of `<cText>` in bytes.
+      Unlike `Len()` function, hb_BLen() is *codepage independent* and returns, always, the same length for a given string.
+    parameters: 
+      - name: cText
+        type: String
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nBytes
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BLOWFISHDECRYPT
+    slug: hb_blowfishdecrypt
+    categories: ['Encryption']
+    syntax: 'hb_blowfishDecrypt(<cBfKey>,<cCipher>,[<lRaw>]) => <cCipher>'
+    description: 'Decrypts `cCipher`, using the key `cBfKey`, prepared with hb_blowfishKey().'
+    parameters: 
+      - name: cBfKey
+        type: String
+        required: true
+        passed_by: value
+      - name: cCipher
+        type: Logic
+        required: true
+        passed_by: value
+      - name: lRaw
+        type: Logic
+        required: false
+        default: '.F.'
+        passed_by: value
+    return_type: String
+    return_name: cCipher
+    return_description: 'or NIL'
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbffnc.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHENCRYPT_CFB', 'HB_BLOWFISHKEY']
+  - name: HB_BLOWFISHDECRYPT_CFB
+    slug: hb_blowfishdecrypt_cfb
+    categories: ['Encryption']
+    syntax: 'hb_blowfishDecrypt_CFB(<cBfKey>,<cCipher>,[<cInitSeed>]) => <cText>'
+    description: 'Decrypts `cCipher`, using the key `cBfKey`, prepared with hb_blowfishKey(), using CFB (cipher feedback) mode instead of ECB (electronic codebook). Returns string decrypted or NIL on error (e.g. wrong parameters).'
+    parameters: 
+      - name: cBfKey
+        type: String
+        required: true
+        passed_by: value
+      - name: cCipher
+        type: String
+        required: true
+        passed_by: value
+      - name: cInitSeed
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cText
+    return_description: 'or NIL'
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbffnc.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHENCRYPT_CFB', 'HB_BLOWFISHKEY']
+  - name: HB_BLOWFISHENCRYPT
+    slug: hb_blowfishencrypt
+    categories: ['Encryption']
+    syntax: 'hb_blowfishEncrypt(<cBfKey>,<cText>,[<lRaw>]) => <cCipher>'
+    description: |-
+      Encrypts `cText`, using the key `cBfKey`, prepared with hb_blowfishKey(). The optional `lRaw` parameter, if set to TRUE (it is FALSE by default), disables ANSI X.923 padding but encode passed string in 8bytes blocks. If last block in string is smaller then it's padded to 8 bytes using Chr(0) and information about original string size is not attached to encrypted data. During decoding only strings which are well padded (N\*8 bytes) are accepted and `<lRaw> := .T.` disables restoring original string size encoded in encrypted string using ANSI X.923 standard, so the size of decrypted string is the same as original one.
+      *NOTE: the size of encrypted data is padded to 64bit (8 bytes) so it's bigger than original one.*
+    parameters: 
+      - name: cBfKey
+        type: String
+        required: true
+        passed_by: value
+      - name: cText
+        type: String
+        required: true
+        passed_by: value
+      - name: lRaw
+        type: Logic
+        required: false
+        default: '.F.'
+        passed_by: value
+    return_type: String
+    return_name: cCipher
+    return_description: 'or NIL'
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbffnc.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT_CFB', 'HB_BLOWFISHKEY']
+  - name: HB_BLOWFISHENCRYPT_CFB
+    slug: hb_blowfishencrypt_cfb
+    categories: ['Encryption']
+    syntax: 'hb_blowfishEncrypt_CFB(<cBfKey>,<cText>,[<cInitSeed>]) => <cCipher>'
+    description: 'Return string encrypted using `CFB` (cipher feedback) mode or `NIL` on error (e.g. wrong parameters).'
+    parameters: 
+      - name: cBfKey
+        type: String
+        required: true
+        passed_by: value
+      - name: cText
+        type: String
+        required: true
+        passed_by: value
+      - name: cInitSeed
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cCipher
+    return_description: 'or NIL'
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbffnc.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHKEY']
+  - name: HB_BLOWFISHKEY
+    slug: hb_blowfishkey
+    categories: ['Encryption']
+    syntax: 'hb_blowfishKey(<cPasswd>) => <cBfKey>'
+    description: 'Generates a key `cBfKey` from the passed password `<cPasswd>` for use in the encryption/decryption functions.'
+    parameters: 
+      - name: cPasswd
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cBfKey
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbffnc.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_BLOWFISHDECRYPT', 'HB_BLOWFISHDECRYPT_CFB', 'HB_BLOWFISHENCRYPT', 'HB_BLOWFISHENCRYPT_CFB']
+  - name: HB_BPADC
+    slug: hb_bpadc
+    categories: ['String Byte Functions']
+    syntax: 'hb_BPadC(<cExp>,<nLength>,[<cFillChar>]) => <cPaddedString>'
+    description: 'Same as ''PadC()'', but binary (byte) oriented.'
+    parameters: 
+      - name: cExp
+        type: String
+        required: true
+        passed_by: value
+      - name: nLength
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: cFillChar
+        type: String
+        required: false
+        default: '" "'
+        passed_by: value
+    return_type: String
+    return_name: cPaddedString
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\padx.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_UPADC', 'PADC']
+  - name: HB_BPADL
+    slug: hb_bpadl
+    categories: ['String Byte Functions']
+    syntax: 'hb_BPadL(<cExp>,<nLength>,[<cFillChar>]) => <cPaddedString>'
+    description: 'Same as ''PadL()'' (binary (byte) oriented).'
+    parameters: 
+      - name: cExp
+        type: String
+        required: true
+        passed_by: value
+      - name: nLength
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: cFillChar
+        type: String
+        required: false
+        default: '" "'
+        passed_by: value
+    return_type: String
+    return_name: cPaddedString
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\padx.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_UPADL', 'PADL']
+  - name: HB_BPADR
+    slug: hb_bpadr
+    categories: ['String Byte Functions']
+    syntax: 'hb_BPadR(<cExp>,<nLength>,[<cFillChar>]) => <cPaddedString>'
+    description: 'Same as ''PadR()'' (binary (byte) operation).'
+    parameters: 
+      - name: cExp
+        type: String
+        required: true
+        passed_by: value
+      - name: nLength
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: cFillChar
+        type: String
+        required: false
+        default: '" "'
+        passed_by: value
+    return_type: String
+    return_name: cPaddedString
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\padx.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['PADR']
+  - name: HB_BPEEK
+    slug: hb_bpeek
+    categories: ['String Byte Functions']
+    syntax: 'hb_BPeek(<cText>,<nPos>) => <nCode>'
+    description: 'Return value of `nPos`-th byte in given string as an integer.'
+    parameters: 
+      - name: cText
+        type: String
+        required: true
+        passed_by: value
+      - name: nPos
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nCode
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BPOKE
+    slug: hb_bpoke
+    categories: ['String Byte Functions']
+    syntax: 'hb_BPoke(<@cText>,<nPos>,<nVal>) => <cText>'
+    description: 'Change `nPos`-th byte in given string to `<nVal>` and return modified text.'
+    parameters: 
+      - name: cText
+        type: String
+        required: true
+        passed_by: reference
+      - name: nPos
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nVal
+        type: Numeric
+        required: true
+        passed_by: value
+        description: 'Should be between 0 and 255, if not will be masked to first byte.'
+    return_type: String
+    return_name: cText
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BRAT
+    slug: hb_brat
+    syntax: 'hb_BRAt(<cSubString>,<cString>,[<nFrom>],[<nTo>]) => <nPosition>'
+    description: |-
+      Same as hb_RAt() but for raw/binary strings.
+      Return 0 if not found.
+    parameters: 
+      - name: cSubString
+        type: String
+        required: true
+        passed_by: value
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: nFrom
+        type: Numeric
+        required: false
+        default: '1'
+        passed_by: value
+      - name: nTo
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nPosition
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_RAT']
+  - name: HB_BRIGHT
+    slug: hb_bright
+    categories: ['String Byte Functions']
+    syntax: 'hb_BRight(<cString>,<nCount>) => <cSubstring>'
+    description: 'Extract the rightmost substring of a Byte-Character expression.'
+    parameters: 
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: nCount
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cSubstring
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['RIGHT']
+  - name: HB_BSTUFF
+    slug: hb_bstuff
+    categories: ['String Byte Functions']
+    syntax: 'hb_BStuff(<cString>,<nStart>,<nDelete>,<cInsert>) => <cResult>'
+    description: |-
+      Delete and insert characters in a Byte-String.
+      Returns a copy of `cString` with the specified characters deleted and with `cInsert` inserted.
+    parameters: 
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+        description: 'is the target character string into which characters are inserted and deleted.'
+      - name: nStart
+        type: Numeric
+        required: true
+        passed_by: value
+        description: 'is the starting position in the target string where the insertion/deletion occurs.'
+      - name: nDelete
+        type: Numeric
+        required: true
+        passed_by: value
+        description: 'is the number of characters to be deleted.'
+      - name: cInsert
+        type: String
+        required: true
+        passed_by: value
+        description: 'is the string to be inserted.'
+    return_type: String
+    return_name: cResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['STUFF']
+  - name: HB_BSUBSTR
+    slug: hb_bsubstr
+    categories: ['String Byte Functions']
+    syntax: 'hb_BSubStr(<cString>,<nStart>,[<nCount>]) => <cSubstring>'
+    description: 'Extract a substring from a Byte-Character string.'
+    parameters: 
+      - name: cString
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: true
+        passed_by: value
+        description: 'is the starting position in `cString`. If `nStart` is positive, it is relative to the leftmost character in `cString`. If `nStart` is negative, it is relative to the rightmost character in the `cString`.'
+      - name: nCount
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'is the number of characters to be extracted. If omitted, the substring begins at `nStart` and continues to the end of the string. If `nCount` is greater than the number of characters from `nStart` to the end of `cString`, the excess numbers are ignored.'
+    return_type: String
+    return_name: cSubstring
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\chruni.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['SUBSTR']
+  - name: HB_BUILDDATE
+    slug: hb_builddate
+    categories: ['Date and Time Functions']
+    syntax: 'hb_BuildDate() => <cBuildDateTime>'
+    description: 'Returns Harbour build DateTime in the form: `MONTHNAME N YYYY HH:MM:SS` (f.e: May 5 2016 10:04:52)'
+    return_type: String
+    return_name: cBuildDateTime
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\version.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BYTESWAPI
+    slug: hb_byteswapi
+    categories: ['Bytewise Functions']
+    syntax: 'hb_ByteSwapI(<nValue>) => <nNewValue>'
+    description: 'Returns a 16-bits signed integer after swapping the two bytes of `<nValue>`, considering it as a 16-bits number. e.g.: given a number with bytes (1,2) it will return it as (2,1).'
+    parameters: 
+      - name: nValue
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nNewValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbyte.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BYTESWAPL
+    slug: hb_byteswapl
+    categories: ['Bytewise Functions']
+    syntax: 'hb_ByteSwapL(<nValue>) => <nNewValue>'
+    description: 'Returns a 32-bits signed integer after swapping the four bytes of `<nValue>`, considering it as a 32-bits number. e.g.: given a number with bytes (1,2,3,4) it will return it as (4,3,2,1).'
+    parameters: 
+      - name: nValue
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nNewValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbyte.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BYTESWAPLL
+    slug: hb_byteswapll
+    categories: ['Bytewise Functions']
+    syntax: 'hb_ByteSwapLL(<nValue>) => <nNewValue>'
+    description: 'Returns a 64-bits signed integer after swapping the four bytes of `<nValue>`, considering it as a 64-bits number. e.g.: given a number with bytes (1,2,3,4,5,6,7,8) it will return it as (8,7,6,5,4,3,2,1).'
+    parameters: 
+      - name: nValue
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nNewValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbyte.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BYTESWAPU
+    slug: hb_byteswapu
+    categories: ['Bytewise Functions']
+    syntax: 'hb_ByteSwapU(<nValue>) => <nNewValue>'
+    description: 'Returns a 32 bits signed unsigned integer after swapping the four bytes of `<nValue>`, considering it as a 32 bits number. e.g.: given a number with bytes (1,2,3,4) it will return it as (4,3,2,1).'
+    parameters: 
+      - name: nValue
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nNewValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbyte.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_BYTESWAPW
+    slug: hb_byteswapw
+    categories: ['Bytewise Functions']
+    syntax: 'hb_ByteSwapW(<nValue>) => <nNewValue>'
+    description: 'Returns a 16-bits unsigned integer after swapping the two bytes of `<nValue>`, considering it as a 16-bits number. e.g.: given a number with bytes (1,2) it will return it as (2,1).'
+    parameters: 
+      - name: nValue
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nNewValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbbyte.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDAY
+    slug: hb_cday
+    categories: ['Date and Time Functions']
+    syntax: 'hb_CDay(<nDay>) => <cDayName>'
+    description: |-
+      Returns the name of day specified by `<nDay>`. Valid range [ 1 ... 7 ]. Returns empty string if `<nDay>` is out of valid range. Runtime error occurs if `<nDay>` is NIL (i.e. not passed).
+      Worth noting that the returned value is identical to that of `CDoW()` but the later accepts a date value as parameter.
+    parameters: 
+      - name: nDay
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cDayName
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\datec.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['CDOW']
+  - name: HB_CDPCHARMAX
+    slug: hb_cdpcharmax
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpCharMax(<cCPID>) => <nChars>'
+    description: 'Returns the total characters included in current or given `<cCPID>` code-page character table. Basically, `65535` for Unicode or `255` for non-Unicode code-pages.'
+    parameters: 
+      - name: cCPID
+        type: String
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nChars
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDPEXISTS
+    slug: hb_cdpexists
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpExists(<cCPID>) => <lExists>'
+    description: 'Returns .T. if given `<cCPID>` exists, otherwise .F..'
+    parameters: 
+      - name: cCPID
+        type: String
+        required: true
+        passed_by: value
+    return_type: Logic
+    return_name: lExists
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDPINFO
+    slug: hb_cdpinfo
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpInfo(<cCPID>) => <cInfo>'
+    description: 'Returns a short description about the current or the given `<cCPID>` code-page.'
+    parameters: 
+      - name: cCPID
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cInfo
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDPISCHARIDX
+    slug: hb_cdpischaridx
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpIsCharIdx([<cCdpID>],[<lNewMode>]) => <lPrevMode>'
+    description: 'It returns .T. when given code-page uses custom character indexes instead of byte indexes. If `<cCdpID>` is not specified then current `HVM` code-page is used. Optional logical parameter `<lNewMode>` allows to enable/disable custom character indexes in code-pages which have such functionality, i.e. UTF8, BIG5, CP950.'
+    parameters: 
+      - name: cCdpID
+        type: String
+        required: false
+        passed_by: value
+      - name: lNewMode
+        type: Logic
+        required: false
+        passed_by: value
+    return_type: Logic
+    return_name: lPrevMode
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDPISUTF8
+    slug: hb_cdpisutf8
+    categories: ['Codepage Functions', 'String UTF8 Function']
+    syntax: 'hb_cdpIsUTF8([<cCPID>]) => <Logic>'
+    description: 'Returns .T. if the current or the given `<cCPID>` code page is UTF8 otherwise returns .F.'
+    parameters: 
+      - name: cCPID
+        type: String
+        required: false
+        passed_by: value
+    return_type: Logic
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDPLIST
+    slug: hb_cdplist
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpList() => <aCodePages>'
+    description: |-
+      Returns an array with code-pages registered (linked) in application (via a `request <hb_codepage_xxxxx>` statement).
+      **Note:** in order to get a complete list with **all** code-pages supported by harbour, the `"hbextcdp.ch"` must be #include(d) in module that is invoking this function.
+    return_type: Array
+    return_name: aCodePages
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: hb_cdpOS
+    slug: hb_cdpos
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpOS() => <cCPID>'
+    description: 'Returns O/S code-page ID.'
+    return_name: cCPID
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpdet.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CDPSELECT
+    slug: hb_cdpselect
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpSelect([<cNewCPID>]) => <cPrevCDP>'
+    description: |-
+      Set/get current code-page being used by application.
+      `<cNewCPID>` (must be in uppercase!) is an optional code-page ID to become current.
+      Important: before invoking the function (for set), you must, previously, **REQUEST** the linkage of proper code-page object you intend to use; this can be done using the statement:
+      `REQUEST HB_CODEPAGE_ITWIN`    (for italian "win" code page.)
+      The function returns the previous (old) code-page.
+      *NOTE: The hb_cdpSelect() function has the same functionality as **Set(_SET_CODEPAGE)** function (cited below for convenience).*
+      
+      - **SET(`_SET_CODEPAGE, [<cCDP>]`)--> `<cPrevCDP>`**
+      set/get internal HVM codepage which is used in string comparison operation
+      functions like `UPPER()/LOWER()/ISALPHA()/ISUPPER()/ISLOWER()/ISDIGIT()/...`
+      and also as default CP for RDD **when new table is open** and for GT in
+      HB_SETTERMCP()/HB_SETDISPCP()/HB_SETKEYCP(). Some GTs also use it even
+      without calling above functions.
+      
+      See also, [an interesting post in harbour-users group](https://groups.google.com/d/msg/harbour-users/UJZALHfKylk/S-Jnx187BQAJ) regarding code-pages.
+    parameters: 
+      - name: cNewCPID
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cPrevCDP
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: |-
+      Below is code to define/use a new code-page, derived from the very same post:
+      ```
+      REQUEST HB_CODEPAGE_ENWIN
+      PROCEDURE Main()
+         Set( _SET_CODEPAGE, "ENWIN" )
+         ? Set( _SET_CODEPAGE ), hb_cdpUniID( Set( _SET_CODEPAGE ) )
+         ? "Absch???fung.jpg:", file( "Absch???fung.jpg" )
+      RETURN
+      
+      #pragma begindump
+        #define HB_CP_ID        ENWIN
+        #define HB_CP_INFO      "English CP-1252"
+        #define HB_CP_UNITB     HB_UNITB_1252
+        #define HB_CP_ACSORT    HB_CDP_ACSORT_NONE
+        #define HB_CP_UPPER     "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        #define HB_CP_LOWER     "abcdefghijklmnopqrstuvwxyz"
+        #define HB_CP_UTF8
+        #include "hbcdpreg.h"   /\* include CP registration code \*/
+      #pragma enddump
+      ```
+  - name: hb_cdpTerm
+    slug: hb_cdpterm
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpTerm() => <cCPID>'
+    description: |-
+      Returns terminal's code-page ID.
+      May return NIL.
+    return_type: String
+    return_name: cCPID
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpdet.prg'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: HB_CDPUNIID
+    slug: hb_cdpuniid
+    categories: ['Codepage Functions']
+    syntax: 'hb_cdpUniID([<cCPID>]) => <cID>'
+    description: 'Returns code-page identifier in the form `cp<NNN[N]>`, that is, the code-page number prefixed by `cp`.'
+    parameters: 
+      - name: cCPID
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cID
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\cdpapihb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CLOCKS2SECS
+    slug: hb_clocks2secs
+    categories: ['Date and Time Functions', 'Hardware']
+    syntax: 'hb_Clocks2Secs(<nClocks>) => <nSecs>'
+    description: 'Returns CPU clocks converted to seconds.'
+    parameters: 
+      - name: nClocks
+        type: Numeric
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nSecs
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\seconds.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CMDLINE
+    slug: hb_cmdline
+    categories: ['Executable Environment']
+    syntax: 'hb_CmdLine() => <cString>'
+    description: 'Returns the full command line, i.e.: all command line arguments (parameters).'
+    return_type: String
+    return_name: cString
+    library: 'hbvm'
+    source_code_file: 'src\vm\cmdarg.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_COMPILE
+    slug: hb_compile
+    categories: ['Compiler']
+    syntax: 'hb_compile() => <Numeric>'
+    description: 'More Doc Needed'
+    return_type: Numeric
+    library: 'hbcplr'
+    source_code_file: 'src\compiler\hbcmplib.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_COMPILEBUF
+    slug: hb_compilebuf
+    categories: ['Compiler']
+    syntax: 'hb_compileBuf(<"harbour">,<cFileName>) => <P-Code>'
+    description: |-
+      More Doc Needed
+      Compiles `<cFileName>` into pre-compiled harbour binary (p-code) and returns it, to be used by [hb_hrb\*\*\*](./hb_H#hbhrb) functions and can be saved as `.hrb` file.
+    parameters: 
+      - name: "harbour"
+        type: String
+        required: true
+        passed_by: value
+      - name: cFileName
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: P-Code
+    library: 'hbcplr'
+    source_code_file: 'src\compiler\hbcmplib.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_COMPILEFROMBUF
+    slug: hb_compilefrombuf
+    categories: ['Compiler']
+    syntax: 'HB_CompileFromBuf(<String>,<"harbour">,[<cSwitches>],[...]) => <cP-Code>'
+    description: 'More Doc Needed'
+    parameters: 
+      - name: 
+        type: String
+        passed_by: value
+      - name: "harbour"
+        type: String
+        passed_by: value
+      - name: cSwitches
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cP-Code
+    library: 'hbcplr'
+    source_code_file: 'src\compiler\hbcmplib.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_COMPILER
+    slug: hb_compiler
+    categories: ['Compiler']
+    syntax: 'hb_Compiler() => <cCCompiler>'
+    description: 'Returns the `C` compiler, f.e. `MinGW GNU C 5.3 (32-bit)`, used to build Harbour executable binaries.'
+    return_type: String
+    return_name: cCCompiler
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\version.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CRC
+    slug: hb_crc
+    categories: ['Checksum Functions']
+    syntax: 'hb_CRC(<cValue>,[<nStart>],[<nPolynomial>]) => <nCRC8>'
+    description: 'Returns the checksum of a string using the `CRC-8` algorithm.'
+    parameters: 
+      - name: cValue
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nPolynomial
+        type: Numeric
+        required: false
+        default: '0x11021'
+        passed_by: value
+    return_type: Numeric
+    return_name: nCRC8
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbcrc.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CRC16
+    slug: hb_crc16
+    categories: ['Checksum Functions']
+    syntax: 'hb_CRC16(<cValue>,[<nStart>]) => <nCRC16>'
+    description: 'Returns the checksum of a string using the `CRC-16` algorithm.'
+    parameters: 
+      - name: cValue
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nCRC16
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbcrc.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CRC32
+    slug: hb_crc32
+    categories: ['Checksum Functions']
+    syntax: 'hb_CRC32(<cValue>,[<nStart>]) => <nCRC32>'
+    description: 'Returns the checksum of a string using the `CRC-32` algorithm.'
+    parameters: 
+      - name: cValue
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nCRC32
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbcrc.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CRCCT
+    slug: hb_crcct
+    categories: ['Checksum Functions']
+    syntax: 'hb_CRCCT(<cValue>,[<nStart>],[<nPolynomial>]) => <nCRCCT>'
+    description: 'Returns the checksum of a string using CRC-8?, cl\*pper tools compatible? or what? (clarification needed...). Anyhow, Przemek suggests to not use it.'
+    parameters: 
+      - name: cValue
+        type: String
+        required: true
+        passed_by: value
+      - name: nStart
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nPolynomial
+        type: Numeric
+        required: false
+        default: '0x11021'
+        passed_by: value
+    return_type: Numeric
+    return_name: nCRCCT
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbcrc.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: hb_CStr
+    slug: hb_cstr
+    categories: ['Conversion Functions', 'String ANSI/Codepage Functions']
+    syntax: 'hb_CStr(<xVal>) => <cExp>'
+    description: 'Converts a value of any type into a string expression. Complex types are converted into a descriptive text.'
+    parameters: 
+      - name: xVal
+        type: Any
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cExp
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\valtoexp.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['hb_ValToExp', 'HB_VALTOSTR']
+  - name: HB_CTOD
+    slug: hb_ctod
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'hb_CtoD(<cDate>,[<cDateFormat>]) => <dDate>'
+    description: 'Harbour extension to the CtoD() function. It converts a string `<cDate>` representing a date to a DATE type value. Additionally, the date format used in `<cDate>` can be supplied in `<cDateFormat>`, otherwise the `_SET_DATEFORMAT` format will be used.'
+    parameters: 
+      - name: cDate
+        type: String
+        required: true
+        passed_by: value
+      - name: cDateFormat
+        type: String
+        required: false
+        default: '_SET_DATEFORMAT'
+        passed_by: value
+        description: |-
+          Maximum 10 characters long. Characters can be yYmMdD. All other characters are ignored. yY = Years, mM = Months, dD = Days. Examples: mm.dd.yyyy, MM-DD-YYYY, mMDdYyYy (all equivalent).
+          Default is current OS date format.
+    return_type: Date
+    return_name: dDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CTOT
+    slug: hb_ctot
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'hb_CtoT(<cTimeStamp>,[<cDateFormat>],[<cTimeFormat>]) => <tTimeStamp>'
+    description: 'Converts a timestamp string to timestamp value (valtype=T). By default it uses the `_SET_DATEFORMAT` and `_SET_TIMEFORMAT` format strings to do the conversion, but you can specify other formats using `<cDateFormat>` and `<cTimeFormat>`.'
+    parameters: 
+      - name: cTimeStamp
+        type: String
+        required: true
+        passed_by: value
+      - name: cDateFormat
+        type: String
+        required: false
+        default: '_SET_DATEFORMAT'
+        passed_by: value
+        description: |-
+          Maximum 10 characters long. Characters can be yYmMdD. All other characters are ignored. yY = Years, mM = Months, dD = Days. Examples: mm.dd.yyyy, MM-DD-YYYY, mMDdYyYy (all equivalent).
+          Default is current OS date format.
+      - name: cTimeFormat
+        type: String
+        required: false
+        default: '_SET_TIMEFORMAT'
+        passed_by: value
+        description: |-
+          Maximum 16 characters long. Characters can be hHmMsSfFpP. All other characters are ignored. hH = Hours, mM = Minutes, sS = Seconds, fF = fractional part of seconds, pP = PM/AM marker. Example: hh:mm:ss:ffff pp.
+          Default is current OS time format.
+    return_type: Datetime
+    return_name: tTimeStamp
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: 'hb_CtoT("04/02/1969 11:05:123 pm", "mm/dd/yyyy", "hh:ss:fff pp")'
+  - name: HB_CURDRIVE
+    slug: hb_curdrive
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_CurDrive([<cNewDrive>]) => <cCurrentDrive>'
+    description: |-
+      Returns the current working disk drive as a single capital letter (e.g. `C` ) and optionally changes it to `<cNewDrive>`.
+      Will only work if the OS supports drive letters, meaning Windows only. For other OS, will return an empty string.
+    parameters: 
+      - name: cNewDrive
+        type: String
+        required: false
+        passed_by: value
+        description: 'If specified, will change the current working disk drive.'
+    return_type: String
+    return_name: cCurrentDrive
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_CWD
+    slug: hb_cwd
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_cwd([<cNewDir>]) => <cCurrentDir>'
+    description: |-
+      Get/Set the **C**urrent **W**orking **D**irectory.
+      If a `<cNewDir>` argument has been passed, the function attempts to set it as (current) working directory.Whether the new working directory setting was successful or not, can be checked either by using FError() (which will return 0 if successful), or by calling again hb_cwd() without a parameter.
+      The function always returns the full path of directory that is current upon invocation, (i.e. the path before the possible change is made, when a change is aimed), including drive letter (if the O/S supports that) and a trailing slash (or back-slash).
+    parameters: 
+      - name: cNewDir
+        type: String
+        required: false
+        passed_by: value
+    return_type: String
+    return_name: cCurrentDir
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: |-
+      ```
+      cOldPath := hb_cwd( cNewPath )
+      
+      // Method 1
+      if FError() != 0
+         ? "Cannot set working directory to " + cNewPath
+      else
+         ? "Working directory changed from " + cOldPath + " to " + cNewPath
+      endif
+      
+      // Method 2
+      if cOldPath == hb_cwd()  // directory didn't change!
+         ? "Cannot set working directory to " + cNewPath
+      else
+         ? "Working directory changed from " + cOldPath + " to " + cNewPath
+      endif
+      ```
+  - name: HB_DATE
+    slug: hb_date
+    categories: ['Date and Time Functions']
+    syntax: 'hb_Date([<nYear>],[<nMonth>],[<nDay>]) => <dDate>'
+    description: 'Harbour extension to the Date() function that returns a date value from the supplied day, month and year values. If any of them is invalid or missing, an empty date is returned. If none of them is supplied, the current date is returned.'
+    parameters: 
+      - name: nYear
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nMonth
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nDay
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Date
+    return_name: dDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DATETIME
+    slug: hb_datetime
+    categories: ['Date and Time Functions']
+    syntax: 'hb_DateTime([<nYear>],[<nMonth>],[<nDay>],[<nHour>],[<nMinute>],[<nSecond>],[<nFragment>]) => <tTimeStamp>'
+    description: 'Returns a timestamp value from the supplied day, month, year, hour, minute, second and second-fragment values. If none of them is supplied, the current date and time is returned.'
+    parameters: 
+      - name: nYear
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nMonth
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nDay
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nHour
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nMinute
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nSecond
+        type: Numeric
+        required: false
+        passed_by: value
+      - name: nFragment
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Datetime
+    return_name: tTimeStamp
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DBCREATETEMP
+    slug: hb_dbcreatetemp
+    categories: ['Table Functions']
+    syntax: 'hb_dbCreateTemp(<cAlias>,<aStruct>,<cRDD>,<cCodePage>,<nConnection>) => <lSuccess>'
+    description: 'Generates and opens a new `.dbf` file with a temporary filename in exclusive mode, deletes it automatically when closed. All indexes created for this table, should ideally have the temporary flag on, so those get deleted too, when closed.'
+    parameters: 
+      - name: cAlias
+        type: String
+        passed_by: value
+      - name: aStruct
+        type: Array
+        passed_by: value
+      - name: cRDD
+        type: String
+        passed_by: value
+      - name: cCodePage
+        type: String
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DBDETACH
+    slug: hb_dbdetach
+    categories: ['Table Functions']
+    syntax: 'hb_dbDetach([<nWorkArea|cAlias>],[<xCargo>]) => <lSuccess>'
+    description: |-
+      The function detaches a work-area from current thread and move it to special hidden holder.
+      If no `<nWorkArea>|<cAlias>` specified, then the current work-area is used by default; if no work-area is in use (i.e. no file is open in area), a runtime error occurs (RTE: DBCMD/2001).
+      Before detaching, all relations (parent and child) to detached workarea are cleared. Detached work-area can be restored from holder using hb_dbRequest() function (see bellow). For a working sample of "*dbDetach/dbRequest*" functions, see this [**sample**](https://raw.githubusercontent.com/harbour/core/master/tests/mt/mttest09.prg) found into Harbour/tests/mt/ folder).
+    parameters: 
+      - name: nWorkArea|cAlias
+        type: Any
+        required: false
+        passed_by: value
+      - name: xCargo
+        type: Any
+        required: false
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbdetach.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_DBREQUEST']
+  - name: HB_DBDROP
+    slug: hb_dbdrop
+    categories: ['Index Function', 'Table Functions']
+    syntax: 'hb_dbDrop(<cDbf>,[<cIndex>],[<cRDD>],[<nConnection>]) => <lSuccess>'
+    description: 'Deletes database files and/or indexes. To delete a `<cIndex>` only, `<cDbf>` must defined as empty string `""`, otherwise RTE occurs.'
+    parameters: 
+      - name: cDbf
+        type: String
+        passed_by: value
+      - name: cIndex
+        type: String
+        required: false
+        passed_by: value
+      - name: cRDD
+        type: String
+        required: false
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        required: false
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DBEXISTS
+    slug: hb_dbexists
+    categories: ['Table Functions']
+    syntax: 'hb_dbExists(<cDbf>,[<cIndex>],[<cRDD>],<nConnection>) => <lExist>'
+    description: 'Checks if the given `<cDbf>` and/or `<cIndex>` exists. To check the existence of a `<cIndex>` only, the 1st argument `<cDbf>` must be specified/passed as empty string `""`, otherwise, if completely omitted or left uninitialized (i.e., `NIL`) then a "bad parameter" runtime error occurs. (note : including an extension to `<cDbf>` or `<cIndex>` filenames is optional; if no extension defined then assumed the default extension used by the current RDD).'
+    parameters: 
+      - name: cDbf
+        type: String
+        passed_by: value
+      - name: cIndex
+        type: String
+        required: false
+        passed_by: value
+      - name: cRDD
+        type: String
+        required: false
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        passed_by: value
+    return_type: Logic
+    return_name: lExist
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DBGETFILTER
+    slug: hb_dbgetfilter
+    categories: ['Work Areas']
+    syntax: 'hb_dbGetFilter() => <bCode|NIL>'
+    description: 'Returns `codeblock` used as work area filter or `NIL` if no filter is active.'
+    return_name: bCode|NIL
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DBRENAME
+    slug: hb_dbrename
+    categories: ['Index Function', 'Table Functions']
+    syntax: 'hb_dbRename(<cDbf>,[<cIndex>],[<cNewName>],<cRDD>,<nConnection>) => <lSuccess>'
+    description: 'Renames a .dbf and/or index. To rename a `<cIndex>` only, `<cDbf>` must defined as empty string `""`, otherwise RTE occurs.'
+    parameters: 
+      - name: cDbf
+        type: String
+        passed_by: value
+      - name: cIndex
+        type: String
+        required: false
+        passed_by: value
+      - name: cNewName
+        type: String
+        required: false
+        passed_by: value
+      - name: cRDD
+        type: String
+        passed_by: value
+      - name: nConnection
+        type: Numeric
+        passed_by: value
+        description: 'Connection handler for RDDs which support it'
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbcmd.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DBREQUEST
+    slug: hb_dbrequest
+    syntax: 'hb_dbRequest([<cAlias>],<lFreeArea>,[<@xCargo>],[<lWait|nWait>]) => <lSuccess>'
+    description: |-
+      Restores `<cAlias>` area from the holder (see `hb_dbDetach()` above) and attach it to calling thread.
+      If no `<cAlias>` specified, then the oldest detached area into holder's queue is tried to be restored  (FIFO method).
+      If either the `<cAlias>` specified cannot be found or there is no area in the queue, the function will fail and return a `.F.` value. If the function succeeds, returns `.T.` and the restored work-area becomes current.
+      The `<lFreeArea>` argument determines whether a new area or the current one will be used for restore. Default is `.F.`, which means the restore will be done in the current work area, and any other file that might be open in this area, will be closed (worth to note that this closing will be done even if the function fails to restore the requested alias, --presumably because it's always being performed, before the restore attempt).
+      `<@xCargo>` can be used to retrieve a possibly transmitted message/data between threads / processes.
+      4-th parameter `<lWait>` flag specifies whether the function should wait (when lWait == `.T.`) until the requested working area becomes available or return immediately, (when lWait == `.F.`, which is the default).
+      Alternatively, instead of a Boolean flag, this 4-th parameter accepts a numeric value specifying *timeout in seconds* waiting for the requested area to become available, before returning.
+    parameters: 
+      - name: cAlias
+        type: String
+        required: false
+        passed_by: value
+      - name: lFreeArea
+        type: Logic
+        passed_by: value
+      - name: xCargo
+        type: Any
+        required: false
+        passed_by: reference
+      - name: lWait|nWait
+        type: Logic
+        required: false
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrdd'
+    source_code_file: 'src\rdd\dbdetach.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_DBDETACH']
+  - name: HB_DEFAULT
+    slug: hb_default
+    categories: ['Null and Nil', 'Variables']
+    syntax: 'hb_Default(<@xVar>,[<xValue>]) => NIL'
+    description: 'Sets the value of variable `<xVar>` to `<xValue>` **when either** the current `<xVar>` value is NIL or its type is different than `<xValue>`. If no `<xValue>` specified then, evidently, the `<xVar>` becomes `NIL`. If `<xVar>` has already a value of same type with `<xValue>`, **no change** is done! Note: `<xVar>` must be passed by reference and be an **existing** variable (if not exists an RTE occurs).'
+    parameters: 
+      - name: xVar
+        type: Any
+        required: true
+        passed_by: reference
+      - name: xValue
+        type: Any
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbdef.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DEFAULTVALUE
+    slug: hb_defaultvalue
+    categories: ['Null and Nil', 'Variables']
+    syntax: 'hb_DefaultValue(<xValue>,<xDefaultValue>) => <xReturn>'
+    description: 'Returns `<xDefaultValue>` if `<xValue>` is NIL or different type of `<xDefaultValue>`, otherwise returns `<xValue>`. It''s similar to hb_Default() but **not** modifying the variable.'
+    parameters: 
+      - name: xValue
+        type: Any
+        required: true
+        passed_by: value
+      - name: xDefaultValue
+        type: Any
+        required: true
+        passed_by: value
+    return_type: Any
+    return_name: xReturn
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbdef.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DESERIALIZE
+    slug: hb_deserialize
+    categories: ['Conversion Functions', 'Serialization functions']
+    syntax: 'hb_Deserialize(<cSerialized>,[<cCdpIN>],[<cCdpOUT>]) => <xValue>'
+    description: |-
+      Reconstructs the `<cSerialized>` byte sequence, previously created (serialized) by 'hb_Serialize()', and returns the data in their original structure, (f.e. array, timestamp, object etc).
+      The optional parameters `<cCdpIN>` and `<cCdpOUT>`, if defined, are used for code-page translation in serialization and de-serialization operations. By default `VM's` code-page is used.
+    parameters: 
+      - name: cSerialized
+        type: String
+        passed_by: value
+      - name: cCdpIN
+        type: String
+        required: false
+        passed_by: value
+      - name: cCdpOUT
+        type: String
+        required: false
+        passed_by: value
+    return_type: Any
+    return_name: xValue
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\itemseri.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_SERIALIZE']
+  - name: HB_DIRBASE
+    slug: hb_dirbase
+    categories: ['Disks, Drives and Folders', 'Executable Environment']
+    syntax: 'hb_DirBase() => <cDirName>'
+    description: 'Returns the application''s executable base directory (program startup directory).'
+    return_type: String
+    return_name: cDirName
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\philes.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: hb_DirBuild
+    slug: hb_dirbuild
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirBuild([<cDir>]) => <lSuccess>'
+    description: |-
+      Attempts to create (or to validate the existence of) the given `<cDir>` directory hierarchy, by recursively adding (if it doesn't already exist) a new path after creating the parent directory. f.e.: *`hb_DirBuild("sub1/sub2/sub3/")`* will create successively, "sub1" (if it doesn't exist), afterwards "sub2" under (or inside)  "sub1", afterwards "sub3" under "sub2".
+      It returns `.T.` when the directory hierarchy, either exists or was successfully created. Otherwise returns `.F.`
+    parameters: 
+      - name: cDir
+        type: String
+        required: false
+        passed_by: value
+    return_name: lSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbfilehi.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DIRCREATE
+    slug: hb_dircreate
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirCreate(<cDir>) => <nSuccess>'
+    description: 'Attempts to create `<cDir>`. returns `0` on success, or a `nFError` code on failure.'
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirdrive.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DIRDELETE
+    slug: hb_dirdelete
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirDelete(<cDir>) => <nSuccess>'
+    description: 'Attempt to delete `<cDir>`. returns `0` on success, or a `nFError` code on failure.</p>'
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: Numeric
+    return_name: nSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirdrive.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DIRECTORY
+    slug: hb_directory
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_Directory(<cDirSpec>,[<cAttributes>]) => <aDirectory>'
+    description: |-
+      Returns an array of files matching the `<cDirspec>` and `<cAttributes>` (if any) filters. The structure of array is identical to that of [*Directory()*](./D#directory) function, except of the `F_DATE` element, which here is a `timestamp` value (valtype: `T`) whereas in *Directory()* value is a `date` (valtype: `D`).
+      See also [hb_vfDirectory()](./hb_V/#vfDirectory) and [**hb_DirScan()**](./hb_D/#hb_DirScan) function, which scans recursively entire working directory tree including subdirectories that may exist inside (or below) it.
+    parameters: 
+      - name: cDirSpec
+        type: String
+        required: true
+        passed_by: value
+      - name: cAttributes
+        type: String
+        required: false
+        passed_by: value
+        description: |-
+          "D" Include Directories
+          "H" Include Hidden files
+          "S" Include System files
+          "V" is a special case - you will get back the entry that describes the Volume label for the drive implied by the file mask.
+    return_type: Array
+    return_name: aDirectory
+    return_description: |-
+      Array of arrays.
+      directry.ch defines the following constants
+         F_NAME 1 File name
+         F_SIZE 2 File size
+         F_DATE 3 Creation date
+         F_TIME 4 Creation time (as string)
+         F_ATTR 5 File attributes
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\direct.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DIRECTORY', 'hb_DirScan']
+  - name: HB_DIREXISTS
+    slug: hb_direxists
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirExists(<cDir>) => <lExists>'
+    description: 'Checks if `<cDir>` exists. Note: it won''t work with wild-cards. Returns `.T.` if `<cDir>` exists, otherwise `.F.`'
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: Logic
+    return_name: lExists
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbfile.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: hb_DirRemoveAll
+    slug: hb_dirremoveall
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirRemoveAll(<cDir>) => <lResult>'
+    description: |-
+      This function attempts to remove entire `<cDir>` directory.
+      <warning>Warning - Since this function removes recursively whole directories along with their contents, be extremely careful while using it.</warning>
+      For example, invoking this function like: hb_DirRemoveAll( hb_ps() ) can remove all files and directories (**even those marked as *hidden, system or read-only***) from current working disk! hb_ps() return the drive delimiter symbols, therefore is a root of a drive/partition.
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: Logic
+    return_name: lResult
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirscan.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: hb_DirScan
+    slug: hb_dirscan
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirScan(<cPath>,[<cFileMask>],[<cAttr>]) => <aFiles>'
+    description: 'Similar to hb_Directory() (refer to it for more..) with the difference that it scans not only `<cPath>` but also all subdirectories below `<cPath>` (recursively).'
+    parameters: 
+      - name: cPath
+        type: String
+        required: true
+        passed_by: value
+      - name: cFileMask
+        type: String
+        required: false
+        passed_by: value
+      - name: cAttr
+        type: String
+        required: false
+        passed_by: value
+        description: |-
+          "D" Include Directories
+          "H" Include Hidden files
+          "S" Include System files
+    return_type: Array
+    return_name: aFiles
+    return_description: |-
+      Array of arrays.
+      directry.ch defines the following constants
+         F_NAME 1 File name
+         F_SIZE 2 File size
+         F_DATE 3 Creation date
+         F_TIME 4 Creation time (as string)
+         F_ATTR 5 File attributes
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dirscan.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_DIRECTORY']
+  - name: hb_DirSepAdd
+    slug: hb_dirsepadd
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirSepAdd(<cDir>) => <cDir>'
+    description: 'Returns `<cDir>` with a path separator added to the end of it. (if `<cDir>` already has an ending path separator, nothing added). see also: hb_DirSepDel().'
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cDir
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbfilehi.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['hb_DirSepDel']
+  - name: hb_DirSepDel
+    slug: hb_dirsepdel
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirSepDel(<cDir>) => <cDir>'
+    description: 'Returns `cDir` **without** path separator at the end of it (if any). The inverse function of *''hb_DirSepAdd()''*.'
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cDir
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbfilehi.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['hb_DirSepAdd']
+  - name: hb_DirSepToOS
+    slug: hb_dirseptoos
+    categories: ['Disks, Drives and Folders', 'Operating System OS']
+    syntax: 'hb_DirSepToOS(<cFileName>) => <cFileName>'
+    description: 'Replaces the path separators (if any) into `<cFileName>` with appropriate ones for the O/S used. e.g.: with ` / ` for \*nix, ` \ ` for Win.'
+    parameters: 
+      - name: cFileName
+        type: String
+        required: true
+        passed_by: value
+    return_type: String
+    return_name: cFileName
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbfilehi.prg'
+    platforms: ['Windows','Linux','Mac']
+  - name: HB_DIRTEMP
+    slug: hb_dirtemp
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirTemp() => <ctempDir>'
+    description: 'Returns the full name of temp dir including drive letter and a trailing path-separator (similar to ''hb_GetEnv("temp")'' which has no trailing path-separator).'
+    return_type: String
+    return_name: ctempDir
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\fstemp.c'
+    platforms: ['Windows','Linux','Mac']
+  - name: hb_DirUnbuild
+    slug: hb_dirunbuild
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DirUnbuild(<cDir>) => <lSuccess>'
+    description: |-
+      Attempts to remove `<cDir>` and all subdirectories inside it.
+      the operation acts down-to-top, i.e. at first, attempts to delete the lowermost subdirectory. If succeeds, will continue deleting upper directories until either all subdirectories (including topmost) have been deleted, in which case it will return `.T.`, or until a subdirectory cannot be deleted, for some reason (e.g. because it is not empty or is read-only et.c.) and hence it will return `.F.`
+      (might be seen as the inverse of hb_DirBuild())
+    parameters: 
+      - name: cDir
+        type: String
+        required: true
+        passed_by: value
+    return_type: Logic
+    return_name: lSuccess
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\hbfilehi.prg'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['hb_DirBuild']
+  - name: HB_DISKSPACE
+    slug: hb_diskspace
+    categories: ['Disks, Drives and Folders']
+    syntax: 'hb_DiskSpace([<cDrive|nDrive>],[<nType>]) => <nDiskbytes>'
+    description: |-
+      Returns the free space (in bytes) of `<cDrive>` (default: current working drive) or **the type** of space specified by `<nType>`.
+      If `<nDrive>` is used, then `1 is A:` .. `3 is C:` and so on.
+      
+      Supported types (nType) as defined in fileio.ch header file:
+      
+      nType|Returned value|
+      :---:|:---|
+      HB_DISK_AVAIL (`0`)|  The amount of space available to the user making the request. This value could be less than HB_DISK_FREE if disk quotas are supported by the O/S in use at runtime, and disk quotas are in effect. Otherwise, the value will be equal to that returned for HB_DISK_FREE.|
+      HB_DISK_FREE (`1`)|  The actual amount of free disk space on the drive.|
+      HB_DISK_USED (`2`)|  The number of bytes in use on the disk.|
+      HB_DISK_TOTAL (`3`)|  The total amount of space allocated for the user if disk quotas are in effect, otherwise, the actual size of the drive.|
+      
+      See also: hb_vfDirSpace() with similar syntax.
+    parameters: 
+      - name: cDrive|nDrive
+        type: Any
+        required: false
+        passed_by: value
+      - name: nType
+        type: Numeric
+        required: false
+        passed_by: value
+    return_type: Numeric
+    return_name: nDiskbytes
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\disksphb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['HB_VFDIRSPACE']
+  - name: HB_DISPBOX
+    slug: hb_dispbox
+    categories: ['Classic UI']
+    syntax: 'hb_DispBox(<nTop>,<nLeft>,<nBottom>,<nRight>,[<cBoxChars>],[<cnColor>]) => NIL'
+    description: 'Displays a box at `<nTop>, <nLeft>, <nBottom>, <nRight>` drawn using `<cBoxChars>` or defaults box-chars and optionally colored with `<cnColor>` which can be either a color template string or numeric color values.'
+    parameters: 
+      - name: nTop
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nLeft
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nBottom
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nRight
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: cBoxChars
+        type: String
+        required: false
+        passed_by: value
+      - name: cnColor
+        type: Numeric
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\box.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: HB_DISPOUTAT
+    slug: hb_dispoutat
+    categories: ['Classic UI']
+    syntax: 'hb_DispOutAt(<nRow>,<nCol>,<expression>,[<cColor>]) => NIL'
+    description: |-
+      Displays the value of `<expression>` at specific **screen** position, without altering current cursor position(and this is the main difference of hb_DispOutAt() from *DispOutAt()* function).
+      Is not affected by `SET ALTERNATE` setting, which means that output is always directed to screen.
+    parameters: 
+      - name: nRow
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nCol
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: expression
+        type: Any
+        required: true
+        passed_by: value
+      - name: cColor
+        type: Numeric
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\console.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+  - name: HB_DISPOUTATBOX
+    slug: hb_dispoutatbox
+    categories: ['Classic UI']
+    syntax: 'hb_DispOutAtBox(<nRow>,<nCol>,<expression>,[<cColor>]) => NIL'
+    description: 'Same as hb_DispOutAt(), but draws with the attribute HB_GT_ATTR_BOX, so we can use it to draw graphical elements.'
+    parameters: 
+      - name: nRow
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: nCol
+        type: Numeric
+        required: true
+        passed_by: value
+      - name: expression
+        type: String
+        required: true
+        passed_by: value
+      - name: cColor
+        type: Numeric
+        required: false
+        passed_by: value
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\console.c'
+    platforms: ['Windows','Linux','Mac']
+    generate_user_interface: true
+    see_also: ['HB_DISPOUTAT']
+  - name: HB_DTOC
+    slug: hb_dtoc
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'hb_DtoC(<dDate|tTimeStamp>,[<cDateFormat>]) => <cDate>'
+    description: 'Harbour extension to the DtoC() function. It converts a date value `<dDate>` (or the date value of `<tTimeStamp>`) to a string. If no date format is supplied the `_SET_DATEFORMAT` format will be used.'
+    parameters: 
+      - name: dDate|tTimeStamp
+        type: Any
+        required: true
+        passed_by: value
+      - name: cDateFormat
+        type: String
+        required: false
+        passed_by: value
+        description: |-
+          Maximum 10 characters long. Characters can be yYmMdD. All other characters are ignored. yY = Years, mM = Months, dD = Days. Examples: mm.dd.yyyy, MM-DD-YYYY, mMDdYyYy (all equivalent).
+          Default is current OS date format.
+    return_type: String
+    return_name: cDate
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+    see_also: ['DTOC']
+  - name: HB_DTOT
+    slug: hb_dtot
+    categories: ['Conversion Functions', 'Date and Time Functions']
+    syntax: 'hb_DtoT(<dDate>,[<cnTime>]) => <tTimeStamp>'
+    description: 'Returns a `timestamp` from the date and time values. `<dDate>` is a date value and `<cnTime>` is the time part and could be a number (as from Seconds()) or a string (as from Time()), (see time string format).'
+    parameters: 
+      - name: dDate
+        type: Date
+        required: true
+        passed_by: value
+      - name: cnTime
+        type: Any
+        required: false
+        passed_by: value
+        description: 'Can be a number of seconds or a string representing a time.'
+    return_type: Datetime
+    return_name: tTimeStamp
+    library: 'hbrtl'
+    source_code_file: 'src\rtl\dateshb.c'
+    platforms: ['Windows','Linux','Mac']
+    examples: |-
+      hb_DtoT(date(),"02:58:36") => 10/16/19 02:58:36.000
+      hb_DtoT(date(),3600.5) => 10/16/19 01:00:00.500
