@@ -176,5 +176,3 @@ For these kinds of programming structures:
 
 - `continue` forces the **next iteration** inside a loop.  
 - `break` forces an **exit** from a selective or repetitive structure.
-
----
