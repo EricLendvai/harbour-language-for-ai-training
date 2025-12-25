@@ -15219,6 +15219,7 @@ functions:
       - name: nNumber
         type: Numeric
         passed_by: value
+        default: '10'
       - name: nLength
         type: Numeric
         required: false
