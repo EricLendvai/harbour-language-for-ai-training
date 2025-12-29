@@ -612,7 +612,7 @@ Harbour has a powerful preprocessor (HbPP). At the lexical level, you should be 
 
 ---
 
-### 1.23 Macro expansion differences (Harbour vs VFP)
+### 1.23 Macro expansion pitfalls / common misconceptions
 
 Harbour’s macro operator is `&`, but its behavior differs from VFP in important ways:
 
@@ -1733,6 +1733,20 @@ Typical pattern (tooling only):
     #command ? [<explist,...>] =>
 #endif
 ```
+
+#### 7.4.2 Pseudo-commands registry (AI input)
+
+Many “language-like” constructs come from `.ch` files via `#command` / `#translate` (e.g., legacy `SET` commands and other xBase-style pseudo-commands). These are not runtime functions; they are **preprocessor rules**.
+
+For AI-assisted workflows, maintain a **machine-readable registry** of supported pseudo-commands and translations (e.g., a YAML file) that identifies:
+- the construct name/pattern,
+- the owning `.ch` file (or module),
+- the expansion target (high level description; full rewrite optional),
+- whether it is recommended for new code or legacy-only.
+
+Guidance:
+- Do not invent new pseudo-commands or assume a pseudo-command exists unless the project includes the corresponding `.ch`.
+- Whether a project prefers **legacy pseudo-commands** or **runtime function equivalents** is a **coding-standard choice**; follow `personal_coding_standards.md` (or explicit repo-level overrides) rather than encoding a universal preference here.
 
 ---
 
@@ -6803,10 +6817,21 @@ These are hard constraints intended to keep AI-generated Harbour code predictabl
 - Prefer `hb_ps()` for separator portability (or a single project helper).
 - Prefer explicit, full paths for DBF tables (see §18.3.1).
 
-### 26.5 Respect repository function sets
+### 26.5 Respect repository function sets (YAML catalogs)
 
-- Only use functions that exist in the project’s canonical Harbour function dataset (the YAML function catalog) and in the configured dependencies.
-- If a needed function is uncertain, generate a small helper function instead of guessing API names.
+For AI-generated code, only call functions that are present in the **active function catalogs** (YAML allowlists) for the current repo and its configured dependencies.
+
+- The active function set is the **union** of:
+  - the core Harbour catalog (language/runtime),
+  - any linked library catalogs (e.g., Harbour_EL, Harbour_ORM),
+  - any repo-local helper catalogs (if maintained).
+- If a function is required but not present in the active catalogs:
+  - **Do not guess** the API name.
+  - Prefer generating a small helper routine (if feasible without new external calls), **or**
+  - explicitly request that the relevant catalog be updated.
+
+Legacy-code review rule:
+- When *reviewing existing code* (not generating new code), missing-catalog functions should be reported as **warnings** (with the assumed owning library/module), not as blockers.
 
 ### 26.6 Text encoding
 

@@ -59,6 +59,10 @@ This document defines **personal, cross-project coding standards** intended to k
 Allowed exceptions (common technical acronyms / domain terms) may appear in identifiers:
 - `API`, `DB`, `FCGI`, `HTML`, `HTTP`, `HTTPS`, `JSON`, `ORM`, `SQL`, `URL`, `UUID`, `UTF8`
 
+Exception — upstream/external naming:
+
+When interfacing with an external API, runtime, file layout, or protocol, it is acceptable (and often preferable) to retain the upstream canonical naming, even if abbreviated (e.g., `sys`, `StdLib`, `site-packages`, `Py_*` / `py_*` conventions). Do not “expand” or rename these if it harms cross-referencing with upstream documentation.
+
 Examples:
 - Prefer `l_cCustomerName` over `l_cCustNm`
 - Prefer `par_nInvoiceNumber` over `par_nInvNo`
@@ -86,6 +90,9 @@ Type letters (data structures / objects):
 - `a` = array
 - `h` = hash/map
 - `o` = object (class instance)
+- `p` = opaque pointer/handle to an external runtime or resource (e.g., Python object handle, C pointer wrapper, OS handle).
+  - Treat as **opaque**: do not do arithmetic or string operations on it.
+  - Only pass to the bridge/API functions that own the handle lifecycle.
 
 Type letters (special cases):
 
@@ -113,6 +120,7 @@ par_cCustomerName
 par_nTotalAmount
 par_lIsEnabled
 par_xResult
+par_pPyObject
 ```
 
 ### 3.4 Preprocessor symbols
@@ -154,11 +162,21 @@ This rule applies to Harbour source and any generated Harbour code.
 
 - Place a separator line between functions/procedures/methods:
 
+Allowed styles:
+
+1) Canonical (default for new code):
 ```harbour
 //--------------------------------------------------------------------------------
 ```
 
 That is `//` followed by **80** `-` characters.
+
+2) Alternate (readability-heavy, acceptable in legacy code):
+```harbour
+//====================================================================================================
+```
+
+That is `//` followed by **100** `=` characters.
 
 - Do **not** insert a blank line between a routine’s final `return` statement and the separator line that follows.
 
@@ -178,6 +196,26 @@ Or longer (allowed/preferred in some codebases):
 
 Rule:
 - Be consistent within a file/module. Do not reformat separators purely for style if it increases diff noise.
+
+### 5.3 Intra-routine section separators
+
+Within a routine (inside a `function`/`procedure`/method), short separators may be used to visually group related logic.
+
+Allowed styles (examples):
+
+```harbour
+//=== Validation ===================================================================
+```
+
+```harbour
+//--- Data access ------------------------------------------------------------------
+```
+
+Rules:
+
+- Use these **only inside** a routine (not as the primary separator between routines/classes).
+- Be consistent within a file/module.
+- Do not reformat separators purely for style if it increases diff noise.
 
 ---
 
@@ -335,6 +373,18 @@ Harbour provides both `iif()` and `if()` as expression-level conditional functio
 - Prefer `#define` for constants and build flags only.
 - Avoid using the preprocessor for runtime logic.
 - If build flags are needed, prefer `hbmk2 -dFLAGNAME` and test via `#ifdef`.
+
+### 10.1 Legacy pseudo-commands vs runtime equivalents
+
+- Prefer **legacy syntax** in new code unless **runtime equivalents** are explicitly requested.
+- Only use a legacy pseudo-command form if the build includes the corresponding `.ch` rules (directly or indirectly), so the spelling is guaranteed to compile.
+
+Examples (illustrative):
+
+- Legacy spelling:
+  - `set decimals to 4`
+- Runtime equivalent:
+  - `Set( _SET_DECIMALS, 4 )`
 
 ---
 
