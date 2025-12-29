@@ -1,4 +1,4 @@
-<!-- Updated: 2025-12-24 05:00 pm PST -->
+<!-- Updated: 2025-12-28 11:00 pm PST -->
 
 # Harbour Language Rules — Unified Developer Guide (GPT‑Ready)
 
@@ -2109,6 +2109,9 @@ Design guideline:
 - Use `static function` for helpers and internal utilities
 - Use non-STATIC routines only for intentional APIs or entry points
 
+Practical note:
+- Prefer placing `static` helpers at the top of the PRG (before public/exported routines) to avoid link-time resolution edge cases.
+
 ---
 
 ### 8.5 Parameters, arity, and argument count
@@ -2178,8 +2181,25 @@ You cannot pass by reference:
 ### 8.8 Call order and forward references
 
 - Routines may call routines defined later in the same PRG or in other PRGs.
-- Textual order does not matter.
-- No forward declarations are required.
+- Textual order usually does not matter; no forward declarations are required.
+
+Practical caveat (STATIC helpers):
+- If a routine is declared `static` and its first **definition** appears after a call site, some Harbour versions/build pipelines may compile the call as a public reference and then fail at link time (hbmk2: “Referenced, missing, but unknown function(s)”).
+- To avoid this, define `static function` / `static procedure` helpers **before** their first use within the PRG, or make the helper non-STATIC if it must be referenced from other PRGs.
+
+Example (recommended layout):
+```harbour
+static function py_IsValidPythonTopLevelName(par_cName)
+...
+return .t.
+
+function py_GetAvailablePythonPackages(par_lIncludeMetadata)
+...
+if py_IsValidPythonTopLevelName("abc")
+...
+endif
+return {}
+```
 
 ---
 

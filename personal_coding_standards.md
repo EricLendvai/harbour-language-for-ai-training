@@ -1,4 +1,4 @@
-<!-- Updated: 2025-12-24 05:00 pm PST -->
+<!-- Updated: 2025-12-29 -->
 
 # personal_coding_standards.md
 
@@ -20,6 +20,7 @@ This document defines **personal, cross-project coding standards** intended to k
 ### 2.1 Indentation and whitespace
 
 - Indentation is **4 spaces**.
+- Inside `function`/`procedure`/method bodies, the **initial statement level is not indented** (column 1). Indent **only nested blocks** using 4 spaces per level.
 - **Tabs are not allowed** (neither for indentation nor alignment).
 - Do not include trailing whitespace at end-of-line.
 - Use consistent newline endings (LF preferred; repository may override if needed).
@@ -38,6 +39,12 @@ This document defines **personal, cross-project coding standards** intended to k
   - `function`, `procedure`
   - `class`
   - method definitions (when written outside the class body depending on style)
+
+### 2.4 Blank lines after block openers
+
+- Do **not** insert a blank line immediately after a `function`/`procedure`/method declaration line.
+- Do **not** insert a blank line immediately after a `for` loop header line.
+- (General) Use blank lines to separate logical blocks of code, not to pad structure.
 
 ---
 
@@ -152,6 +159,8 @@ This rule applies to Harbour source and any generated Harbour code.
 ```
 
 That is `//` followed by **80** `-` characters.
+
+- Do **not** insert a blank line between a routine’s final `return` statement and the separator line that follows.
 
 ### 5.2 Class separators
 
