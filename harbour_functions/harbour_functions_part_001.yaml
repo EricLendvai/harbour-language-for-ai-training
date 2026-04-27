@@ -2642,7 +2642,10 @@ functions:
     slug: fieldput
     categories: ['Field Functions', 'Table Functions']
     syntax: 'FieldPut(<nFieldPos>,<expAssign>) => <ValueAssigned>'
-    description: 'Set the value `<expAssign>` of the field in the `<nFieldPos>` position.'
+    description: |-
+      Set the value `<expAssign>` of the field in the `<nFieldPos>` position.
+      For more flexibility use hb_FieldPut() instead.
+      If the RDD being accessed supports NULL/NIL values, use hb_FieldPut() instead.
     parameters: 
       - name: nFieldPos
         type: Numeric
