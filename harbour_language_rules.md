@@ -4907,7 +4907,31 @@ Rules for AI-generated code:
 
 ### 18.6 Updating records, locks, and committing visibility
 
-Updates may be performed via `replace`, direct field assignment, `fieldput()`, etc. In shared/multi-process usage, correctness typically requires a **lock strategy**.
+Updates may be performed via `replace`, direct field assignment, `FIELD->FieldName := ...`,
+aliased assignment such as `Alias->FieldName := ...`, and field-update helper functions such
+as `hb_fieldput()`. When nullable fields are involved, do **not** treat all update forms as equivalent.
+
+For RDDs that support nullable storage, assigning Harbour `NIL` to a field is the normal
+Harbour-level way to request storage of a database `NULL`. This depends on the RDD:
+traditional DBF-style RDDs may not have true SQL-style `NULL` semantics for ordinary fields,
+while SQL-backed RDDs, in-memory RDDs, or custom RDDs may preserve `NIL` as a real nullable
+field state.
+
+Important distinction:
+
+```harbour
+Alias->NullableField := nil          // OK: reaches the RDD field-update path
+FIELD->NullableField := nil          // OK: reaches the current workarea RDD field-update path
+replace NullableField with nil       // OK if supported by the target RDD
+
+fieldput( nField, nil )              // Avoid: NIL is ignored by the public FieldPut() wrapper
+hb_fieldput( nField, nil )           // OK: NIL is passed to the RDD
+hb_fieldput( "NullableField", nil )  // OK: field name is resolved, then NIL is passed to the RDD
+```
+
+Avoid `fieldput()` when nullable values must be preserved.
+
+In shared/multi-process usage, correctness typically requires a **lock strategy**.
 
 Recommended pattern (record update in shared DBF scenarios):
 
