@@ -1,9 +1,9 @@
 version: 1
-generated_at: "2025-10-12T09:04:31Z"
-count_functions: 824
+generated_at: "2026-05-12T20:59:17Z"
+count_functions: 834
 parts:
   - file: harbour_functions_part_001.yaml
-    size_bytes: 616991
+    size_bytes: 643672
 map: 
   __dbapp: harbour_functions_part_001.yaml
   __dbcopy: harbour_functions_part_001.yaml
@@ -34,6 +34,7 @@ map:
   alert: harbour_functions_part_001.yaml
   alias: harbour_functions_part_001.yaml
   alltrim: harbour_functions_part_001.yaml
+  altd: harbour_functions_part_001.yaml
   amonths: harbour_functions_part_001.yaml
   ampm: harbour_functions_part_001.yaml
   array: harbour_functions_part_001.yaml
@@ -62,6 +63,10 @@ map:
   ctodow: harbour_functions_part_001.yaml
   ctomonth: harbour_functions_part_001.yaml
   curdir: harbour_functions_part_001.yaml
+  curl_easy_cleanup: harbour_functions_part_001.yaml
+  curl_easy_init: harbour_functions_part_001.yaml
+  curl_global_cleanup: harbour_functions_part_001.yaml
+  curl_global_init: harbour_functions_part_001.yaml
   date: harbour_functions_part_001.yaml
   day: harbour_functions_part_001.yaml
   days: harbour_functions_part_001.yaml
@@ -104,6 +109,7 @@ map:
   dbsetdriver: harbour_functions_part_001.yaml
   dbsetfilter: harbour_functions_part_001.yaml
   dbsetindex: harbour_functions_part_001.yaml
+  dbsetorder: harbour_functions_part_001.yaml
   dbsetrelation: harbour_functions_part_001.yaml
   dbskip: harbour_functions_part_001.yaml
   dbstruct: harbour_functions_part_001.yaml
@@ -115,6 +121,7 @@ map:
   deletefile: harbour_functions_part_001.yaml
   descend: harbour_functions_part_001.yaml
   devout: harbour_functions_part_001.yaml
+  devoutpict: harbour_functions_part_001.yaml
   devpos: harbour_functions_part_001.yaml
   dirchange: harbour_functions_part_001.yaml
   directory: harbour_functions_part_001.yaml
@@ -373,6 +380,7 @@ map:
   hb_ininew: harbour_functions_part_001.yaml
   hb_iniread: harbour_functions_part_001.yaml
   hb_inireadstr: harbour_functions_part_001.yaml
+  hb_inisetcomment: harbour_functions_part_001.yaml
   hb_iniwrite: harbour_functions_part_001.yaml
   hb_iniwritestr: harbour_functions_part_001.yaml
   hb_isarray: harbour_functions_part_001.yaml
@@ -439,6 +447,7 @@ map:
   hb_mutexsubscribenow: harbour_functions_part_001.yaml
   hb_mutexunlock: harbour_functions_part_001.yaml
   hb_mvrestore: harbour_functions_part_001.yaml
+  hb_mvsave: harbour_functions_part_001.yaml
   hb_ntoc: harbour_functions_part_001.yaml
   hb_ntohour: harbour_functions_part_001.yaml
   hb_ntomin: harbour_functions_part_001.yaml
@@ -608,6 +617,7 @@ map:
   hb_ustuff: harbour_functions_part_001.yaml
   hb_usubstr: harbour_functions_part_001.yaml
   hb_utcoffset: harbour_functions_part_001.yaml
+  hb_utctots: harbour_functions_part_001.yaml
   hb_utf8asc: harbour_functions_part_001.yaml
   hb_utf8at: harbour_functions_part_001.yaml
   hb_utf8chr: harbour_functions_part_001.yaml
