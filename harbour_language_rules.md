@@ -1,4 +1,4 @@
-<!-- Updated: 2025-12-28 11:00 pm PST -->
+<!-- Updated: 2026-06-08 01:00 am PDT -->
 
 # Harbour Language Rules — Unified Developer Guide (GPT‑Ready)
 
@@ -3294,7 +3294,156 @@ Guidance:
 
 ---
 
-### 13.5 Object identity and reference semantics
+### 13.5 `QSelf()` and runtime-supplied object context
+
+`QSelf()` returns the current runtime object context supplied by the Harbour VM.
+It is related to `self`, but it is not limited to ordinary `method ... class ...`
+implementations.
+
+Inside a normal method, `self` and `::` are the usual forms:
+
+```harbour
+method BuildText( par_cText ) class TestClass
+return ::cPrefix + ": " + par_cText
+```
+
+In that case, the receiver object is obvious from the method call:
+
+```harbour
+oTest:BuildText( "ABC" )
+```
+
+`QSelf()` is different. It exposes the active receiver object that the runtime
+has installed for the currently executing routine. This matters in advanced
+dispatch paths where a routine may be executed with an object context even
+though the routine is not written as a normal class method.
+
+A key example is `hb_ExecMsg()`:
+
+```harbour
+hb_ExecMsg( <sSymbol>, <oObject> [, <xArg1> [, <xArg2> [, ... ] ] ] )
+```
+
+`hb_ExecMsg()` executes the symbol from the first argument while temporarily
+installing the second argument as the active `QSelf()` object. Additional
+arguments are passed as ordinary positional parameters. They are not expanded
+from an argument array.
+
+Conceptually, this call:
+
+```harbour
+hb_ExecMsg( @BuildText(), oTest, "ABC", 123 )
+```
+
+means:
+
+```text
+current QSelf := oTest
+call BuildText( "ABC", 123 )
+restore previous QSelf
+```
+
+Therefore, the called routine can retrieve the supplied object by calling
+`QSelf()`:
+
+```harbour
+#include "hbclass.ch"
+
+procedure Main()
+
+local oTest
+local xResult
+
+oTest := TestClass():New( "Prefix" )
+
+xResult := hb_ExecMsg( @BuildText(), oTest, "ABC", 123 )
+? xResult        // Prefix: ABC / 123
+
+return
+
+
+class TestClass
+data cPrefix
+method New( cPrefix )
+endclass
+
+method New( cPrefix ) class TestClass
+::cPrefix := cPrefix
+return Self
+
+function BuildText( cText, nValue )
+local oSelf
+
+oSelf := QSelf()
+
+return oSelf:cPrefix + ": " + cText + " / " + hb_ntos( nValue )
+```
+
+Important: `BuildText()` in the example is not a method of `TestClass`. It is a
+standalone function. It can still access `oTest` through `QSelf()` only because
+`hb_ExecMsg()` invoked it with `oTest` installed as the current object context.
+
+This is not equivalent to a normal method call:
+
+```harbour
+oTest:BuildText( "ABC", 123 )   // requires BuildText to be a method of TestClass
+```
+
+The `hb_ExecMsg()` form is instead closer to:
+
+```text
+invoke this symbol with this supplied Self object
+```
+
+The distinction is important for documentation and code generation:
+
+* `hb_ExecMsg()` does not call a method by character name.
+* The first parameter must be a symbol, such as `@BuildText()`, not a string.
+* The second parameter supplies the object returned by `QSelf()`.
+* The third and later parameters are positional arguments.
+* If an array is supplied as the third argument, that array is passed as one
+  argument; it is not expanded.
+
+This can be useful in framework and runtime code:
+
+* Dynamic class builders can attach or dispatch standalone symbols as behavior.
+* Object systems can execute helper routines with a supplied receiver object.
+* Plugin, event, or controller dispatchers can invoke known symbols while
+  supplying a runtime object context.
+* Metadata-driven frameworks can reuse one symbol against multiple compatible
+  object shapes.
+
+However, `QSelf()` creates an implicit dependency on the runtime call context.
+For ordinary application code, prefer normal methods or explicit parameters:
+
+```harbour
+// Preferred when ordinary structure is sufficient:
+method BuildText( cText, nValue ) class TestClass
+return ::cPrefix + ": " + cText + " / " + hb_ntos( nValue )
+
+// Also clear:
+function BuildTextExplicit( oSelf, cText, nValue )
+return oSelf:cPrefix + ": " + cText + " / " + hb_ntos( nValue )
+```
+
+Use `QSelf()` deliberately, mainly in runtime/framework code where the object
+context is intentionally supplied by the dispatcher.
+
+AI/code-generation rules:
+
+* Do not use `QSelf()` in ordinary functions unless the function is explicitly
+  designed to be invoked with a runtime-supplied object context.
+* Do not assume `QSelf()` is always available or meaningful in a plain function
+  call.
+* Prefer `self` / `::` inside normal methods.
+* Prefer an explicit object parameter when the object dependency should be
+  visible in the function signature.
+* When documenting `hb_ExecMsg()`, describe it as invoking a symbol with a
+  supplied `QSelf()` object, not as ordinary method-name dispatch.
+
+---
+
+### 13.6 Object identity and reference semantics
 
 - Objects are **reference-like** values.
 - Assignment copies the reference, not the state.
@@ -3311,7 +3460,7 @@ Independent objects require **explicit construction or cloning**.
 
 ---
 
-### 13.6 `data` / `var` and `classdata` / `classvar`
+### 13.7 `data` / `var` and `classdata` / `classvar`
 
 From observed behavior and documentation:
 
@@ -3325,7 +3474,7 @@ Guidance for this rulebook:
 
 ---
 
-### 13.7 Property-style member access patterns
+### 13.8 Property-style member access patterns
 
 Harbour supports multiple distinct “property” mechanisms.
 
@@ -3365,7 +3514,7 @@ routes to the same method.
 
 ---
 
-### 13.8 Inheritance, polymorphism, and `SUPER`
+### 13.9 Inheritance, polymorphism, and `SUPER`
 
 - Harbour supports **dynamic dispatch**.
 - Single and multiple inheritance are allowed:
@@ -3386,7 +3535,7 @@ return NIL
 
 ---
 
-### 13.9 `with object` / `endwith`
+### 13.10 `with object` / `endwith`
 
 `with object` temporarily sets an **implicit message target** for method calls and member access, reducing repetition.
 
@@ -3415,7 +3564,7 @@ endif
 
 ---
 
-### 13.10 Lifetime and cleanup
+### 13.11 Lifetime and cleanup
 
 - Each class may define **at most one** `destructor`.
 - The destructor **does execute** and is commonly used for cleanup.
@@ -3427,7 +3576,7 @@ Rules:
 
 ---
 
-### 13.11 Method declaration attributes
+### 13.12 Method declaration attributes
 
 Harbour supports method attributes in class declarations:
 
@@ -3444,7 +3593,7 @@ Important:
 
 ---
 
-### 13.12 Method binding syntax
+### 13.13 Method binding syntax
 
 Methods may be implemented using either form:
 
@@ -3463,7 +3612,7 @@ method name would otherwise be ambiguous.
 
 ---
 
-### 13.13 Visibility blocks and modifiers
+### 13.14 Visibility blocks and modifiers
 
 Class members may be grouped under:
 
@@ -3476,7 +3625,7 @@ Member modifiers:
 
 ---
 
-### 13.14 Friend declarations
+### 13.15 Friend declarations
 
 Classes may grant privileged access:
 
@@ -3489,7 +3638,7 @@ This is distinct from `friendly` PRG-level access.
 
 ---
 
-### 13.15 Object copying and cloning
+### 13.16 Object copying and cloning
 
 - No implicit deep copy exists.
 
@@ -3505,7 +3654,7 @@ Recommended:
 
 ---
 
-### 13.16 File organization rule
+### 13.17 File organization rule
 
 For `hbclass.ch` classes:
 
@@ -3522,7 +3671,7 @@ The compiler must see a single combined unit.
 
 ---
 
-### 13.17 AI pitfalls (common incorrect assumptions)
+### 13.18 AI pitfalls (common incorrect assumptions)
 
 The following assumptions are **incorrect** in Harbour:
 
